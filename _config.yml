@@ -25,10 +25,10 @@ author:
   name             : "GuoZiming"
   pronouns         : "he/him"  
   bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "Harbin"
+  employer         : # "Red Brick University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "orlosziming@outlook.com" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
