@@ -7,8 +7,8 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
-title                    : "Your Name / Site Title"
+locale                   : "zh-UCN"
+title                    : "Guo Ziming / 郭子铭"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
