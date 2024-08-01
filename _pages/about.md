@@ -9,3 +9,4 @@ redirect_from:
 
 A little about me.
 ======
+Born on January 14, 2004, from Ningbo🇨🇳.
