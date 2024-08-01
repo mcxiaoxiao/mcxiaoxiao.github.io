@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "zh-UCN"
-title                    : "Guo Ziming / 郭子铭"
+title                    : "GuoZiming / 郭子铭"
 title_separator          : "-"
-name                     : &name "Guo Ziming"
-description              : &description "Guo Ziming's academic pages"
+name                     : &name "GuoZiming"
+description              : &description "GuoZiming's academic pages"
 url                      : https://mcxiaoxiao.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mcxiaoxiao/mcxiaoxiao.github.io"
@@ -49,7 +49,7 @@ author:
   CSDN             : "https://blog.csdn.net/qq_36001281?type=blog"
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
