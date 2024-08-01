@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Homepage"
+title: "GuoZiming/郭子铭's Academic Homepage"
 author_profile: true
 redirect_from: 
   - /about/
