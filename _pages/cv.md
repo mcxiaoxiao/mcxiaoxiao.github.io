@@ -42,7 +42,7 @@ Skills
   * Sub-skill 2.1
   * Sub-skill 2.2
   * Sub-skill 2.3
-* Pianno, Skiing, C2 Driver license, CET4 & CET6
+* Piano, Skiing, C2 Driver license, CET4 & CET6
 
 Publications
 ======
