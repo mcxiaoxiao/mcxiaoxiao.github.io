@@ -38,10 +38,17 @@ Work experience
 Skills
 ======
 * AI & Data Science
+  * Proficient in Python for machine learning and data analysis
+  * Experienced with TensorFlow and PyTorch frameworks
+  * Skilled in NLP and LLMs project optimization and deployment
+  * Capable of developing predictive models and algorithms
+  * Knowledgeable in data visualization
 * Frontend & Backend
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
+  * Frontend development using JS/TS frameworks like React/Vue/Mini-program
+  * Backend development with Node.js(NestJS, Prisma)/Java(Spring)/Python(Flask, Django, FastAPI)
+  * Familiar with C++ for performance-critical applications (Qt, CUDA, OpenCV)
+  * Proficient in using Kubernetes (K8s) for container/Docker orchestration
+  * Familiar with full-stack development and integration of frontend and backend systems
 * Piano, Skiing, C2 Driver license, CET4 & CET6
 
 Publications
