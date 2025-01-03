@@ -14,3 +14,8 @@ collection: portfolio
 <img src='/images/winterhar.png' style='max-width: 200px;'>
 <img src='/images/winterhar2.jpg' style='max-width: 200px;'>
 <br/>
+2024 Summer, 🍄🍄🍄,  Inner Mongolia. 
+<br/>
+<img src='/images/mush1.jpg' style='max-width: 200px;'>
+<img src='/images/mush2.jpg' style='max-width: 200px;'>
+<br/>
