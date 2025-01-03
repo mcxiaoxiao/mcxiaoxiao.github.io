@@ -48,7 +48,7 @@ Skills
   * Backend development with Node.js(NestJS, Prisma)/Java(Spring)/Python(Flask, Django, FastAPI)
   * Familiar with C++ for performance-critical applications (Qt, CUDA, OpenCV)
   * Proficient in using Kubernetes (K8s) for container/Docker orchestration
-  * Familiar with full-stack development and integration of frontend and backend systems
+  * Familiar with full-stack development process, organizing team collaboration and managing code using Git.
 * Piano, Skiing, C2 Driver license, CET4 & CET6
 
 Publications
