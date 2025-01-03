@@ -2,7 +2,7 @@
 title: "QDA-SQL: Questions Enhanced Dialogue Augmentation for Multi-Turn Text-to-SQL"
 collection: publications
 permalink: /publication/QDA-SQL
-excerpt: 'Fine-tuning large language models (LLMs) for Text-to-SQL tasks is effective, but they often struggle with multi-turn queries due to ambiguity. To address this, we introduce QDA-SQL, a data augmentation method that generates diverse multi-turn Q&A pairs using LLMs. QDA-SQL includes validation and correction mechanisms to handle complex queries. Experimental results show that QDA-SQL improves SQL statement accuracy and enhances the models&apos; ability to manage challenging, unanswerable questions. The generation script and test set are released at [Github](https://github.com/mcxiaoxiao/QDA-SQL).'
+excerpt: 'QDA-SQL, a data augmentation method that generates diverse multi-turn Q&A pairs using LLMs. QDA-SQL includes validation and correction mechanisms to handle complex queries. Experimental results show that fine-tuning with QDA-SQL improves SQL statement accuracy and enhances the models&apos; ability to manage challenging, unanswerable questions. The generation script and test set are released at [Github](https://github.com/mcxiaoxiao/QDA-SQL).'
 date: 2024-06-15
 venue: 'Arxiv'
 paperurl: 'https://arxiv.org/abs/2406.10593'
