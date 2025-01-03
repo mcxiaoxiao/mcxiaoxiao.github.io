@@ -17,10 +17,10 @@ Education
 
 Work experience
 ======
-* 2022-2023: Full Stack Development
+* 2022-2023: Full Stack Development / CTO
   * Huxun Inc.
-  * Project experience: 
-  * Duties includes: Updates and improvements to template
+  * Project experience: Entrepreneurial
+  * Duties includes: Web, Mini program, Mobile; frontend and backend; DevOps
 
 * 2023-2025: Research Assistant
   * Harbin Institute of Technology
