@@ -25,7 +25,7 @@ Work experience
 * 2023-2025: Research Assistant
   * Harbin Institute of Technology
   * Duties included: 
-    * Assisted in designing and conducting experiments to support ongoing research projects.
+    * Assisted in designing and conducting experiments to support ongoing research projects (RAG + LLM, time-series model, automated log analysis).
     * Collaborated with team members to analyze data and interpret results.
     * Contributed to the writing and editing of research papers.
     * Assisted in the preparation and filing of patent applications.
