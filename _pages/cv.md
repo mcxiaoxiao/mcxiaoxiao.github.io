@@ -30,7 +30,7 @@ Work experience
     * Collaborated with team members to analyze data and interpret results.
     * Contributed to the writing and editing of research papers.
     * Assisted in the preparation and filing of patent applications.
-  * Supervisor: Haining Yu, Chao Ma, Yinggang Sun
+  * Supervisor: Chao Ma, Haining Yu, Yinggang Sun
 
 Skills
 ======
