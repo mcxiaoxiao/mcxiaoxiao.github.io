@@ -17,10 +17,10 @@ Education
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
+* 2022-2023: Full Stack Development
+  * Huxun Inc.
+  * Project experience: 
   * Duties includes: Updates and improvements to template
-  * Supervisor: Haining Yu, Chao Ma, Yinggang Sun
 
 * 2023-2025: Research Assistant
   * Harbin Institute of Technology
