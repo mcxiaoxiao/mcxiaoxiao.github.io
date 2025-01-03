@@ -1,7 +1,7 @@
 ---
 title: "QDA-SQL: Questions Enhanced Dialogue Augmentation for Multi-Turn Text-to-SQL"
 collection: publications
-permalink: /publication/2024-02-17-paper-title-number-4
+permalink: /publication/QDA-SQL
 excerpt: 'This paper is about fixing template issue #693.'
 date: 2024-06-15
 venue: 'Preprint'
