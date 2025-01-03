@@ -17,10 +17,7 @@ Education
 
 Work experience
 ======
-* 2022-2023: Full Stack Development / CTO
-  * Huxun Inc.
-  * Project experience: Entrepreneurial Project
-  * Duties includes: Web, Mini program, Mobile; frontend and backend; DevOps
+
 
 * 2023-2025: Research Assistant
   * Harbin Institute of Technology
@@ -31,6 +28,12 @@ Work experience
     * Contributed to the writing and editing of research papers.
     * Assisted in the preparation and filing of patent applications.
   * Supervisor: Chao Ma, Haining Yu, Yinggang Sun
+
+
+* 2022-2023: Full Stack Development / CTO
+  * Huxun Inc.
+  * Project experience: Entrepreneurial Project
+  * Duties includes: Web, Mini program, Mobile; frontend and backend; DevOps
 
 Skills
 ======
