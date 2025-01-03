@@ -1,6 +1,6 @@
 ---
-title: "Portfolio item number 1"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+title: "profile"
+excerpt: "Taken in early spring at Dongqian Lake, Ningbo in 2024. <br/><img src='/images/fullprofile.jpg'><img src='/images/fullprofilestrange.jpg'>"
 collection: portfolio
 ---
 
