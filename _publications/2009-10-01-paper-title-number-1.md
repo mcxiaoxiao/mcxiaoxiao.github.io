@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/MMSQL
 excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2024-12-21
-venue: 'Journal 1'
+venue: 'Arxiv'
 slidesurl: 'https://mcxiaoxiao.github.io/MMSQL'
 paperurl: 'https://arxiv.org/abs/2412.17867'
 ---
