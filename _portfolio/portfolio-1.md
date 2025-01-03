@@ -19,7 +19,7 @@ collection: portfolio
 <img src='/images/mush1.jpg' style='max-width: 200px;'>
 <img src='/images/mush2.jpg' style='max-width: 200px;'>
 <br/>
-2024 Summer, 🍄🍄🍄, Osaka. 
+2024 Summer, 🏯, Osaka. 
 <br/>
 <img src='/images/osaka.jpg' style='max-width: 200px;'>
 <br/>
