@@ -19,7 +19,7 @@ Work experience
 ======
 * 2022-2023: Full Stack Development / CTO
   * Huxun Inc.
-  * Project experience: Entrepreneurial
+  * Project experience: Entrepreneurial Project
   * Duties includes: Web, Mini program, Mobile; frontend and backend; DevOps
 
 * 2023-2025: Research Assistant
