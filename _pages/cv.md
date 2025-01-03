@@ -21,7 +21,7 @@ Work experience
 
 * 2023-2025: Research Assistant
   * Harbin Institute of Technology
-  * Project experience: RAG + LLM; Time-series Model; Log Denoising; Federated learning
+  * Project experience: RAG + LLM; Time-series Model; Log Denoising; Federated Learning
   * Duties included: 
     * Assisted in designing and conducting experiments to support ongoing research projects.
     * Collaborated with team members to analyze data and interpret results.
