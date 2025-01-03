@@ -9,13 +9,17 @@ collection: portfolio
 <img src='/images/fullprofile.jpg' style='max-width: 200px;'>
 <img src='/images/fullprofilestrange.jpg' style='max-width: 200px;'>
 <br/>
-2024 Winter, 🏂,  Harbin. 
+2024 Winter, 🏂, Harbin. 
 <br/>
 <img src='/images/winterhar.png' style='max-width: 200px;'>
 <img src='/images/winterhar2.jpg' style='max-width: 200px;'>
 <br/>
-2024 Summer, 🍄🍄🍄,  Inner Mongolia. 
+2024 Summer, 🍄🍄🍄, Inner Mongolia. 
 <br/>
 <img src='/images/mush1.jpg' style='max-width: 200px;'>
 <img src='/images/mush2.jpg' style='max-width: 200px;'>
+<br/>
+2024 Summer, 🍄🍄🍄, Osaka. 
+<br/>
+<img src='/images/osaka.jpg' style='max-width: 200px;'>
 <br/>
