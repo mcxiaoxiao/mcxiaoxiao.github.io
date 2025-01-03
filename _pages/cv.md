@@ -20,18 +20,17 @@ Work experience
 * Spring 2024: Academic Pages Collaborator
   * Github University
   * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+  * Supervisor: Haining Yu, Chao Ma, Yinggang Sun
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* 2023-2025: Research Assistant
+  * Harbin Institute of Technology
+  * Duties included: 
+    * Assisted in designing and conducting experiments to support ongoing research projects.
+    * Collaborated with team members to analyze data and interpret results.
+    * Contributed to the writing and editing of research papers.
+    * Assisted in the preparation and filing of patent applications.
+  * Supervisor: Haining Yu, Chao Ma, Yinggang Sun
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
 Skills
 ======
 * Skill 1
