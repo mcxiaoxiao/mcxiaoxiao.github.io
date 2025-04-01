@@ -3,7 +3,7 @@ title: "Evaluating and Enhancing LLMs for Multi-turn Text-to-SQL with Multiple Q
 collection: publications
 permalink: /publication/MMSQL
 excerpt: 'Developed MMSQL, a test suite that evaluates how well LLMs manage different question types and multi-turn interactions. Additionally, created a multi-agent system to better identify question types and select appropriate strategies. Experiments show that this approach enhances the models&apos; ability to navigate conversational complexities. For a more detailed presentation, refer to the [Page](https://mcxiaoxiao.github.io/MMSQL). The paper was accepted for presentation at IJCNN 2025.'
-date: 2024-12-21
+date: 2025-5-1
 venue: 'IJCNN25 Arxiv'
 paperurl: 'https://arxiv.org/abs/2412.17867'
 ---
