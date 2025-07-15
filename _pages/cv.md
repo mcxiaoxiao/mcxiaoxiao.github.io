@@ -19,16 +19,6 @@ Work experience
 ======
 
 
-* 2023-2025: Research Assistant
-  * Harbin Institute of Technology
-  * Project experience: RAG + LLM; Time-series Model; Log Denoising; Federated Learning
-  * Duties included: 
-    * Assisted in designing and conducting experiments to support ongoing research projects.
-    * Collaborated with team members to analyze data and interpret results.
-    * Contributed to the writing and editing of research papers.
-    * Assisted in the preparation and filing of patent applications.
-  * Supervisor: Chao Ma, Haining Yu, Yinggang Sun
-
 
 * 2022-2023: Full Stack Development / CTO
   * Huxun Inc.
