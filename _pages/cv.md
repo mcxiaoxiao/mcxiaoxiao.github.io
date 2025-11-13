@@ -13,7 +13,7 @@ Education
 ======
 <!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
 * M.S. in Jekyll, GitHub University, 2026- -->
-* B.S. of Data Science in HUST, Harbin University of Science and Technology (哈尔滨理工大学), Trusted Artificial Intelligence Lab (可信人工智能实验室) , 2022-2026 
+* B.S. of Data Science in Harbin University of Science and Technology (哈尔滨理工大学), Trusted Artificial Intelligence Lab (可信人工智能实验室) , 2022-2026 
 
 Work experience
 ======
