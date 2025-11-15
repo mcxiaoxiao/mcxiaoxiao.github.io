@@ -41,14 +41,15 @@ Skills
   * Familiar with full-stack development process, organizing team collaboration and managing code with Git.
 * Other
   * Piano, Skiing, C2 Driver license
-  * CET4 & CET6 & IELTES6.5
+  * CET4 & CET6 & IELTS6.5
 
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
+
+<!-- 
 Talks
 ======
   <ul>{% for post in site.talks reversed %}
@@ -61,3 +62,4 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
+这是一段被注释掉的文字 -->
