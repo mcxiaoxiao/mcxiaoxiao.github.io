@@ -39,7 +39,9 @@ Skills
   * Familiar with C++ for performance-critical applications (Qt, CUDA, OpenCV)
   * Proficient in using Kubernetes (K8s) for container/Docker orchestration
   * Familiar with full-stack development process, organizing team collaboration and managing code with Git.
-* Piano, Skiing, C2 Driver license, CET4 & CET6
+* Other
+  * Piano, Skiing, C2 Driver license
+  * CET4 & CET6 & IELTES6.5
 
 Publications
 ======
