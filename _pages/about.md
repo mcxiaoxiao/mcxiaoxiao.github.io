@@ -1,13 +1,11 @@
 ---
 permalink: /
-title: "Homepage"
+title: "A little about me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
-
-# A little about me
 
 # 一些有关我的东西
 
