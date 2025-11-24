@@ -13,7 +13,7 @@ For a proper English CV, please jump to [CV](https://mcxiaoxiao.github.io/cv/) �
 
 如果想看正经的介绍请跳转到 [CV](https://mcxiaoxiao.github.io/cv/) 🙇🏻‍♂️
 
-**从** 2004年1月14日起，来自宁波，叫 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)、自己觉得自己大概是小狗变的🐕
+**从** 2004年1月14日起，来自宁波，叫 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)、自己觉得自己大概是一只白色的小狗🐕变的
 
 **中文** 是我好不容易才学会的第一语言，让我们说中文
 
