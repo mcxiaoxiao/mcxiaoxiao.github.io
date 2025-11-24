@@ -9,7 +9,7 @@ redirect_from:
 
 # 一些有关我的东西
 
-**For a proper English CV, please jump to [CV](https://mcxiaoxiao.github.io/cv/) 🙇🏻‍♂️**
+**For a proper English CV, please refer to [CV](https://mcxiaoxiao.github.io/cv/) 🙇🏻‍♂️**
 
 **如果想看正经的介绍请跳转到 [CV](https://mcxiaoxiao.github.io/cv/) 🙇🏻‍♂️**
 
