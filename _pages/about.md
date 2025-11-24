@@ -10,11 +10,11 @@ redirect_from:
 # 一些有关我的东西
 
 
-**从** 2004年1月14日起，来自宁波，叫 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)、自己觉得自己大概是小狗变得🐕
+**从** 2004年1月14日起，来自宁波，叫 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)、自己觉得自己大概是小狗变的🐕
 
-**中文** 是我好不容易才学会的第一语言
+**中文** 是我好不容易才学会的第一语言，让我们说中文
 
-**英文** 是我也可以正常交流的第二语言
+**英文** 是我也可以正常交流的第二语言，也不是不行
 
 **同时是** 中国的工人阶级、计算机学生、程序员、长期创业者、Backpacker
 
