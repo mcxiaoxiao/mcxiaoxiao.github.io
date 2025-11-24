@@ -10,7 +10,7 @@ redirect_from:
 # 一些有关我的东西
 
 
-**从** 2004年1月14日开始，来自宁波，叫做 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)
+**从** 2004年1月14日起，来自宁波，叫 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)、自己觉得自己大概是小狗变得🐕
 
 **中文** 是我好不容易才学会的第一语言
 
