@@ -13,7 +13,7 @@ Education
 ======
 
 * B.S. of Data Science in Harbin University of Science and Technology (哈尔滨理工大学), Trusted Artificial Intelligence Lab (可信人工智能实验室) , 2022-2026
-* M.S. of Electronic Information in Harbin Institute of Technology (哈尔滨工业大学), Research Center for Computer Network & Information Security Technology (计算机网络与信息安全技术研究中心), 2026-2029 <!-- 早日实现！！ -->
+<!--* M.S. of Electronic Information in Harbin Institute of Technology (哈尔滨工业大学), Research Center for Computer Network & Information Security Technology (计算机网络与信息安全技术研究中心), 2026-2029 -->
 
 Work experience
 ======
