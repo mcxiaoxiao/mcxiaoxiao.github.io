@@ -24,6 +24,11 @@ Work experience
   * Huxun Inc.
   * Project experience: Entrepreneurial Project
   * Duties includes: Web, Mini program, Mobile; Frontend & Backend; DevOps
+ 
+* 2023-2024: Sheep-Net Shepherd Intern
+  * Xilinhot Grassland, Inner Mongolia
+  * Project experience: Rotated 300 sheep
+  * Duties include: midwife for newborn lambs, kibble dispatcher for a 3-year-old border collie, sunrise-to-sunset pasture walks, and stacking hay bales
 
 Skills
 ======
