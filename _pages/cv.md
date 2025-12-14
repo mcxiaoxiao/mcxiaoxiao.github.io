@@ -27,7 +27,7 @@ Work experience
  
 * 2021: Sheep-Net Shepherd Intern
   * Xilinhot Grassland, Inner Mongolia
-  * Project experience: Rotated 300 sheep
+  * Project experience: Herded 300+ sheep across daily grazing shifts
   * Duties include: midwife for newborn lambs, kibble dispatcher for a 3-year-old border collie, sunrise-to-sunset pasture walks, and stacking hay bales
 
 Skills
