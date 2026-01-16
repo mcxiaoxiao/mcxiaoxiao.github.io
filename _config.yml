@@ -21,7 +21,7 @@ repository               : "mcxiaoxiao/mcxiaoxiao.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "https://avatars.githubusercontent.com/u/27133057"
   name             : "GuoZiming"
   pronouns         : "he/him"  
   bio              : "Coder"
