@@ -7,16 +7,18 @@ tags:
   # - 技术
   # - 团队
   # - 市场
-  # - 日常
+  - 日常
 ---
 
-This is a sample blog post. Lorem ipsum I can't remember the rest of lorem ipsum and don't have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.
-
-Headings are cool
+向前进
 ======
 
-You can have many headings
+站在现在回头看，这场AI风暴的伏笔早已埋下。2022年秋，当我从高中毕业时，LLM关注的焦点仍是模型规模竞赛。2023-2024年，创新的主旋律已悄然转向模型架构与训练范式的底层突破，为大量已有或全新的应用落地或优化奠定了基本可用技术基座。进入2025年，我们所有人共同见证了应用层的全面井喷——世界正被更强大的计算力量快速解构与重塑。我有幸身处一个因技术内核剧变而激荡的年代
+
+莫彷徨
 ======
 
-Aren't headings cool?
-------
+
+
+黑暗尽处有曙光
+======
