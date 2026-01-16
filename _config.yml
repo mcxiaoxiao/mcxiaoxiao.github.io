@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "zh-UCN"
-title                    : "GuoZiming / 郭子铭"
+title                    : "Guo Ziming 郭子铭"
 title_separator          : "-"
-name                     : &name "GuoZiming"
-description              : &description "GuoZiming's academic pages"
+name                     : &name "Guo Ziming"
+description              : &description "Guo Ziming's academic pages"
 url                      : https://mcxiaoxiao.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mcxiaoxiao/mcxiaoxiao.github.io"
@@ -58,7 +58,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "guoziming"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -236,14 +236,14 @@ defaults:
       layout: single
       author_profile: true
   # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
+  # - scope:
+  #     path: ""
+  #     type: teaching
+  #   values:
+  #     layout: single
+  #     author_profile: true
+  #     share: true
+  #     comments: true
   # _publications
   - scope:
       path: ""
@@ -263,13 +263,13 @@ defaults:
       share: true
       comment: true
   # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
+  # - scope:
+  #     path: ""
+  #     type: talks
+  #   values:
+  #     layout: talk
+  #     author_profile: true
+  #     share: true
 
 
 # Sass/SCSS

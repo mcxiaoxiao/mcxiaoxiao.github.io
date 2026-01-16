@@ -1,12 +1,30 @@
 ---
 permalink: /
-title: "Homepage"
+title: "A little about me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+    
+**For a proper English CV, please refer to [CV](https://mcxiaoxiao.github.io/cv/) 🙇🏻‍♂️**
 
-A little about me.
-======
-Born on January 14, 2004, from Ningbo🇨🇳.
+
+
+# 一些有关我的东西
+
+**如果想看更正经的介绍请跳转到 [CV](https://mcxiaoxiao.github.io/cv/) 🙇🏻‍♂️**
+
+**从** 2004年1月14日起，来自宁波，叫 郭子铭（中文本名）、Orlos Ziming (Mongolian name)、Guo Ziming (Roman alphabet)、自己觉得自己大概是一只白色的小狗变的
+
+**中文** 是我好不容易才学会的第一语言，喜欢用
+
+**英文** 是我也可以正常交流的第二语言，但是中文优先
+
+**同时是** 中国的工人阶级、计算机学生、程序员、长期创业者、Backpacker
+
+**喜欢** 制造好吃的、在小被窝里睡大觉、做真正有搞头的东西、写有价值的代码，造福全世界（包括全人类和我）、小狗
+
+**不喜欢** 不公平的东西、助长不公平的东西、让人伤心的东西、做让人伤心的东西、大坏蛋、成为给好人添麻烦的大坏蛋
+
+**想要** 创造美好、富有热情、像风一样自由、考上哈工大、学会基本的高数、坐好久好久的跨洋宽体机去美国玩、去欧洲玩、能和英语母语者流畅口头交流、做一个知识库、去土耳其玩、完全学会麦当劳后厨工作、粗浅研究怎么开一家连锁餐饮店、粗浅学会怎么融资、学会会自己拼机器学习模型、自己写出看起来很厉害而且真的有用的公式、住一晚五星级酒店、去山西玩、写一篇真的很有用很有价值甚至可以直接落地的论文、带家人朋友出去玩、睡一个24小时的大觉

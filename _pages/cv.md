@@ -11,29 +11,24 @@ redirect_from:
 
 Education
 ======
-<!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2026- -->
-* B.S. in HUST, Harbin University of Science and Technology, 2022-2026
+
+* B.S. of Data Science in Harbin University of Science and Technology (哈尔滨理工大学), Trusted Artificial Intelligence Lab (可信人工智能实验室) , 2022-2026
+<!--* M.S. of Electronic Information in Harbin Institute of Technology (哈尔滨工业大学), Research Center for Computer Network & Information Security Technology (计算机网络与信息安全技术研究中心), 2026-2029 -->
 
 Work experience
 ======
 
-
-* 2023-2025: Research Assistant
-  * Harbin Institute of Technology
-  * Project experience: RAG + LLM; Time-series Model; Log Denoising; Federated Learning
-  * Duties included: 
-    * Assisted in designing and conducting experiments to support ongoing research projects.
-    * Collaborated with team members to analyze data and interpret results.
-    * Contributed to the writing and editing of research papers.
-    * Assisted in the preparation and filing of patent applications.
-  * Supervisor: Chao Ma, Haining Yu, Yinggang Sun
 
 
 * 2022-2023: Full Stack Development / CTO
   * Huxun Inc.
   * Project experience: Entrepreneurial Project
   * Duties includes: Web, Mini program, Mobile; Frontend & Backend; DevOps
+ 
+* 2021: Sheep-Net Shepherd Intern
+  * Xilinhot Grassland, Inner Mongolia
+  * Project experience: Herded 300+ sheep
+  * Duties include: midwife for newborn lambs, kibble dispatcher for a 3-year-old border collie, sunrise-to-sunset pasture walks, and stacking hay bales
 
 Skills
 ======
@@ -49,14 +44,17 @@ Skills
   * Familiar with C++ for performance-critical applications (Qt, CUDA, OpenCV)
   * Proficient in using Kubernetes (K8s) for container/Docker orchestration
   * Familiar with full-stack development process, organizing team collaboration and managing code with Git.
-* Piano, Skiing, C2 Driver license, CET4 & CET6
+* Other
+  * Piano, Skiing, C2 Driver license
+  * CET4 & CET6 & IELTS6.5
 
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
+
+<!-- 
 Talks
 ======
   <ul>{% for post in site.talks reversed %}
@@ -69,6 +67,4 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+这是一段被注释掉的文字 -->
