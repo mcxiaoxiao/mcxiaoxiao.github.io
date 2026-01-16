@@ -3,7 +3,7 @@ title: '向前进，莫彷徨，黑暗尽处有曙光'
 date: 2026-02-25
 permalink: /posts/initial
 tags:
-  - 产品
+  # - 产品
   # - 技术
   # - 团队
   # - 市场
