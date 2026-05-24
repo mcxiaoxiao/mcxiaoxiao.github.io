@@ -19,7 +19,11 @@ Education
 Work experience
 ======
 
+* 2026: Kitchen Crew Member / Burger Stack Architect
 
+  * McDonald's
+  * Project experience: Fast-paced food service operations
+  * Duties include: operating fryers, assembling burgers with structural integrity, managing sauce and ingredient logistics, supporting order fulfillment during peak hours, and keeping calm under lunch-rush pressure
 
 * 2022-2023: Full Stack Development / CTO
   * Huxun Inc.
