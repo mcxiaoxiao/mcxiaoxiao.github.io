@@ -254,6 +254,10 @@ logs/llmapi/{date}/
 
 ***
 
+![往者不可谏，来者犹可追](/images/2026/llmapi/life-paths-open-future.jpg)
+
+*往者不可谏，来者犹可追！本科四年辛苦啦老己，毕业快乐🎓！*
+
 ## 参考资料
 
 [^1]: [LiteLLM Documentation](https://docs.litellm.ai/)。LiteLLM 文档介绍其 Proxy Server、虚拟 key、预算、负载均衡和成本追踪等能力，适合作为 OpenAI-compatible 聚合层参考。
@@ -340,6 +344,4 @@ logs/llmapi/{date}/
 
 ***
 
-![往者不可谏，来者犹可追](/images/2026/llmapi/life-paths-open-future.jpg)
 
-*往者不可谏，来者犹可追！*
