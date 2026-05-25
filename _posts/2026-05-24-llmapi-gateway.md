@@ -90,7 +90,7 @@ LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成
 | --- | --- | --- | --- | --- | --- | --- |
 | LiteLLM[^41] | L1/L2 | Python SDK、Proxy、Docker、Helm | OpenAI 兼容、100+ provider、virtual key、budget、fallback、logging | 已覆盖 images/audio/batches/rerank/A2A 等接口 | 约 48.2k / MIT 为主，enterprise 目录另行许可 | 生态最强，适合先把模型调用统一起来 |
 | One API[^35] | L1 | 单可执行文件、Docker、Docker Compose、宝塔 | 渠道、令牌、额度、分组倍率、负载均衡、绘图接口 | 偏文本/绘图聚合，国内 provider 友好 | 约 34.2k / MIT | 国内个人和小团队二次分发思路很典型 |
-| New API[^42] | L1/L2 | Docker、Docker Compose、宝塔 | OpenAI/Claude/Gemini 格式转换、计费、token、重试、rate limit | 支持图像、音频、视频、rerank、realtime 等接口 | 约 31.6k / AGPL-3.0 | One API 之后更产品化，但协议义务要认真评估 |
+| New API[^42][^43] | L1/L2 | Docker、Docker Compose、宝塔 | OpenAI/Claude/Gemini 格式转换、计费、token、重试、rate limit | 支持图像、音频、视频、rerank、realtime 等接口 | 约 31.6k / AGPL-3.0 | One API 之后更产品化，但协议义务要认真评估 |
 | Portkey Gateway[^44] | L2 | npx、自托管、托管版 | guardrails、fallback、load balancing、routing、缓存、观测 | 面向语言、视觉、音频、图像模型 | 约 11.7k / MIT | 企业治理意识强，但和托管平台绑定更深 |
 | Higress[^4] | L2 | all-in-one Docker、Helm、Kubernetes、云服务 | 协议转换、语义缓存、token 限流、内容安全、插件、MCP | AI Gateway + MCP + Agent 路由 | 约 8.3k / Apache-2.0 | 云原生团队友好，阿里生态和 K8s 场景优势明显 |
 | Bifrost[^45] | L2 | npx、Docker、Go SDK、Helm | 高性能 Go gateway、fallback、load balance、semantic cache、budget、MCP | 明确支持 text/images/audio/streaming | 约 5.2k / Apache-2.0 | 性能叙事强，适合对延迟和自托管有要求的团队 |
