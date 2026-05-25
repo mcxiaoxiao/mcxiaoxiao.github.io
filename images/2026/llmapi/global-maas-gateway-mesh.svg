@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
   <title id="title">全球 LLM 区域需求综合代理指数</title>
-  <desc id="desc">多源综合估算 2026 年全球 LLM 与 MaaS 区域需求强度，东亚、北美、欧洲、南亚为主要需求带。该图不是全球 token 消耗真值。</desc>
+  <desc id="desc">多源综合估算 2025-2026 年全球 LLM 与 MaaS 区域需求强度，东亚、北美、欧洲、南亚为主要需求带。该图不是全球 token 消耗真值。</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#020617"/>
-      <stop offset="54%" stop-color="#07162e"/>
-      <stop offset="100%" stop-color="#101827"/>
+      <stop offset="55%" stop-color="#07162e"/>
+      <stop offset="100%" stop-color="#111827"/>
     </linearGradient>
     <linearGradient id="asia" x1="0" x2="1">
       <stop offset="0%" stop-color="#fbbf24"/>
@@ -24,8 +24,8 @@
       <stop offset="0%" stop-color="#facc15"/>
       <stop offset="100%" stop-color="#fb923c"/>
     </linearGradient>
-    <filter id="glow" x="-30%" y="-60%" width="180%" height="220%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
+    <filter id="glow" x="-25%" y="-70%" width="165%" height="240%">
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -33,169 +33,150 @@
     </filter>
     <style>
       .bg { fill: url(#bg); }
-      .grid { stroke: rgba(148, 163, 184, .12); stroke-width: 1; }
-      .title { font: 820 32px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
+      .grid { stroke: rgba(148, 163, 184, .11); stroke-width: 1; }
+      .title { font: 820 31px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
       .subtitle { font: 640 13px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #a8b3c7; letter-spacing: 0; }
-      .h2 { font: 800 19px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
+      .h2 { font: 800 20px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
       .label { font: 760 15px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; letter-spacing: 0; }
       .small { font: 650 12px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; letter-spacing: 0; }
       .tiny { font: 620 10.6px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; letter-spacing: 0; }
-      .num { font: 860 28px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; letter-spacing: 0; }
-      .panel { fill: rgba(15, 23, 42, .72); stroke: rgba(148, 163, 184, .26); stroke-width: 1.2; }
-      .chip { fill: rgba(30, 41, 59, .82); stroke: rgba(148, 163, 184, .22); stroke-width: 1; }
-      .track { fill: rgba(51, 65, 85, .70); }
+      .num { font: 860 27px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; letter-spacing: 0; }
+      .score { font: 820 17px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
+      .panel { fill: rgba(15, 23, 42, .76); stroke: rgba(148, 163, 184, .27); stroke-width: 1.2; }
+      .chip { fill: rgba(30, 41, 59, .86); stroke: rgba(148, 163, 184, .23); stroke-width: 1; }
+      .track { fill: rgba(51, 65, 85, .72); }
       .barAsia { fill: url(#asia); filter: url(#glow); }
       .barBlue { fill: url(#blue); filter: url(#glow); }
       .barGreen { fill: url(#green); filter: url(#glow); }
       .barWarm { fill: url(#warm); filter: url(#glow); }
-      .dotAsia { fill: #fb7185; stroke: #fde68a; stroke-width: 2; }
-      .dotBlue { fill: #22d3ee; stroke: #bfdbfe; stroke-width: 2; }
-      .dotGreen { fill: #34d399; stroke: #ccfbf1; stroke-width: 2; }
-      .muted { fill: #64748b; }
-      .mapLand { fill: rgba(45, 212, 191, .28); stroke: rgba(165, 243, 252, .42); stroke-width: 1.2; }
-      .route { fill: none; stroke: rgba(125, 211, 252, .42); stroke-width: 1.5; stroke-dasharray: 6 8; }
-      .pulse { fill: none; stroke: #67e8f9; stroke-width: 2; opacity: .55; animation: pulse 2.6s ease-out infinite; }
-      @keyframes pulse { 0% { r: 8; opacity: .55; } 100% { r: 42; opacity: 0; } }
+      .rule { stroke: rgba(148, 163, 184, .18); stroke-width: 1; }
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="760"/>
+  <rect class="bg" width="1200" height="720"/>
   <path class="grid" d="M0 86H1200M0 172H1200M0 258H1200M0 344H1200M0 430H1200M0 516H1200M0 602H1200M0 688H1200"/>
-  <path class="grid" d="M90 0V760M180 0V760M270 0V760M360 0V760M450 0V760M540 0V760M630 0V760M720 0V760M810 0V760M900 0V760M990 0V760M1080 0V760"/>
+  <path class="grid" d="M90 0V720M180 0V720M270 0V720M360 0V720M450 0V720M540 0V720M630 0V720M720 0V720M810 0V720M900 0V720M990 0V720M1080 0V720"/>
 
-  <text x="44" y="54" class="title">全球 LLM 需求综合代理 / Regional LLM Demand Proxy 2026E</text>
-  <text x="46" y="84" class="subtitle">多源估算：用户规模 + GenAI 流量 + Claude.ai usage_count + AI 供给侧 + readiness；不是全球 token 账单，也不代表单一厂商份额。</text>
+  <text x="44" y="54" class="title">全球 LLM 需求综合代理 / Regional LLM Demand Proxy</text>
+  <text x="46" y="84" class="subtitle">口径：2025-2026 公开资料综合估算；用户规模 + GenAI 流量 + Claude.ai usage_count + AI 供给侧 + readiness，不是全球 token 账单。</text>
 
   <g transform="translate(44 118)">
-    <rect class="panel" width="346" height="104" rx="18"/>
-    <text x="24" y="34" class="small">最高需求带 Top band</text>
-    <text x="24" y="72" class="num">东亚 East Asia · 100</text>
-    <text x="24" y="92" class="tiny">中国 AI 用户规模 + 国产 MaaS + 日韩台公开工具使用</text>
+    <rect class="panel" width="348" height="100" rx="17"/>
+    <text x="24" y="33" class="small">最高需求带 Top band</text>
+    <text x="24" y="69" class="num">东亚 East Asia · 100</text>
+    <text x="24" y="88" class="tiny">中国 AI 用户规模 + 国产 MaaS + 日韩台公开工具使用</text>
   </g>
-  <g transform="translate(424 118)">
-    <rect class="panel" width="346" height="104" rx="18"/>
-    <text x="24" y="34" class="small">模型/API 供给中心 Supply hub</text>
-    <text x="24" y="72" class="num">北美 North America · 95</text>
-    <text x="24" y="92" class="tiny">美国 Claude 可见使用、企业 AI 投入和模型公司集中</text>
+  <g transform="translate(426 118)">
+    <rect class="panel" width="348" height="100" rx="17"/>
+    <text x="24" y="33" class="small">模型/API 供给中心 Supply hub</text>
+    <text x="24" y="69" class="num">北美 North America · 95</text>
+    <text x="24" y="88" class="tiny">Claude 可见使用、企业 AI 投入和模型公司集中</text>
   </g>
-  <g transform="translate(804 118)">
-    <rect class="panel" width="352" height="104" rx="18"/>
-    <text x="24" y="34" class="small">治理与企业市场 Governance market</text>
-    <text x="24" y="72" class="num">欧洲 Europe · 72</text>
-    <text x="24" y="92" class="tiny">使用强、监管强，网关更像审计与合规控制面</text>
+  <g transform="translate(808 118)">
+    <rect class="panel" width="348" height="100" rx="17"/>
+    <text x="24" y="33" class="small">治理与企业市场 Governance market</text>
+    <text x="24" y="69" class="num">欧洲 Europe · 72</text>
+    <text x="24" y="88" class="tiny">使用强、监管强，网关更像审计与合规控制面</text>
   </g>
 
-  <g transform="translate(44 254)">
-    <rect class="panel" width="690" height="408" rx="22"/>
+  <g transform="translate(44 246)">
+    <rect class="panel" width="704" height="374" rx="22"/>
     <text x="28" y="42" class="h2">区域需求指数 / Demand Index (0-100)</text>
-    <text x="28" y="64" class="tiny">按公开资料综合归一化：能说明相对强度，不能换算为 token 数。</text>
+    <text x="28" y="64" class="tiny">按公开资料综合归一化：用于比较相对强度，不能换算为 token 数。</text>
 
-    <g transform="translate(28 94)">
-      <text x="0" y="17" class="label">东亚 East Asia</text>
-      <rect x="172" y="0" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="0" width="430" height="22" rx="11" class="barAsia"/>
-      <text x="620" y="17" class="label">100</text>
+    <g transform="translate(28 88)">
+      <text x="0" y="16" class="label">东亚 East Asia</text>
+      <rect x="172" y="0" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="0" width="430" height="21" rx="10.5" class="barAsia"/>
+      <text x="622" y="16" class="score">100</text>
 
-      <text x="0" y="57" class="label">北美 North America</text>
-      <rect x="172" y="40" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="40" width="409" height="22" rx="11" class="barBlue"/>
-      <text x="620" y="57" class="label">95</text>
+      <text x="0" y="50" class="label">北美 North America</text>
+      <rect x="172" y="34" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="34" width="409" height="21" rx="10.5" class="barBlue"/>
+      <text x="622" y="50" class="score">95</text>
 
-      <text x="0" y="97" class="label">欧洲 Europe</text>
-      <rect x="172" y="80" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="80" width="310" height="22" rx="11" class="barGreen"/>
-      <text x="620" y="97" class="label">72</text>
+      <text x="0" y="84" class="label">欧洲 Europe</text>
+      <rect x="172" y="68" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="68" width="310" height="21" rx="10.5" class="barGreen"/>
+      <text x="622" y="84" class="score">72</text>
 
-      <text x="0" y="137" class="label">南亚 South Asia</text>
-      <rect x="172" y="120" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="120" width="267" height="22" rx="11" class="barWarm"/>
-      <text x="620" y="137" class="label">62</text>
+      <text x="0" y="118" class="label">南亚 South Asia</text>
+      <rect x="172" y="102" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="102" width="267" height="21" rx="10.5" class="barWarm"/>
+      <text x="622" y="118" class="score">62</text>
 
-      <text x="0" y="177" class="label">东南亚 SEA</text>
-      <rect x="172" y="160" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="160" width="206" height="22" rx="11" class="barWarm"/>
-      <text x="620" y="177" class="label">48</text>
+      <text x="0" y="152" class="label">东南亚 SEA</text>
+      <rect x="172" y="136" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="136" width="206" height="21" rx="10.5" class="barWarm"/>
+      <text x="622" y="152" class="score">48</text>
 
-      <text x="0" y="217" class="label">拉美 LatAm</text>
-      <rect x="172" y="200" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="200" width="181" height="22" rx="11" class="barWarm"/>
-      <text x="620" y="217" class="label">42</text>
+      <text x="0" y="186" class="label">拉美 LatAm</text>
+      <rect x="172" y="170" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="170" width="181" height="21" rx="10.5" class="barWarm"/>
+      <text x="622" y="186" class="score">42</text>
 
-      <text x="0" y="257" class="label">中东 MENA</text>
-      <rect x="172" y="240" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="240" width="138" height="22" rx="11" class="barWarm"/>
-      <text x="620" y="257" class="label">32</text>
+      <text x="0" y="220" class="label">中东 MENA</text>
+      <rect x="172" y="204" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="204" width="138" height="21" rx="10.5" class="barWarm"/>
+      <text x="622" y="220" class="score">32</text>
 
-      <text x="0" y="297" class="label">非洲 Africa</text>
-      <rect x="172" y="280" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="280" width="103" height="22" rx="11" class="barWarm"/>
-      <text x="620" y="297" class="label">24</text>
+      <text x="0" y="254" class="label">非洲 Africa</text>
+      <rect x="172" y="238" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="238" width="103" height="21" rx="10.5" class="barWarm"/>
+      <text x="622" y="254" class="score">24</text>
 
-      <text x="0" y="337" class="label">大洋洲 Oceania</text>
-      <rect x="172" y="320" width="430" height="22" rx="11" class="track"/>
-      <rect x="172" y="320" width="77" height="22" rx="11" class="barWarm"/>
-      <text x="620" y="337" class="label">18</text>
+      <text x="0" y="288" class="label">大洋洲 Oceania</text>
+      <rect x="172" y="272" width="430" height="21" rx="10.5" class="track"/>
+      <rect x="172" y="272" width="77" height="21" rx="10.5" class="barWarm"/>
+      <text x="622" y="288" class="score">18</text>
     </g>
   </g>
 
-  <g transform="translate(760 254)">
-    <rect class="panel" width="396" height="248" rx="22"/>
+  <g transform="translate(776 246)">
+    <rect class="panel" width="380" height="374" rx="22"/>
     <text x="24" y="42" class="h2">证据栈 / Evidence stack</text>
     <text x="24" y="64" class="tiny">指数来自多类 proxy，避免单一厂商覆盖偏差。</text>
 
-    <g transform="translate(24 92)">
-      <text x="0" y="16" class="small">用户规模 adoption</text>
-      <rect x="160" y="2" width="184" height="18" rx="9" class="track"/>
-      <rect x="160" y="2" width="138" height="18" rx="9" class="barAsia"/>
-      <text x="352" y="16" class="tiny">30%</text>
+    <g transform="translate(24 94)">
+      <text x="0" y="15" class="small">用户规模 adoption</text>
+      <rect x="154" y="0" width="168" height="18" rx="9" class="track"/>
+      <rect x="154" y="0" width="126" height="18" rx="9" class="barAsia"/>
+      <text x="334" y="15" class="tiny">30%</text>
 
-      <text x="0" y="50" class="small">GenAI 流量 traffic</text>
-      <rect x="160" y="36" width="184" height="18" rx="9" class="track"/>
-      <rect x="160" y="36" width="115" height="18" rx="9" class="barBlue"/>
-      <text x="352" y="50" class="tiny">25%</text>
+      <text x="0" y="49" class="small">GenAI 流量 traffic</text>
+      <rect x="154" y="34" width="168" height="18" rx="9" class="track"/>
+      <rect x="154" y="34" width="105" height="18" rx="9" class="barBlue"/>
+      <text x="334" y="49" class="tiny">25%</text>
 
-      <text x="0" y="84" class="small">Claude usage 代理</text>
-      <rect x="160" y="70" width="184" height="18" rx="9" class="track"/>
-      <rect x="160" y="70" width="69" height="18" rx="9" class="barGreen"/>
-      <text x="352" y="84" class="tiny">15%</text>
+      <text x="0" y="83" class="small">Claude usage 代理</text>
+      <rect x="154" y="68" width="168" height="18" rx="9" class="track"/>
+      <rect x="154" y="68" width="63" height="18" rx="9" class="barGreen"/>
+      <text x="334" y="83" class="tiny">15%</text>
 
-      <text x="0" y="118" class="small">供给侧 infra / models</text>
-      <rect x="160" y="104" width="184" height="18" rx="9" class="track"/>
-      <rect x="160" y="104" width="69" height="18" rx="9" class="barWarm"/>
-      <text x="352" y="118" class="tiny">15%</text>
+      <text x="0" y="117" class="small">供给侧 infra / models</text>
+      <rect x="154" y="102" width="168" height="18" rx="9" class="track"/>
+      <rect x="154" y="102" width="63" height="18" rx="9" class="barWarm"/>
+      <text x="334" y="117" class="tiny">15%</text>
 
-      <text x="0" y="152" class="small">readiness / regulation</text>
-      <rect x="160" y="138" width="184" height="18" rx="9" class="track"/>
-      <rect x="160" y="138" width="46" height="18" rx="9" class="barBlue"/>
-      <text x="352" y="152" class="tiny">10%</text>
+      <text x="0" y="151" class="small">readiness / regulation</text>
+      <rect x="154" y="136" width="168" height="18" rx="9" class="track"/>
+      <rect x="154" y="136" width="42" height="18" rx="9" class="barBlue"/>
+      <text x="334" y="151" class="tiny">10%</text>
 
-      <text x="0" y="186" class="small">质性校正 qualitative</text>
-      <rect x="160" y="172" width="184" height="18" rx="9" class="track"/>
-      <rect x="160" y="172" width="23" height="18" rx="9" class="barAsia"/>
-      <text x="352" y="186" class="tiny">5%</text>
+      <text x="0" y="185" class="small">质性校正 qualitative</text>
+      <rect x="154" y="170" width="168" height="18" rx="9" class="track"/>
+      <rect x="154" y="170" width="21" height="18" rx="9" class="barAsia"/>
+      <text x="334" y="185" class="tiny">5%</text>
     </g>
+
+    <line x1="24" y1="306" x2="356" y2="306" class="rule"/>
+    <text x="24" y="332" class="small">说明：Claude 数据只是一个观测点；中国本地 MaaS、</text>
+    <text x="24" y="354" class="small">本地工具流量和供给侧资料用于补足东亚覆盖盲区。</text>
   </g>
 
-  <g transform="translate(760 526)">
-    <rect class="panel" width="396" height="136" rx="22"/>
-    <text x="24" y="40" class="h2">关键校正 / Key correction</text>
-    <text x="24" y="68" class="small">Anthropic country rows 低估中国大陆和国产 MaaS。</text>
-    <text x="24" y="92" class="small">CNNIC 6.02 亿 AI 产品用户、World Bank 本地工具流量、</text>
-    <text x="24" y="116" class="small">WIPO/Stanford 供给侧强度共同支撑东亚 top band。</text>
-  </g>
-
-  <g transform="translate(72 690)">
-    <rect class="chip" width="1056" height="46" rx="16"/>
-    <text x="18" y="21" class="small">读图方式：它回答“LLMAPI 网关应把哪些区域、合规、路由、成本、存储和多模态资源当成核心变量”。</text>
-    <text x="18" y="38" class="tiny">Sources: Anthropic Economic Index, World Bank GenAI traffic paper/package, Microsoft AI Diffusion, CNNIC, Stanford AI Index/Vibrancy, WIPO, Oxford Insights, ITU. See CSV + PDF appendix.</text>
-  </g>
-
-  <g transform="translate(844 112)">
-    <path class="route" d="M-418 320C-210 190-86 136 56 168C180 196 248 274 320 338"/>
-    <circle cx="-418" cy="320" r="7" class="dotBlue"/>
-    <circle cx="-418" cy="320" r="8" class="pulse"/>
-    <circle cx="-20" cy="174" r="7" class="dotGreen"/>
-    <circle cx="152" cy="232" r="8" class="dotAsia"/>
-    <circle cx="152" cy="232" r="8" class="pulse"/>
+  <g transform="translate(44 642)">
+    <rect class="chip" width="1112" height="52" rx="16"/>
+    <text x="18" y="23" class="small">读图方式：它回答“LLMAPI 网关要把哪些区域、合规、路由、成本、存储和多模态资源当成核心变量”。</text>
+    <text x="18" y="40" class="tiny">Sources: Anthropic Economic Index, World Bank GenAI traffic paper/package, Microsoft AI Diffusion, CNNIC, Stanford AI Index/Vibrancy, WIPO, Oxford Insights, ITU. See CSV + PDF appendix.</text>
   </g>
 </svg>
