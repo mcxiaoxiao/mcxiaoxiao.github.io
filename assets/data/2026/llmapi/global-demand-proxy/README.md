@@ -1,4 +1,4 @@
-# Global LLM Demand Proxy 2026E / 数据说明
+# Global LLM Demand Proxy / 数据说明
 
 本目录为博客《为不确定性建立秩序：LLM API 网关的设计与实现》中的全球 LLM 需求图提供支撑材料。这里的数字不是全球 token 账单，也不是任何一家模型公司的收入或用量数据；它是一个用于产品分析和架构讨论的公开数据代理指数。
 
@@ -19,6 +19,14 @@
 3. 可见模型用量代理：例如 Anthropic Economic Index 的 Claude.ai `usage_count`。
 4. 供给侧与基础设施：例如 Stanford AI Index、Global AI Vibrancy、WIPO GenAI 专利格局。
 5. 政策与部署准备度：例如 Oxford Government AI Readiness、ITU 互联网连接度。
+
+指数定义为：
+
+```text
+RLDPI_r = 0.30 A_r + 0.25 T_r + 0.15 C_r + 0.15 S_r + 0.10 G_r + 0.05 Q_r
+```
+
+A_r 为用户规模与采用，T_r 为 GenAI 流量，C_r 为 Claude.ai 可见使用代理，S_r 为供给侧与基础设施，G_r 为 readiness / governance，Q_r 为公开代理覆盖盲区的明示校正项。
 
 ## Interpretation
 

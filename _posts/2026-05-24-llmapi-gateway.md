@@ -9,7 +9,7 @@ tags:
   - 市场
 ---
 
-LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-native 产品来说，它更像一层执行控制面：在 MaaS（Model-as-a-Service）、对象存储、任务状态机、内容安全、成本统计和合规审计之间建立秩序。本文从一个 AI 漫画平台的自建 LLMAPI 模块实践出发，讨论为什么通用聚合层还不够、媒体生成和多 agent 场景会怎样放大网关价值，以及以后面向国内小微团队的低门槛大模型网关可能长成什么样🤔。
+LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-native 产品来说，它更像一层执行控制面：在 MaaS（Model-as-a-Service）、对象存储、任务状态机、内容安全、成本统计和合规审计之间建立秩序。本文从一个 AI 漫画平台的自建 LLMAPI 模块实践出发，讨论为什么通用聚合层还不够、媒体生成任务会怎样放大网关价值，以及以后面向国内小微团队的低门槛大模型网关可能长成什么样🤔。
 
 ![标题图](/images/2026/llmapi/cover.png)
 
@@ -110,20 +110,17 @@ LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成
 - **多模态支持经常停在“能调接口”。** 图像、音频、视频、CV 的难点不是发一个请求，而是异步任务、临时 URL、base64/binary、子任务聚合、对象存储、权限和后续编辑链路。
 - **DNS/CDN/边缘基础设施还没有真正和 LLM 网关联动。** 现在多数方案按 provider、key、成本、错误率路由；未来也许需要像 DNS + CDN 那样，把地区合规、模型能力、数据驻留、边缘缓存、生成资产分发和故障切换放在同一张路由表里。
 - **合规默认项还不够产品化。** 很多网关有日志和 guardrails，但数据脱敏、跨境策略、内容标识、留存期限、用户授权、模型备案状态仍需要业务层自己补齐。
-- **真正的业务闭环仍在 L3。** 对媒体生成和多 agent 产品来说，网关只把响应转发回来还不够；结果必须变成平台内可权限控制、可审计、可复用的资源。
+- **业务闭环可能继续上移到 L3。** 对媒体生成、长任务和 agent 工具链来说，网关只把响应转发回来往往还不够；结果还要进入平台内可权限控制、可审计、可复用的资源体系。
 
-再看 issue，会比官网更接近产品真相：
+再看 issue，会比官网更接近产品摩擦，但它也只能作为样本证据。这里把 APIPark、LiteLLM、Higress、New API、Portkey、Bifrost、vLLM、SGLang、llama.cpp 中 18 条公开 issue observation 做了一个目的性编码：每条只归入一个主类，保留 secondary tags，用来减少“凭直觉下结论”的风险。[^50][^51][^52][^53][^54][^55][^56][^57][^58]
 
-- APIPark 里，`ccly1996` 提出“离线网络环境下部署失败、需要离线部署教程”，`SamCheng0717` 提出“请求日志归档”，`alexmelt2582` 提出“本地模型非流式返回为空、流式正常”。[^50] 这说明企业 AI 网关的第一关不是炫技，而是内网可部署、日志可留存、流式/非流式一致。
-- LiteLLM 里，`YangJonggyu` 提出 Vercel AI Gateway 流式 `reasoning` 字段丢失，`dustinplattefourkites` 提出 Azure 缺 `base_model` 会让 router crash，`andresC98` 提出 hosted vLLM 不支持 `reasoning_effort`。[^51] 这说明 provider 参数、增量字段和错误降级都要保真，不能把“不认识”简单丢掉。
-- Higress、New API、Portkey、Bifrost 的 issue 也指向同一类问题：`johnlanni` 提出网关层透明上下文压缩，`sunmery` 提出 Kubernetes Gateway API 版本兼容，`zuoez02` 提出新增 SiliconFlow channel 后服务 panic；Portkey 和 Bifrost issue 里还反复出现 thinking 支持、retry 尾延迟、cost 重算、禁用 key、多 backend、homelab 部署等诉求。[^52][^53][^54][^55]
-- 强相关 serving 库也在背书这个方向：`FlynnOwen` 希望 vLLM Responses API 支持多模态输入，`qandrew` 把 vLLM H1 2026 重点放在 MCP、tool calling、parser/renderer 和 state offload；`jhinpan` 提出 SGLang Responses API 缺 custom function tools；`alvis233` 提出 llama-server `tool_calls` 参数类型破坏 OpenAI 兼容。[^56][^57][^58]
+![LLM 网关 issue 样本编码统计](/images/2026/llmapi/issue-taxonomy.svg)
 
-所以，能 build in community 的是 provider adapter、参数 schema、OpenAPI/MCP 包、smoke case、部署 recipe 和复现模板；适合自运营的是托管对象存储/CDN、provider 健康探测、合规策略包、长期日志归档、成本账单、SLA 和企业支持。前者扩大生态，后者形成可收费的信任层。
+*📄 样本不随机，不能代表全部市场；它更适合用来识别工程摩擦的类型。完整数据可直接打开：[样本编码 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-sample.csv)、[分类计数 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-category-counts.csv)、[能力归属 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-build-locus-counts.csv)。*
 
-但这些方案通常解决的是“请求如何到模型”。媒体生成类产品还会遇到另一层问题：provider 返回的是临时 URL、base64、二进制、轮询任务结果或多子任务聚合结果。业务真正需要的不是临时链接，而是平台内稳定的 `resource_id`、对象存储 key、权限、审计记录和后续可编辑资产。
+这组样本中，最密集的问题不是“多接几个模型”，而是 provider adapter/schema、流式协议一致性、agent/tool 状态、部署运维、日志成本和可靠性治理。更稳妥的表述是：provider adapter、参数 schema、OpenAPI/MCP 包、smoke case、部署 recipe 和复现模板适合 build in community；托管对象存储/CDN、provider 健康探测、合规策略包、长期日志归档、成本账单、SLA 和企业支持更偏平台自运营。
 
-因此，通用 L1/L2 网关可以作为入口或参考，但对图像、视频、音频、CV 和 agent 工作流来说，业务侧仍需要一层 L3：把外部执行结果收口进自己的资产体系和合规证据链。
+对媒体生成类产品，还会多出一类在通用 L1/L2 里不一定优先解决的问题：provider 返回的是临时 URL、base64、二进制、轮询任务结果或多子任务聚合结果。业务侧需要的往往不是临时链接，而是平台内稳定的 `resource_id`、对象存储 key、权限、审计记录和后续可编辑资产。因此，通用 L1/L2 网关可以作为入口或参考；当产品进入图像、视频、音频、CV 和 agent 工作流时，L3 资源化与证据链会更像一层必要补充，而不是一开始就必须重做整个网关。
 
 ***
 
@@ -279,21 +276,7 @@ logs/llmapi/{date}/
 
 ***
 
-## 九、多 agent 与这件事的关系 🤝
-
-以研一新生同时处理多项事务的开发状态为例，实际开发越来越像“人 + 多 agent”的协作：一个 agent 查资料，一个 agent 写代码，一个 agent 补测试，一个 agent 做 review，最后还要有人把方向、边界和质量收回来。LangGraph、AutoGen、OpenAI Agents SDK、CrewAI、Semantic Kernel 这类框架都在解决 agent 编排、状态、工具调用和协作模式问题。[^24][^25][^26][^27][^28]
-
-![人、多 agent 与 LLMAPI 网关协作闭环](/images/2026/llmapi/multi-agent-gateway-loop.svg)
-
-*多 agent 框架解决“谁来做、下一步做什么”；LLMAPI 网关解决“调用什么、能不能调、结果去哪、如何审计”。*
-
-但多 agent 并不会让 LLMAPI 网关变得不重要，反而会放大它的重要性。agent 框架负责“谁来做、下一步做什么”，网关负责“调用哪个模型、用哪个 key、能不能出境、失败如何重试、结果是否落库、日志能否审计、成本算到哪里”。如果没有这一层，agent 越多，系统越容易出现不可追踪的模型调用、散落的临时资源、重复的 provider 适配和难以复盘的失败链路。
-
-对个人开发者或研究生阶段的工程实践来说，这个关系更实际：时间有限，不能每个 provider、每个 agent、每个媒体任务都手写一遍接入逻辑。一个清晰的 LLMAPI 网关，可以把“新增模型”“新增 agent 工具”“新增真实 smoke”“新增合规策略”变成可委托、可检查、可复用的工程单元。
-
-***
-
-## 十、一个人能做什么 🌱
+## 九、一个人能做什么 🌱
 
 大四毕业，考研备考那一年基本没怎么写代码，现在还要同时处理课程、打游戏、解决毕业问题、旅游、实验室杂活和其他事情。重新上手这个项目时，一边补课一边做，很多坑也暴露了这个领域可能会让小团队卡住的位置。
 
@@ -365,16 +348,6 @@ logs/llmapi/{date}/
 [^22]: [Kong AI Gateway Documentation](https://developer.konghq.com/ai-gateway/)。Kong 将模型路由、prompt guard、认证、限流和 AI 插件纳入 API 网关体系。
 
 [^23]: [Envoy AI Gateway](https://aigateway.envoyproxy.io/)。Envoy AI Gateway 是面向 LLM 和 agent 流量的 Envoy 网关项目，强调统一路由、策略和可观测性。
-
-[^24]: [LangGraph Documentation](https://docs.langchain.com/oss/python/langgraph/overview)。LangGraph 面向长运行、有状态 agent 工作流，支持图式编排、持久化和 human-in-the-loop。
-
-[^25]: [Microsoft AutoGen Documentation](https://microsoft.github.io/autogen/stable/)。AutoGen 是微软开源的多 agent 应用框架，强调 agent 协作、工具使用和事件驱动运行时。
-
-[^26]: [OpenAI Agents Guide](https://platform.openai.com/docs/guides/agents)。OpenAI Agents 文档介绍 agent、tools、handoffs、guardrails 和 tracing 等构建模块。
-
-[^27]: [CrewAI Documentation](https://docs.crewai.com/)。CrewAI 面向多 agent 协作和自动化工作流，强调 role、task、crew 和 flow 组织方式。
-
-[^28]: [Microsoft Semantic Kernel Agents](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/)。Semantic Kernel 的 agent 框架提供 agent 定义、协作和工具编排能力。
 
 [^29]: [vLLM GitHub Repository](https://github.com/vllm-project/vllm)。vLLM 是高吞吐 LLM serving 框架，常用于自托管开源模型和兼容 OpenAI API 的推理服务。
 

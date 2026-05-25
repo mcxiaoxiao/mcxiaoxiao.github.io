@@ -1,21 +1,40 @@
 # 全球 LLM / MaaS 区域需求代理指数：支撑材料简报
 
-日期：2026-05-25  
-用途：为博客中的“Regional LLM Demand Proxy 2026E”图提供可复核的依据。  
+日期：2026-05-25<br>
+用途：为博客中的 Regional LLM Demand Proxy 图提供可复核的定义、来源和限制。<br>
 结论口径：这是多源代理指数，不是全球 token 消耗真值。
 
-## 1. 为什么不能直接画真实 token 分布
+## 1. 研究问题与约束
 
-目前没有公开来源披露 OpenAI、Google、Anthropic、阿里云百炼、腾讯混元、火山方舟、DeepSeek、MiniMax 等平台在全球各地区的可比 token 消耗总账。单一厂商数据会严重受模型可用地区、付费渠道、语言、合规和产品形态影响。
+公开来源目前没有披露 OpenAI、Google、Anthropic、阿里云百炼、腾讯混元、火山方舟、DeepSeek、MiniMax 等平台按地区可比的 token 消耗总账。单一厂商数据还会受服务可用地区、付费渠道、语言、企业采购、合规策略和产品形态影响。
 
-因此本简报采用“需求代理指数”：把公开可得的用户规模、GenAI 流量、Claude.ai 使用代理、AI 供给侧强度、AI readiness 与互联网基础设施合并判断。指数用于产品和架构推理，不能用于财务核算。
+因此本文定义一个区域需求代理指数，用来近似比较不同区域的 LLM / MaaS 需求强度。它适合产品和基础设施讨论，不适合市场份额、收入、账单或真实 token 量核算。
 
-## 2. 指数结果
+## 2. 指数定义
+
+对区域 r，定义 Regional LLM Demand Proxy Index：
+
+```text
+RLDPI_r = 0.30 A_r + 0.25 T_r + 0.15 C_r + 0.15 S_r + 0.10 G_r + 0.05 Q_r
+```
+
+其中：
+
+- A_r：Adoption，AI 产品用户规模与组织采用度。
+- T_r：Traffic，GenAI Web/App 使用流量与访问强度。
+- C_r：Claude visible usage，Anthropic Economic Index 中 Claude.ai `usage_count` 的可见使用代理。
+- S_r：Supply and infrastructure，模型/API 供给、AI 投资、专利、数据中心和高性能推理生态。
+- G_r：Governance/readiness，AI readiness、监管与部署准备度、互联网连接基础。
+- Q_r：Qualitative correction，针对公开代理数据覆盖盲区的明示校正项。
+
+各变量先按 0-100 归一化或分档评分，再按权重加总。Q_r 只用于处理公开数据明显缺口，例如 Claude.ai 国家数据不能完整代表中国大陆和国产 MaaS 生态。
+
+## 3. 指数结果
 
 | 区域 | 指数 | 解释 |
 | --- | ---: | --- |
-| 东亚 East Asia | 100 | 中国 AI 产品用户规模和国产 MaaS/应用生态把 Anthropic 数据低估的部分补回来；日韩台在公开模型工具中也有可见使用。 |
-| 北美 North America | 95 | 美国在 Claude.ai 使用、模型/API 供给、AI 投资和企业部署上都处于第一梯队。 |
+| 东亚 East Asia | 100 | 中国 AI 产品用户规模、国产 MaaS / 应用生态、日韩台公开模型工具使用，以及 WIPO/Stanford 供给侧指标共同支撑最高档。 |
+| 北美 North America | 95 | 美国在 Claude.ai 使用、模型/API 供给、AI 投资、企业部署和数据中心能力上处于第一梯队。 |
 | 欧洲 Europe | 72 | 使用代理和企业治理需求强，但供给侧集中度低于中美。 |
 | 南亚 South Asia | 62 | 印度用户规模、开发者生态和公开 GenAI 流量强。 |
 | 东南亚 Southeast Asia | 48 | 移动优先、增长快，但预算和基础设施集中度仍低于一线区域。 |
@@ -24,23 +43,26 @@
 | 非洲 Africa | 24 | 高增长潜力区，受连接、支付、企业预算约束。 |
 | 大洋洲 Oceania | 18 | 澳新人均使用成熟，人口基数限制绝对量。 |
 
-## 3. 证据栈
+## 4. 证据栈
 
-- 用户规模与产品采用：权重最高。CNNIC / 国务院英文摘要显示，截至 2025 年 12 月，中国 AI 产品用户规模达到 6.02 亿。这个量级足以说明用 Claude.ai country rows 直接估计东亚是不充分的。
-- GenAI Web/App 流量：World Bank 2025 工作论文研究 ChatGPT 和各国本地 GenAI 工具访问，能补充“谁在实际用工具”的视角，尤其是中国本地工具流量和印度、巴西等大用户市场。
-- 可见模型用量代理：Anthropic Economic Index 的 Claude.ai `usage_count` 可用于观察美国、欧洲、印度、日本、韩国、巴西等地区，但对中国和国产 MaaS 并不完整。
-- 供给侧与基础设施：Stanford AI Index、Global AI Vibrancy、WIPO GenAI 专利报告说明中美、东亚和欧洲在模型、论文、专利、投资和人才上的差异；这些不是 token，但会影响 API 需求和网关产品形态。
-- 部署准备度：Oxford Government AI Readiness 和 ITU 互联网指标用于约束中长期需求上限，帮助避免只看人口基数。
+- 用户规模与产品采用：CNNIC / 国务院英文摘要显示，截至 2025 年 12 月，中国 AI 产品用户规模达到 6.02 亿；Microsoft AI Diffusion 用于补充国家采用差异。
+- GenAI Web/App 流量：World Bank 2025 工作论文研究 ChatGPT 与各国本地 GenAI 工具访问，补充“谁在实际用工具”的视角。
+- 可见模型用量代理：Anthropic Economic Index 的 Claude.ai `usage_count` 可观察美国、欧洲、印度、日本、韩国、巴西等地区，但对中国和国产 MaaS 不完整。
+- 供给侧与基础设施：Stanford AI Index / Vibrancy、WIPO GenAI 专利、Oxford AI readiness、ITU 连接度用于约束中长期需求上限和基础设施条件。
 
-## 4. 对 LLMAPI 网关的含义
+## 5. 对 LLMAPI 网关的含义
 
-1. 区域路由不能只按延迟做。模型可用性、合规、价格、内容策略和对象存储位置会同时影响路由。
-2. 东亚需求不能只从国际模型 API 可见流量推断。中国本地 MaaS、国产模型、企业私有化和多模态应用会形成独立高密度生态。
-3. 增长区更需要低门槛与成本治理。南亚、东南亚、拉美和非洲的共性不是“没有需求”，而是价格、支付、网络、部署和运营门槛更敏感。
-4. 多模态会把 token 需求变成资源需求。图片、音频、视频和长上下文任务需要 CDN/S3/对象存储、任务状态和审计证据，单纯 HTTP proxy 不够。
-5. 安全和滥用防护适合云原生地内建，但不应喧宾夺主。IP 滥用、prompt injection、数据泄漏、模型 DoS、租户隔离和 PSI 类隐私增强能力可以成为平台能力，但早期产品仍应先解决调用、成本、日志、归档、合规默认项。
+1. 区域路由不能只按延迟做；模型可用性、合规、价格、内容策略和对象存储位置会同时影响路由。
+2. 东亚需求不能只从国际模型 API 可见流量推断；中国本地 MaaS、国产模型、企业私有化和多模态应用会形成独立高密度生态。
+3. 增长区更需要低门槛与成本治理；南亚、东南亚、拉美和非洲对价格、支付、网络、部署和运营门槛更敏感。
+4. 多模态会把 token 需求变成资源需求；图片、音频、视频和长上下文任务需要 CDN/S3/对象存储、任务状态和审计证据。
+5. 安全和滥用防护适合云原生内建，但早期产品仍应先解决调用、成本、日志、归档和合规默认项。
 
-## 5. 主要来源
+## 6. 局限
+
+该指数是公开资料代理模型。它没有访问任何厂商内部 token 账单，也没有把国家级数据精确拆成企业 API、消费级 App、开发者工具和私有化部署。指数数值应理解为“相对需求强度”，而不是“市场份额”。
+
+## 7. 主要来源
 
 1. Anthropic, *Economic Index Dataset*, 2025. https://huggingface.co/datasets/Anthropic/EconomicIndex
 2. Anthropic, *Economic Index*, 2025. https://www.anthropic.com/economic-index
@@ -56,4 +78,4 @@
 12. McKinsey, *The State of AI: How Organizations Are Rewiring to Capture Value*, 2025. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai
 13. Chen et al., *FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance*, 2023. https://arxiv.org/abs/2305.05176
 14. Ong et al., *RouteLLM: Learning to Route LLMs with Preference Data*, 2024. https://arxiv.org/abs/2406.18665
-15. Kwon et al., *Efficient Memory Management for Large Language Model Serving with PagedAttention*, SOSP 2023. https://arxiv.org/abs/2309.06180
+15. Kwon et al., *Efficient Memory Management for LLM Serving with PagedAttention*, SOSP 2023. https://arxiv.org/abs/2309.06180

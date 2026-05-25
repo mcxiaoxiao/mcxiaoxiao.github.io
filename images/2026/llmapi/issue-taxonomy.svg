@@ -111,7 +111,7 @@
   <g transform="translate(780 356)">
     <rect class="panel" width="364" height="204" rx="18"/>
     <text x="24" y="40" class="h2">Reading / 读法</text>
-    <text x="24" y="72" class="small">它不能证明“必须自建 L3”。</text>
+    <text x="24" y="72" class="small">它不能证明“L3 是唯一选择”。</text>
     <text x="24" y="100" class="small">它更谨慎地说明：L1/L2 的高频摩擦</text>
     <text x="24" y="124" class="small">集中在协议保真、部署、日志、agent 状态。</text>
     <text x="24" y="152" class="small">当业务涉及媒体资产和长任务时，</text>
