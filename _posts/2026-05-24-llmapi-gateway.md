@@ -9,7 +9,7 @@ tags:
   - 市场
 ---
 
-LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-native 产品来说，它更像一层执行控制面：在 MaaS（Model-as-a-Service）、对象存储、任务状态机、内容安全、成本统计和合规审计之间建立秩序。本文从我在剧平台里自建 LLMAPI 模块的实践出发，讨论为什么通用聚合层还不够、媒体生成和多 agent 场景会怎样放大网关价值，以及以后面向国内小微团队的低门槛大模型网关可能长成什么样。
+TL;DR 🤔：LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-native 产品来说，它更像一层执行控制面：在 MaaS（Model-as-a-Service）、对象存储、任务状态机、内容安全、成本统计和合规审计之间建立秩序。本文从我在 AI 漫画平台里自建 LLMAPI 模块的实践出发，讨论为什么通用聚合层还不够、媒体生成和多 agent 场景会怎样放大网关价值，以及以后面向国内小微团队的低门槛大模型网关可能长成什么样。
 
 ![标题图](/images/2026/llmapi/cover.png)
 
@@ -47,7 +47,7 @@ LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-na
 | -- | -------- | -------------------------------------------------------- | ------------------------- |
 | L0 | 模型与推理执行层 | OpenAI、Claude、Gemini、Qwen、DeepSeek、Llama、vLLM、SGLang、TGI | 产出 token、图片、视频、音频或分析结果    |
 | L1 | API 聚合层  | LiteLLM[^1]、OpenRouter[^2]、One API[^35]、Evolink[^36]                       | 统一接口、模型路由、fallback、key 管理 |
-| L2 | 网关治理层    | Portkey[^3]、Higress[^4]、Cloudflare AI Gateway[^21]、Kong AI Gateway[^22]、Envoy AI Gateway[^23] | 预算、限流、观测、guardrails、插件治理  |
+| L2 | 网关治理层    | Portkey[^3]、Higress[^4]、APIPark[^37]、Cloudflare AI Gateway[^21]、Kong AI Gateway[^22]、Envoy AI Gateway[^23] | 预算、限流、观测、guardrails、插件治理  |
 | L3 | 业务资产与合规层 | 自建或深度定制                                                  | 任务状态机、资源入库、内容审核、审计证据、业务权限 |
 
 AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。Stanford AI Index 记录到生成式 AI 私人投资持续增长；McKinsey 2025 年调研也显示企业正在从试点走向 agentic AI 实验和局部扩展，但真正把价值吃下来的公司仍是少数。[^5][^6] Gartner 对 agentic AI 的判断更冷静：一边预测企业软件会快速加入 agentic 能力，一边提醒大量项目会因为 ROI、风险控制和产品包装不清而取消。[^7]
@@ -55,6 +55,10 @@ AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。St
 这对 LLMAPI 网关的启发是：未来的瓶颈不只是“有没有模型可用”，而是“能不能把模型调用变成可治理、可追踪、可计费、可复盘的业务执行”。MaaS 会继续降低算力和模型门槛，但它也会把 provider 波动、区域合规、价格策略和结果持久化问题留给上层系统。
 
 模型层本身也在分化：闭源 API 模型继续提供最高上限和多模态产品化能力，OpenAI、Claude、Gemini 这类模型族持续强化工具调用、长上下文、音视频和 agent 能力；开源或开放权重模型则让私有化、低成本和可控部署变得现实，Qwen、DeepSeek、Llama、Mistral 等生态正在快速成熟。与此同时，vLLM、SGLang、TensorRT-LLM、TGI、Ollama、llama.cpp 这类推理框架把自托管推理从“能跑”推向“可服务化”。[^29][^30][^31][^32][^33][^34] 这意味着 LLMAPI 网关不能只假设“上游是一个 OpenAI 兼容接口”，而要准备面对闭源 API、国产云、聚合商、自托管推理、离线模型和多模态专用模型的混合运行。
+
+![MaaS 与 LLMAPI 全球网关多节点扩散图](/images/2026/llmapi/global-maas-gateway-mesh.svg)
+
+*🛜 一个偏想象的全球 MaaS / LLMAPI 网关基础设施：像 DNS 一样就近分发，但路由依据从域名升级为模型能力、地区合规、成本、延迟、任务状态和资源归档策略。*
 
 ***
 
@@ -76,7 +80,33 @@ AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。St
 
 这里不是说现有方案不好。相反，它们证明了 LLM 网关市场已经成立。
 
-LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成本追踪，适合快速把多个文本模型接成统一入口。[^1] OpenRouter 的 provider routing、fallback、参数匹配、数据留存偏好和 ZDR 路由，让“同一个模型背后有多个供应商”这件事更可控。[^2] Portkey 和 Higress 更靠近生产治理，强调 guardrails、fallback、负载均衡、预算、限流、语义缓存、观测和插件体系。[^3][^4] Cloudflare、Kong、Envoy 这类网关体系也在向 AI Gateway 演进，说明传统 API 网关厂商已经把模型流量当成新一代网关场景。[^21][^22][^23]
+LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成本追踪，适合快速把多个文本模型接成统一入口。[^1] OpenRouter 的 provider routing、fallback、参数匹配、数据留存偏好和 ZDR 路由，让“同一个模型背后有多个供应商”这件事更可控。[^2] Portkey、Higress、APIPark 更靠近生产治理，强调 guardrails、fallback、负载均衡、预算、限流、语义缓存、观测和插件体系。[^3][^4][^37] Cloudflare、Kong、Envoy 这类网关体系也在向 AI Gateway 演进，说明传统 API 网关厂商已经把模型流量当成新一代网关场景。[^21][^22][^23]
+
+国内生态也不是空白。阿里系的 Higress 已经把 AI Gateway 作为开源和商业化并行的方向；腾讯云也在云原生智能网关、AI Agent 安全网关里提供模型 API、MCP 工具和多 agent 治理能力，但从官方资料看，它更像云产品能力而不是一个可以直接拿来二次开发的开源 LLM 网关。[^4][^38][^39] 这说明“有没有同类产品”不是问题，真正要比较的是部署门槛、业务资产收口、国内合规默认项、媒体任务生命周期，以及它是不是适合小团队长期自托管。
+
+参考 APIPark 系列文章，它们已经把“为什么企业需要 LLM 网关”讲到可理解的程度；但站在 AI-native 产品实践里，我更关心的是：谁解决统一入口，谁解决生产治理，谁接近媒体资产和 agent 工具链，谁适合小团队低门槛自托管。[^40] 下面这个表按公开仓库和文档做一个近似快照，Stars 会波动，只能当生态热度的弱信号。📄
+
+| 产品 | 更像哪一层 | 安装方式 | 能力亮点 | 多模态 / Agent | Stars / 协议 | 我的判断 |
+| --- | --- | --- | --- | --- | --- | --- |
+| LiteLLM[^41] | L1/L2 | Python SDK、Proxy、Docker、Helm | OpenAI 兼容、100+ provider、virtual key、budget、fallback、logging | 已覆盖 images/audio/batches/rerank/A2A 等接口 | 约 48.2k / MIT 为主，enterprise 目录另行许可 | 生态最强，适合先把模型调用统一起来 |
+| One API[^35] | L1 | 单可执行文件、Docker、Docker Compose、宝塔 | 渠道、令牌、额度、分组倍率、负载均衡、绘图接口 | 偏文本/绘图聚合，国内 provider 友好 | 约 34.2k / MIT | 国内个人和小团队二次分发思路很典型 |
+| New API[^42] | L1/L2 | Docker、Docker Compose、宝塔 | OpenAI/Claude/Gemini 格式转换、计费、token、重试、rate limit | 支持图像、音频、视频、rerank、realtime 等接口 | 约 31.6k / AGPL-3.0 | One API 之后更产品化，但协议义务要认真评估 |
+| Portkey Gateway[^44] | L2 | npx、自托管、托管版 | guardrails、fallback、load balancing、routing、缓存、观测 | 面向语言、视觉、音频、图像模型 | 约 11.7k / MIT | 企业治理意识强，但和托管平台绑定更深 |
+| Higress[^4] | L2 | all-in-one Docker、Helm、Kubernetes、云服务 | 协议转换、语义缓存、token 限流、内容安全、插件、MCP | AI Gateway + MCP + Agent 路由 | 约 8.3k / Apache-2.0 | 云原生团队友好，阿里生态和 K8s 场景优势明显 |
+| Bifrost[^45] | L2 | npx、Docker、Go SDK、Helm | 高性能 Go gateway、fallback、load balance、semantic cache、budget、MCP | 明确支持 text/images/audio/streaming | 约 5.2k / Apache-2.0 | 性能叙事强，适合对延迟和自托管有要求的团队 |
+| APIPark[^37] | L2/API 平台 | 一键脚本、容器化、云原生部署 | API 门户、审批、订阅、统计、日志、多模型灾备、Prompt API 化 | 强调 AI API 与 API developer portal 结合 | 约 1.7k / Apache-2.0 | 更像“AI API 开放平台”，适合企业 API 治理视角 |
+| Apache APISIX[^46] | L2 通用网关 + AI 插件 | Docker、Helm、Kubernetes、源码 | `ai-proxy`、负载均衡、fallback、token 级限流、传统网关插件生态 | 当前更偏 LLM/embedding proxy | 约 16.6k / Apache-2.0 | 传统 API 网关向 AI 流量扩展的代表 |
+| Envoy AI Gateway[^23] | L2 云原生网关 | Kubernetes、Envoy Gateway、Gateway API | 双层网关、全局限流、self-hosted model endpoint picker | 面向 LLM 与 agent 流量 | 约 1.6k / Apache-2.0 | 更像未来云原生标准件，门槛也更高 |
+| Helicone AI Gateway[^47] | L2/观测 | npx、Docker、托管版 | routing、rate limit、cache、OpenTelemetry、Helicone observability | 100+ models，偏 LLM 请求观测与路由 | 约 0.6k / GitHub 标注 GPL-3.0，README 需核验 | 观测基因强，许可信息落地前要核对 |
+| Inference Gateway[^48] | L1/L2 轻量网关 | install script、binary、CLI、K8s | OpenAI/Ollama/Groq/Cohere/DeepSeek 聚合、MCP、metrics | vision/multimodal、streaming、tool-use | 约 0.08k / MIT | 小而轻，适合作为低复杂度参考 |
+| agentgateway[^49] | Agent 网关 / 数据面 | standalone、Kubernetes、kgateway | MCP、A2A、LLM、Inference Extension、policy | 明确面向 agent-to-agent 与 agent-to-tool | 约 1.4k / Apache-2.0 | 提醒我们：下一代网关不只管模型，也要管 agent 连接 |
+
+从这个横向比较看，当前市场的薄弱处也更清楚：
+
+- **多模态支持经常停在“能调接口”。** 图像、音频、视频、CV 的难点不是发一个请求，而是异步任务、临时 URL、base64/binary、子任务聚合、对象存储、权限和后续编辑链路。
+- **DNS/CDN/边缘基础设施还没有真正和 LLM 网关联动。** 现在多数方案按 provider、key、成本、错误率路由；未来也许需要像 DNS + CDN 那样，把地区合规、模型能力、数据驻留、边缘缓存、生成资产分发和故障切换放在同一张路由表里。
+- **合规默认项还不够产品化。** 很多网关有日志和 guardrails，但数据脱敏、跨境策略、内容标识、留存期限、用户授权、模型备案状态仍需要业务层自己补齐。
+- **真正的业务闭环仍在 L3。** 对媒体生成和多 agent 产品来说，网关只把响应转发回来还不够；结果必须变成平台内可权限控制、可审计、可复用的资源。
 
 但这些方案通常解决的是“请求如何到模型”。媒体生成类产品还会遇到另一层问题：provider 返回的是临时 URL、base64、二进制、轮询任务结果或多子任务聚合结果。业务真正需要的不是临时链接，而是平台内稳定的 `resource_id`、对象存储 key、权限、审计记录和后续可编辑资产。
 
@@ -121,6 +151,10 @@ Resource Service    下载 provider 临时文件、上传 S3、写库、产出 r
     ↓
 Logging / Audit     runtime / audit / payload / error 分层日志
 ```
+
+![LLMAPI 执行控制面](/images/2026/llmapi/llmapi-control-plane.svg)
+
+*LLMAPI 的价值不只在“转发请求”，而是在模型路由、任务状态、资源入库、审计和统计之间形成一个执行控制面。*
 
 ### 参数分层：`__llmapi` 与 `__model`
 
@@ -216,7 +250,7 @@ logs/llmapi/{date}/
 
 **第二，网关的合约会从 API contract 升级为 execution contract。** 过去的 API 网关关心路径、鉴权和限流；LLMAPI 网关还要关心 prompt、输入资源、输出资源、任务状态、内容安全、审计证据和人类复核点。它管理的不是一次 HTTP 请求，而是一段不确定执行。
 
-**第三，国内市场会需要“低门槛自托管 + 合规默认打开”的产品。** 大公司可以自建，中型团队会在开源和托管之间摇摆，小微团队最缺的是能在一台普通云服务器上跑起来的完整方案：Redis、PostgreSQL、S3 兼容对象存储、worker、Web 控制台、国内 provider adapter、合规日志和内容审核 hook。
+**第三，基于国内云产品、开源网关和小团队约束的观察，我更倾向于判断：“低门槛自托管 + 合规默认打开”也许会是一个有价值的位置。** 大公司可以自建，中型团队会在开源和托管之间摇摆，小微团队更容易卡在部署、provider 适配、内容审核和资源落库这些琐碎但绕不开的地方。一个能在普通云服务器上跑起来的方案，未必需要一开始就很大，但至少应该把 Redis、PostgreSQL、S3 兼容对象存储、worker、Web 控制台、国内 provider adapter、合规日志和内容审核 hook 串起来。
 
 **第四，agent 会放大网关价值。** 单次问答时代，网关只是模型代理；agent 时代，一次用户请求会触发搜索、读文件、生成图、生成视频、审核、裁剪、发布、回滚等多步动作。没有统一任务状态、资源引用和审计链路，agent 系统很快会变成难以复盘的黑箱。
 
@@ -228,6 +262,10 @@ logs/llmapi/{date}/
 
 我现在是研一新生，同时还要处理别的工作，实际开发越来越像“人 + 多 agent”的协作：一个 agent 查资料，一个 agent 写代码，一个 agent 补测试，一个 agent 做 review，最后还要有人把方向、边界和质量收回来。LangGraph、AutoGen、OpenAI Agents SDK、CrewAI、Semantic Kernel 这类框架都在解决 agent 编排、状态、工具调用和协作模式问题。[^24][^25][^26][^27][^28]
 
+![人、多 agent 与 LLMAPI 网关协作闭环](/images/2026/llmapi/multi-agent-gateway-loop.svg)
+
+*多 agent 框架解决“谁来做、下一步做什么”；LLMAPI 网关解决“调用什么、能不能调、结果去哪、如何审计”。*
+
 但多 agent 并不会让 LLMAPI 网关变得不重要，反而会放大它的重要性。agent 框架负责“谁来做、下一步做什么”，网关负责“调用哪个模型、用哪个 key、能不能出境、失败如何重试、结果是否落库、日志能否审计、成本算到哪里”。如果没有这一层，agent 越多，系统越容易出现不可追踪的模型调用、散落的临时资源、重复的 provider 适配和难以复盘的失败链路。
 
 对个人开发者或研究生阶段的工程实践来说，这个关系更实际：时间有限，不能每个 provider、每个 agent、每个媒体任务都手写一遍接入逻辑。一个清晰的 LLMAPI 网关，可以把“新增模型”“新增 agent 工具”“新增真实 smoke”“新增合规策略”变成可委托、可检查、可复用的工程单元。
@@ -236,9 +274,9 @@ logs/llmapi/{date}/
 
 ## 十、一个人能做什么
 
-大四毕业，考研备考那一年基本没怎么写代码，现在还要同时处理课程、项目和其他工作。重新上手这个项目时，一边补课一边做，很多坑可能也让我看清了这个市场真实卡在哪里。
+大四毕业，考研备考那一年基本没怎么写代码，现在还要同时处理课程、打游戏、解决毕业问题、旅游、实验室杂活和其他事情。重新上手这个项目时，一边补课一边做，很多坑可能也让我看清了这个领域可能会让大家卡在哪里。
 
-回头看，这个领域真正缺的不是另一个 LiteLLM 或另一个 Portkey，而是一个面向国内小微团队和个人开发者的、合规友好的、低门槛自托管 LLMAPI 网关。
+回头看，基于我目前做这个模块踩过的坑，我倾向于觉得：这个领域真正缺的大概不会是另一个 LiteLLM 或另一个 Portkey，而是一个面向团队和个人开发者的、合规友好的、低门槛自托管，或者至少能被小团队低成本托管和二次开发的 LLMAPI 网关。
 
 它的初版也许可以很朴素：
 
@@ -329,5 +367,31 @@ logs/llmapi/{date}/
 [^35]: [One API GitHub Repository](https://github.com/songquanpeng/one-api)。One API 是开源的 LLM API 管理与分发系统，用于统一多 provider 接入、key 管理和二次分发。
 
 [^36]: [EvoLink Documentation](https://docs.evolink.ai/en/introduction)。EvoLink 定位为企业 AI gateway / 统一模型访问层，覆盖文本、图像、视频、音频模型接入、任务管理和用量追踪。
+
+[^37]: [APIPark GitHub Repository](https://github.com/APIParkLab/APIPark)。APIPark 是开源 AI/API 网关和开发者门户，支持统一 API、LLM API 管理、分发、审批、统计、负载均衡和多模型灾备。
+
+[^38]: [腾讯云云原生智能网关](https://cloud.tencent.com/product/cngw)。腾讯云将云原生智能网关定位为 Agent 生态的统一流量控制平面，覆盖大模型调用、MCP 工具调用和多 Agent 协同治理。
+
+[^39]: [腾讯云 AI Agent 安全网关模型 API 接入](https://cloud.tencent.com/document/product/1627/130458)。该文档介绍腾讯云 AI Agent 安全网关对模型 API 的集中管控、安全防护、内容安全和第三方/自部署模型接入能力。
+
+[^40]: [APIPark 博客园 AI 网关相关文章](https://www.cnblogs.com/apipark02/p/18614764)；另见 [APIPark 博客园 AI 网关标签页](https://www.cnblogs.com/apipark02/tag/AI%E7%BD%91%E5%85%B3/)。这些文章适合作为“LLM 网关是什么、企业为什么需要 LLM 网关”的产品科普参照。
+
+[^41]: [LiteLLM GitHub Repository](https://github.com/BerriAI/litellm)；另见 [LiteLLM LICENSE](https://github.com/BerriAI/litellm/blob/main/LICENSE)。LiteLLM 仓库展示其 provider 覆盖、proxy、gateway、MCP、tool calling、observability 等能力，license 文件说明除企业目录外主要使用 MIT。
+
+[^42]: [New API GitHub Repository](https://github.com/QuantumNous/new-api)。New API 是基于 One API 二次开发的 LLM API 管理与分发系统，强调多模型格式兼容、渠道管理、计费、重试、限流和多模态接口。
+
+[^43]: [New API Documentation](https://docs.newapi.pro/)。New API 文档说明部署、模型渠道、计费、令牌、日志和接口兼容等能力。
+
+[^44]: [Portkey AI Gateway GitHub Repository](https://github.com/Portkey-AI/gateway)。Portkey AI Gateway 开源仓库展示其统一模型入口、guardrails、fallback、load balancing、routing、缓存和 observability 能力。
+
+[^45]: [Bifrost GitHub Repository](https://github.com/maximhq/bifrost)。Bifrost 是 Go 实现的开源 LLM gateway，强调高吞吐、低延迟、多 provider、fallback、负载均衡、语义缓存、MCP 和多模态支持。
+
+[^46]: [Apache APISIX GitHub Repository](https://github.com/apache/apisix)；另见 [APISIX `ai-proxy` 插件文档](https://apisix.apache.org/docs/apisix/plugins/ai-proxy/)。APISIX 是云原生 API 网关，`ai-proxy` 等插件把传统 API 网关能力延伸到 LLM 流量治理。
+
+[^47]: [Helicone AI Gateway GitHub Repository](https://github.com/Helicone/ai-gateway)。Helicone AI Gateway 强调模型路由、缓存、限流、OpenTelemetry、Helicone 观测集成和本地开发入口。
+
+[^48]: [Inference Gateway GitHub Repository](https://github.com/inference-gateway/inference-gateway)。Inference Gateway 是轻量级开源 AI gateway，覆盖多 provider 聚合、streaming、tool-use、vision、MCP 和 Prometheus metrics。
+
+[^49]: [agentgateway GitHub Repository](https://github.com/agentgateway/agentgateway)。agentgateway 面向 agent-to-agent、agent-to-tool、MCP、A2A 和 LLM 流量，体现了 agent 网络层治理正在形成独立方向。
 
 ***
