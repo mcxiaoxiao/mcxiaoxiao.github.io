@@ -1,110 +1,226 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
-  <title id="title">Global MaaS and LLMAPI gateway mesh</title>
-  <desc id="desc">A speculative global LLM gateway mesh with animated routing links across regions.</desc>
+  <title id="title">Global MaaS and LLMAPI gateway mesh with real-world regional routing</title>
+  <desc id="desc">A speculative MaaS and LLMAPI gateway infrastructure map. US, Europe and China are drawn as larger model-token upstream hubs, while Southeast Asia, India, Africa and Latin America receive more downstream CDN and S3 distribution links.</desc>
   <defs>
-    <radialGradient id="earth" cx="45%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#6ee7f9"/>
-      <stop offset="45%" stop-color="#2563eb"/>
-      <stop offset="100%" stop-color="#0f172a"/>
+    <radialGradient id="ocean" cx="42%" cy="36%" r="68%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="36%" stop-color="#2563eb"/>
+      <stop offset="72%" stop-color="#0f3a74"/>
+      <stop offset="100%" stop-color="#06111f"/>
     </radialGradient>
-    <linearGradient id="panel" x1="0" x2="1">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#111827"/>
+    <radialGradient id="sphereShade" cx="35%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity=".28"/>
+      <stop offset="48%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity=".58"/>
+    </radialGradient>
+    <linearGradient id="landGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#b7f7c7"/>
+      <stop offset="45%" stop-color="#39d98a"/>
+      <stop offset="100%" stop-color="#147a4a"/>
     </linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <linearGradient id="panel" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity=".92"/>
+      <stop offset="100%" stop-color="#1e293b" stop-opacity=".74"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="softShadow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000814" flood-opacity=".48"/>
+    </filter>
+    <clipPath id="globeClip">
+      <circle cx="565" cy="360" r="270"/>
+    </clipPath>
+    <marker id="arrowUp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#fbbf24"/>
+    </marker>
+    <symbol id="server" viewBox="0 0 54 54">
+      <rect x="9" y="8" width="36" height="10" rx="3" fill="#e0f2fe" stroke="#22d3ee" stroke-width="2"/>
+      <rect x="9" y="22" width="36" height="10" rx="3" fill="#bae6fd" stroke="#22d3ee" stroke-width="2"/>
+      <rect x="9" y="36" width="36" height="10" rx="3" fill="#7dd3fc" stroke="#22d3ee" stroke-width="2"/>
+      <circle cx="17" cy="13" r="2" fill="#0f172a"/>
+      <circle cx="17" cy="27" r="2" fill="#0f172a"/>
+      <circle cx="17" cy="41" r="2" fill="#0f172a"/>
+      <path d="M25 13h13M25 27h13M25 41h13" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="cloud" viewBox="0 0 70 48">
+      <path d="M21 39h33c8 0 14-5 14-12 0-6-4-11-10-12C56 7 49 2 41 2 31 2 24 8 22 17c-1 0-2-.1-3-.1-9 0-16 6-16 14C3 36 10 39 21 39Z" fill="#ecfeff" stroke="#22d3ee" stroke-width="3"/>
+      <path d="M18 28h38" stroke="#0f172a" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+    </symbol>
+    <symbol id="s3" viewBox="0 0 62 70">
+      <ellipse cx="31" cy="13" rx="22" ry="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
+      <path d="M9 13v42c0 5 10 9 22 9s22-4 22-9V13" fill="#facc15" fill-opacity=".34" stroke="#f59e0b" stroke-width="3"/>
+      <ellipse cx="31" cy="55" rx="22" ry="9" fill="#fde68a" stroke="#f59e0b" stroke-width="3"/>
+      <text x="31" y="38" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="15" font-weight="800" fill="#78350f">S3</text>
+    </symbol>
     <style>
       .bg { fill: #020617; }
-      .grid { stroke: rgba(148, 163, 184, .18); stroke-width: 1; fill: none; }
-      .land { fill: rgba(34, 197, 94, .32); stroke: rgba(187, 247, 208, .46); stroke-width: 1.3; }
-      .halo { fill: none; stroke: rgba(56, 189, 248, .2); stroke-width: 14; }
-      .orbit { fill: none; stroke: rgba(125, 211, 252, .35); stroke-width: 1.2; }
-      .arc { fill: none; stroke: #22d3ee; stroke-width: 3.2; stroke-linecap: round; stroke-dasharray: 12 16; filter: url(#glow); animation: dash 3.2s linear infinite; }
-      .arc2 { stroke: #a78bfa; animation-duration: 4.2s; animation-delay: -.7s; }
-      .arc3 { stroke: #34d399; animation-duration: 5s; animation-delay: -1.4s; }
-      .node { fill: #ecfeff; stroke: #22d3ee; stroke-width: 3; filter: url(#glow); }
-      .pulse { fill: none; stroke: #67e8f9; stroke-width: 3; opacity: .75; animation: pulse 2.4s ease-out infinite; }
-      .label { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 18px; font-weight: 650; letter-spacing: .2px; }
-      .small { fill: #94a3b8; font-size: 13px; font-weight: 500; }
-      .badge { fill: rgba(15, 23, 42, .78); stroke: rgba(148, 163, 184, .32); stroke-width: 1; }
-      .flowdot { fill: #fef3c7; filter: url(#glow); }
-      .flowdot.a { animation: moveA 4s ease-in-out infinite; }
-      .flowdot.b { animation: moveB 5s ease-in-out infinite; }
-      .flowdot.c { animation: moveC 4.6s ease-in-out infinite; }
-      @keyframes dash { to { stroke-dashoffset: -112; } }
-      @keyframes pulse { 0% { r: 8; opacity: .7; } 100% { r: 34; opacity: 0; } }
-      @keyframes moveA { 0%,100% { transform: translate(0,0); opacity: .2; } 50% { transform: translate(154px,-54px); opacity: 1; } }
-      @keyframes moveB { 0%,100% { transform: translate(0,0); opacity: .15; } 50% { transform: translate(-166px,78px); opacity: 1; } }
-      @keyframes moveC { 0%,100% { transform: translate(0,0); opacity: .2; } 50% { transform: translate(84px,140px); opacity: 1; } }
+      .grid { stroke: rgba(148, 163, 184, .14); stroke-width: 1; fill: none; }
+      .star { fill: rgba(226, 232, 240, .65); }
+      .globeRing { fill: none; stroke: rgba(125, 211, 252, .24); stroke-width: 16; }
+      .latlon { fill: none; stroke: rgba(191, 219, 254, .32); stroke-width: 1.2; }
+      .coast { fill: url(#landGrad); stroke: rgba(236, 253, 245, .8); stroke-width: 1.6; filter: url(#softShadow); }
+      .island { fill: #4ade80; stroke: rgba(236, 253, 245, .74); stroke-width: 1; }
+      .terrain { fill: none; stroke: rgba(6, 95, 70, .42); stroke-width: 1.2; stroke-linecap: round; }
+      .uplink { fill: none; stroke: #22d3ee; stroke-width: 5.2; stroke-linecap: round; stroke-dasharray: 14 16; filter: url(#glow); marker-end: url(#arrowUp); animation: dash 3s linear infinite; }
+      .downlink { fill: none; stroke: #fbbf24; stroke-width: 6.4; stroke-linecap: round; stroke-dasharray: 2 14; filter: url(#glow); marker-end: url(#arrowDown); animation: dash 2.35s linear infinite reverse; }
+      .storelink { fill: none; stroke: #a78bfa; stroke-width: 3.2; stroke-linecap: round; stroke-dasharray: 9 12; filter: url(#glow); animation: dash 4.3s linear infinite; }
+      .hub { fill: #ecfeff; stroke: #22d3ee; stroke-width: 4; filter: url(#glow); }
+      .hubLarge { fill: #f0fdfa; stroke: #34d399; stroke-width: 5; filter: url(#glow); }
+      .edge { fill: #fff7ed; stroke: #fbbf24; stroke-width: 3.4; filter: url(#glow); }
+      .storage { fill: #faf5ff; stroke: #a78bfa; stroke-width: 3; filter: url(#glow); }
+      .panel { fill: url(#panel); stroke: rgba(148,163,184,.32); stroke-width: 1; }
+      .label { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 17px; font-weight: 750; letter-spacing: 0; }
+      .small { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; font-size: 12.5px; font-weight: 560; letter-spacing: 0; }
+      .tiny { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; font-size: 11px; font-weight: 680; letter-spacing: 0; }
+      .badgeText { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; font-size: 11px; font-weight: 850; letter-spacing: 0; }
+      .packetUp { fill: #cffafe; filter: url(#glow); }
+      .packetDown { fill: #fde68a; filter: url(#glow); }
+      .packetStore { fill: #ddd6fe; filter: url(#glow); }
+      @keyframes dash { to { stroke-dashoffset: -120; } }
     </style>
   </defs>
 
   <rect class="bg" width="1200" height="680"/>
-  <path class="grid" d="M0 96H1200M0 192H1200M0 288H1200M0 384H1200M0 480H1200M0 576H1200"/>
-  <path class="grid" d="M100 0V680M240 0V680M380 0V680M520 0V680M660 0V680M800 0V680M940 0V680M1080 0V680"/>
+  <path class="grid" d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M0 640H1200"/>
+  <path class="grid" d="M80 0V680M200 0V680M320 0V680M440 0V680M560 0V680M680 0V680M800 0V680M920 0V680M1040 0V680M1160 0V680"/>
+  <circle class="star" cx="93" cy="138" r="1.5"/>
+  <circle class="star" cx="180" cy="82" r="1.2"/>
+  <circle class="star" cx="1018" cy="82" r="1.6"/>
+  <circle class="star" cx="1114" cy="154" r="1.1"/>
+  <circle class="star" cx="145" cy="624" r="1.4"/>
+  <circle class="star" cx="1090" cy="610" r="1.4"/>
 
-  <text x="72" y="76" class="label" style="font-size:34px">MaaS / LLMAPI Global Gateway Mesh</text>
-  <text x="74" y="106" class="small">像 DNS 一样就近分发，但路由依据从“域名”升级为模型能力、合规边界、成本、延迟和资源归档策略。</text>
+  <text x="58" y="62" class="label" style="font-size:33px">MaaS / LLMAPI Global Gateway Mesh</text>
+  <text x="60" y="93" class="small">中美欧是更大的模型 token 上行枢纽；东南亚、印度、非洲、拉美承接更多下行资产分发与持久化上下文。</text>
 
-  <circle cx="560" cy="356" r="238" class="halo"/>
-  <circle cx="560" cy="356" r="218" fill="url(#earth)"/>
-  <ellipse cx="560" cy="356" rx="218" ry="72" class="orbit"/>
-  <ellipse cx="560" cy="356" rx="218" ry="142" class="orbit"/>
-  <path class="orbit" d="M342 356C424 276 497 236 560 236s136 40 218 120"/>
-  <path class="orbit" d="M342 356C424 436 497 476 560 476s136-40 218-120"/>
-  <path class="orbit" d="M560 138C508 214 482 287 482 356s26 142 78 218"/>
-  <path class="orbit" d="M560 138C612 214 638 287 638 356s-26 142-78 218"/>
+  <circle cx="565" cy="360" r="282" class="globeRing"/>
+  <circle cx="565" cy="360" r="270" fill="url(#ocean)" filter="url(#softShadow)"/>
+  <g clip-path="url(#globeClip)">
+    <ellipse cx="565" cy="360" rx="270" ry="88" class="latlon"/>
+    <ellipse cx="565" cy="360" rx="270" ry="166" class="latlon"/>
+    <ellipse cx="565" cy="360" rx="270" ry="232" class="latlon"/>
+    <path class="latlon" d="M295 360C388 276 474 234 565 234s177 42 270 126"/>
+    <path class="latlon" d="M295 360C388 444 474 486 565 486s177-42 270-126"/>
+    <path class="latlon" d="M565 90C511 178 484 268 484 360s27 182 81 270"/>
+    <path class="latlon" d="M565 90C619 178 646 268 646 360s-27 182-81 270"/>
+    <path class="latlon" d="M379 160C435 236 462 303 462 360s-27 124-83 200"/>
+    <path class="latlon" d="M751 160C695 236 668 303 668 360s27 124 83 200"/>
 
-  <path class="land" d="M411 264c42-42 94-62 138-53 23 5 25 25 7 40-25 21-69 15-91 39-17 19-5 52-26 67-20 14-55-8-62-35-6-25 11-42 34-58z"/>
-  <path class="land" d="M587 231c70 2 134 39 160 88 18 35-16 60-57 50-28-7-48-31-77-25-36 8-60 56-93 44-26-10-23-58 2-91 18-23 36-46 65-66z"/>
-  <path class="land" d="M485 417c36-15 94-6 112 26 18 31-12 73-51 80-46 8-104-31-102-72 1-17 14-26 41-34z"/>
-  <path class="land" d="M665 421c31-24 83-24 112-1 32 25 15 70-27 84-43 14-100-13-105-53-2-13 3-22 20-30z"/>
+    <!-- Recognizable continent silhouettes, simplified from an equirectangular world view. -->
+    <path class="coast" d="M326 257c24-54 83-88 144-84 43 3 80 25 110 60-18 9-40 7-58 18-19 12-25 35-49 41-24 6-48-9-70-1-26 10-32 41-61 39-22-2-44-23-45-46-1-12 9-22 29-27z"/>
+    <path class="coast" d="M405 325c28-8 67 2 88 24 21 23 15 50-18 58-23 6-52-5-72-19-20-15-26-40 2-63z"/>
+    <path class="coast" d="M479 394c37 5 70 41 70 81 0 35-24 66-37 102-7 20-24 29-39 13-15-16-9-38-24-59-18-26-17-59-2-88 10-18 10-37 32-49z"/>
+    <path class="coast" d="M492 185c34-25 85-24 115 2 21 18 16 39-16 49-39 13-89 2-111-23-10-12-6-21 12-28z"/>
+    <path class="coast" d="M577 250c39-27 91-26 127 0-10 21-36 23-54 39-20 17-55 21-76 4-16-13-15-30 3-43z"/>
+    <path class="coast" d="M605 320c55-19 111 12 130 68 18 54-13 121-61 148-27 15-50-5-48-37 2-28-21-46-32-74-15-39-18-87 11-105z"/>
+    <path class="coast" d="M663 262c63-48 160-43 208 13 31 36 23 87-24 105-31 12-43 41-80 46-39 5-67-14-84-43-12-20-44-15-61-38-21-29 5-58 41-83z"/>
+    <path class="coast" d="M712 379c27 16 40 50 24 81-24-16-43-47-24-81z"/>
+    <path class="coast" d="M764 404c35 3 66 29 70 62-38-3-73-24-70-62z"/>
+    <path class="coast" d="M773 492c47-24 107-9 138 26-27 31-100 42-139 12-13-10-12-27 1-38z"/>
+    <path class="island" d="M856 342c10-8 24-6 30 4-8 11-24 11-30-4z"/>
+    <path class="island" d="M850 389c10 0 20 7 24 18-16 4-27-2-24-18z"/>
+    <path class="island" d="M803 456c10 2 22 10 25 22-15-1-27-8-25-22z"/>
+    <path class="island" d="M371 364c22-2 44 8 54 25-25 3-48-6-54-25z"/>
 
-  <path class="arc" d="M398 320 C330 206 194 188 120 236"/>
-  <path class="arc arc2" d="M721 280 C840 156 1010 150 1100 242"/>
-  <path class="arc arc3" d="M688 442 C780 556 946 566 1062 486"/>
-  <path class="arc" d="M498 516 C426 610 270 586 178 504"/>
-  <path class="arc arc2" d="M560 196 C560 118 656 82 758 98"/>
-  <path class="arc arc3" d="M390 402 C286 398 210 342 118 360"/>
-
-  <circle cx="398" cy="320" r="8" class="node"/><circle cx="398" cy="320" r="8" class="pulse"/>
-  <circle cx="721" cy="280" r="8" class="node"/><circle cx="721" cy="280" r="8" class="pulse" style="animation-delay:.4s"/>
-  <circle cx="688" cy="442" r="8" class="node"/><circle cx="688" cy="442" r="8" class="pulse" style="animation-delay:.8s"/>
-  <circle cx="498" cy="516" r="8" class="node"/><circle cx="498" cy="516" r="8" class="pulse" style="animation-delay:1.2s"/>
-  <circle cx="560" cy="196" r="8" class="node"/><circle cx="560" cy="196" r="8" class="pulse" style="animation-delay:1.6s"/>
-
-  <circle cx="398" cy="320" r="5" class="flowdot a"/>
-  <circle cx="721" cy="280" r="5" class="flowdot b"/>
-  <circle cx="688" cy="442" r="5" class="flowdot c"/>
-
-  <g transform="translate(86 205)">
-    <rect class="badge" width="208" height="86" rx="16"/>
-    <text x="18" y="33" class="label">US Edge</text>
-    <text x="18" y="58" class="small">low latency / ZDR</text>
+    <path class="terrain" d="M344 269c38-20 84-24 123-11M368 298c34 15 74 18 109 4M602 272c32-9 63-8 93 3M639 350c31-8 64 2 78 27M647 410c32 7 49 32 51 64M699 298c48-18 104-12 143 15M728 346c34 16 73 17 107 4M487 436c29 22 42 54 28 89M787 515c31 12 70 13 101 0"/>
+    <rect width="1200" height="680" fill="url(#sphereShade)"/>
   </g>
-  <g transform="translate(912 206)">
-    <rect class="badge" width="218" height="86" rx="16"/>
-    <text x="18" y="33" class="label">EU Edge</text>
-    <text x="18" y="58" class="small">AI Act / GDPR policy</text>
+
+  <!-- Routing paths. -->
+  <path id="upUS" class="uplink" d="M418 303C470 250 531 266 566 347"/>
+  <path id="upEU" class="uplink" d="M632 286C621 318 598 340 566 360"/>
+  <path id="upCN" class="uplink" d="M765 333C706 311 633 327 566 360"/>
+  <path id="downSEA" class="downlink" d="M586 366C691 358 779 389 808 441"/>
+  <path id="downIN" class="downlink" d="M582 371C637 371 696 390 725 421"/>
+  <path id="downAF" class="downlink" d="M574 374C610 404 632 438 654 474"/>
+  <path id="downLATAM" class="downlink" d="M552 371C496 398 479 444 493 501"/>
+  <path id="storeSEA" class="storelink" d="M808 441C895 452 981 485 1044 529"/>
+  <path id="storeAF" class="storelink" d="M654 474C740 536 857 567 1004 574"/>
+  <path id="storeLATAM" class="storelink" d="M493 501C392 550 282 553 169 524"/>
+
+  <circle class="packetUp" r="5"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#upUS"/></animateMotion></circle>
+  <circle class="packetUp" r="5"><animateMotion dur="3.1s" begin=".45s" repeatCount="indefinite"><mpath href="#upEU"/></animateMotion></circle>
+  <circle class="packetUp" r="5"><animateMotion dur="3.3s" begin=".8s" repeatCount="indefinite"><mpath href="#upCN"/></animateMotion></circle>
+  <circle class="packetDown" r="5"><animateMotion dur="2.5s" repeatCount="indefinite"><mpath href="#downSEA"/></animateMotion></circle>
+  <circle class="packetDown" r="5"><animateMotion dur="2.7s" begin=".3s" repeatCount="indefinite"><mpath href="#downIN"/></animateMotion></circle>
+  <circle class="packetDown" r="5"><animateMotion dur="2.9s" begin=".6s" repeatCount="indefinite"><mpath href="#downAF"/></animateMotion></circle>
+  <circle class="packetDown" r="5"><animateMotion dur="3s" begin=".9s" repeatCount="indefinite"><mpath href="#downLATAM"/></animateMotion></circle>
+  <circle class="packetStore" r="4"><animateMotion dur="4.2s" repeatCount="indefinite"><mpath href="#storeSEA"/></animateMotion></circle>
+  <circle class="packetStore" r="4"><animateMotion dur="4.6s" begin=".7s" repeatCount="indefinite"><mpath href="#storeAF"/></animateMotion></circle>
+  <circle class="packetStore" r="4"><animateMotion dur="4.8s" begin="1.2s" repeatCount="indefinite"><mpath href="#storeLATAM"/></animateMotion></circle>
+
+  <!-- Nodes and infrastructure markers. -->
+  <circle cx="566" cy="360" r="13" class="hub"/>
+  <text x="566" y="387" text-anchor="middle" class="tiny">Policy Router</text>
+
+  <circle cx="418" cy="303" r="19" class="hubLarge"/>
+  <use href="#server" x="388" y="241" width="60" height="60"/>
+  <text x="418" y="334" text-anchor="middle" class="tiny">US token upstream</text>
+
+  <circle cx="632" cy="286" r="18" class="hubLarge"/>
+  <use href="#server" x="603" y="224" width="58" height="58"/>
+  <text x="632" y="318" text-anchor="middle" class="tiny">EU token upstream</text>
+
+  <circle cx="765" cy="333" r="20" class="hubLarge"/>
+  <use href="#server" x="735" y="271" width="62" height="62"/>
+  <text x="765" y="365" text-anchor="middle" class="tiny">CN token upstream</text>
+
+  <circle cx="808" cy="441" r="13" class="edge"/>
+  <text x="838" y="445" class="tiny">SEA downlink</text>
+  <circle cx="725" cy="421" r="12" class="edge"/>
+  <text x="738" y="416" class="tiny">India</text>
+  <circle cx="654" cy="474" r="12" class="edge"/>
+  <text x="667" y="485" class="tiny">Africa</text>
+  <circle cx="493" cy="501" r="12" class="edge"/>
+  <text x="407" y="505" class="tiny">LatAm downlink</text>
+
+  <use href="#cloud" x="978" y="492" width="92" height="62"/>
+  <text x="1024" y="568" text-anchor="middle" class="tiny">APAC CDN</text>
+  <use href="#s3" x="991" y="566" width="62" height="70"/>
+  <text x="1022" y="651" text-anchor="middle" class="tiny">durable media</text>
+  <use href="#s3" x="132" y="492" width="62" height="70"/>
+  <text x="163" y="575" text-anchor="middle" class="tiny">LatAm cache</text>
+  <circle cx="1044" cy="529" r="9" class="storage"/>
+  <circle cx="1004" cy="574" r="9" class="storage"/>
+  <circle cx="169" cy="524" r="9" class="storage"/>
+
+  <g transform="translate(54 126)">
+    <rect class="panel" width="244" height="128" rx="14"/>
+    <text x="18" y="34" class="label">Upstream hubs</text>
+    <circle cx="27" cy="62" r="7" fill="#34d399"/>
+    <text x="44" y="66" class="small">US / EU / CN: larger model-token supply</text>
+    <path d="M20 91h36" stroke="#22d3ee" stroke-width="5" stroke-dasharray="10 8" stroke-linecap="round"/>
+    <text x="66" y="96" class="small">token uplink · provider routing</text>
   </g>
-  <g transform="translate(900 468)">
-    <rect class="badge" width="232" height="86" rx="16"/>
-    <text x="18" y="33" class="label">CN / APAC Edge</text>
-    <text x="18" y="58" class="small">备案 / 内容安全 / 存储</text>
+
+  <g transform="translate(902 116)">
+    <rect class="panel" width="244" height="144" rx="14"/>
+    <text x="18" y="34" class="label">Downstream layer</text>
+    <circle cx="27" cy="62" r="7" fill="#fbbf24"/>
+    <text x="44" y="66" class="small">SEA / India / Africa / LatAm</text>
+    <path d="M20 91h36" stroke="#fbbf24" stroke-width="6" stroke-dasharray="2 10" stroke-linecap="round"/>
+    <text x="66" y="96" class="small">asset distribution · edge fallback</text>
+    <path d="M20 120h36" stroke="#a78bfa" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round"/>
+    <text x="66" y="125" class="small">S3/CDN durable context</text>
   </g>
-  <g transform="translate(92 480)">
-    <rect class="badge" width="240" height="92" rx="16"/>
-    <text x="18" y="34" class="label">Origin Control Plane</text>
-    <text x="18" y="61" class="small">policy · routing · audit · cost</text>
+
+  <g transform="translate(64 564)">
+    <rect class="panel" width="350" height="72" rx="14"/>
+    <text x="18" y="30" class="label">DNS-like LLM routing</text>
+    <text x="18" y="54" class="small">capability · compliance · latency · budget · health · storage locality</text>
   </g>
-  <g transform="translate(802 82)">
-    <rect class="badge" width="294" height="92" rx="18"/>
-    <text x="18" y="35" class="label">DNS-like Model Routing</text>
-    <text x="18" y="62" class="small">model capability + region + budget + risk</text>
+
+  <g transform="translate(760 36)">
+    <rect class="panel" width="366" height="70" rx="14"/>
+    <text x="18" y="30" class="label">Not just API proxy</text>
+    <text x="18" y="54" class="small">model token upstream + multimodal downstream + persistent resource references</text>
   </g>
 </svg>
