@@ -23,7 +23,7 @@ author:
   # Biographic information
   avatar           : "https://avatars.githubusercontent.com/u/27133057"
   name             : "GuoZiming"
-  pronouns         : "he/him"  
+  pronouns         : # "he/him"  
   bio              : "Pragmatic engineer harnessing AI, lifelong entrepreneur with rigorous cybersecurity grounding, roaming free and unrestrained"
   location         : "Harbin"
   employer         : "HIT (Harbin Institute of Technology)"
