@@ -1,226 +1,185 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
-  <title id="title">全球 MaaS / LLMAPI 网关基础设施 Global gateway mesh</title>
-  <desc id="desc">一张 MaaS 与 LLMAPI 全球网关基础设施设想图：中美欧作为更大的模型 token 上行枢纽，东南亚、印度、非洲和拉美承接更多 CDN 与 S3 下行分发。</desc>
+  <title id="title">全球 LLM 地区使用强度代理数据可视化</title>
+  <desc id="desc">基于 Anthropic Economic Index 公开 country-level usage_count 数据，将 Claude.ai Free/Pro 在 2025-08-04 至 2025-08-11 的地区使用量聚合为 token 需求代理。该图不是全行业 token 绝对消耗量。</desc>
   <defs>
-    <radialGradient id="ocean" cx="42%" cy="36%" r="68%">
+    <radialGradient id="ocean" cx="43%" cy="35%" r="72%">
       <stop offset="0%" stop-color="#67e8f9"/>
-      <stop offset="36%" stop-color="#2563eb"/>
-      <stop offset="72%" stop-color="#0f3a74"/>
+      <stop offset="42%" stop-color="#2563eb"/>
       <stop offset="100%" stop-color="#06111f"/>
     </radialGradient>
-    <radialGradient id="sphereShade" cx="35%" cy="28%" r="75%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity=".28"/>
-      <stop offset="48%" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#020617" stop-opacity=".58"/>
-    </radialGradient>
-    <linearGradient id="landGrad" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#b7f7c7"/>
-      <stop offset="45%" stop-color="#39d98a"/>
-      <stop offset="100%" stop-color="#147a4a"/>
+    <linearGradient id="barBlue" x1="0" x2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#6366f1"/>
     </linearGradient>
-    <linearGradient id="panel" x1="0" x2="1">
-      <stop offset="0%" stop-color="#0f172a" stop-opacity=".92"/>
-      <stop offset="100%" stop-color="#1e293b" stop-opacity=".74"/>
+    <linearGradient id="barAmber" x1="0" x2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#fb7185"/>
     </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <filter id="glow" x="-45%" y="-45%" width="190%" height="190%">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="softShadow" x="-35%" y="-35%" width="170%" height="170%">
-      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000814" flood-opacity=".48"/>
-    </filter>
     <clipPath id="globeClip">
-      <circle cx="565" cy="360" r="270"/>
+      <circle cx="388" cy="360" r="238"/>
     </clipPath>
-    <marker id="arrowUp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0 0 10 5 0 10Z" fill="#22d3ee"/>
-    </marker>
-    <marker id="arrowDown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0 0 10 5 0 10Z" fill="#fbbf24"/>
-    </marker>
-    <symbol id="server" viewBox="0 0 54 54">
-      <rect x="9" y="8" width="36" height="10" rx="3" fill="#e0f2fe" stroke="#22d3ee" stroke-width="2"/>
-      <rect x="9" y="22" width="36" height="10" rx="3" fill="#bae6fd" stroke="#22d3ee" stroke-width="2"/>
-      <rect x="9" y="36" width="36" height="10" rx="3" fill="#7dd3fc" stroke="#22d3ee" stroke-width="2"/>
-      <circle cx="17" cy="13" r="2" fill="#0f172a"/>
-      <circle cx="17" cy="27" r="2" fill="#0f172a"/>
-      <circle cx="17" cy="41" r="2" fill="#0f172a"/>
-      <path d="M25 13h13M25 27h13M25 41h13" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="cloud" viewBox="0 0 70 48">
-      <path d="M21 39h33c8 0 14-5 14-12 0-6-4-11-10-12C56 7 49 2 41 2 31 2 24 8 22 17c-1 0-2-.1-3-.1-9 0-16 6-16 14C3 36 10 39 21 39Z" fill="#ecfeff" stroke="#22d3ee" stroke-width="3"/>
-      <path d="M18 28h38" stroke="#0f172a" stroke-width="2" stroke-linecap="round" opacity=".55"/>
-    </symbol>
-    <symbol id="s3" viewBox="0 0 62 70">
-      <ellipse cx="31" cy="13" rx="22" ry="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
-      <path d="M9 13v42c0 5 10 9 22 9s22-4 22-9V13" fill="#facc15" fill-opacity=".34" stroke="#f59e0b" stroke-width="3"/>
-      <ellipse cx="31" cy="55" rx="22" ry="9" fill="#fde68a" stroke="#f59e0b" stroke-width="3"/>
-      <text x="31" y="38" text-anchor="middle" font-family="ui-sans-serif, system-ui" font-size="15" font-weight="800" fill="#78350f">S3</text>
-    </symbol>
     <style>
       .bg { fill: #020617; }
-      .grid { stroke: rgba(148, 163, 184, .14); stroke-width: 1; fill: none; }
-      .star { fill: rgba(226, 232, 240, .65); }
-      .globeRing { fill: none; stroke: rgba(125, 211, 252, .24); stroke-width: 16; }
-      .latlon { fill: none; stroke: rgba(191, 219, 254, .32); stroke-width: 1.2; }
-      .coast { fill: url(#landGrad); stroke: rgba(236, 253, 245, .8); stroke-width: 1.6; filter: url(#softShadow); }
-      .island { fill: #4ade80; stroke: rgba(236, 253, 245, .74); stroke-width: 1; }
-      .terrain { fill: none; stroke: rgba(6, 95, 70, .42); stroke-width: 1.2; stroke-linecap: round; }
-      .uplink { fill: none; stroke: #22d3ee; stroke-width: 5.2; stroke-linecap: round; stroke-dasharray: 14 16; filter: url(#glow); marker-end: url(#arrowUp); animation: dash 3s linear infinite; }
-      .downlink { fill: none; stroke: #fbbf24; stroke-width: 6.4; stroke-linecap: round; stroke-dasharray: 2 14; filter: url(#glow); marker-end: url(#arrowDown); animation: dash 2.35s linear infinite reverse; }
-      .storelink { fill: none; stroke: #a78bfa; stroke-width: 3.2; stroke-linecap: round; stroke-dasharray: 9 12; filter: url(#glow); animation: dash 4.3s linear infinite; }
-      .hub { fill: #ecfeff; stroke: #22d3ee; stroke-width: 4; filter: url(#glow); }
-      .hubLarge { fill: #f0fdfa; stroke: #34d399; stroke-width: 5; filter: url(#glow); }
-      .edge { fill: #fff7ed; stroke: #fbbf24; stroke-width: 3.4; filter: url(#glow); }
-      .storage { fill: #faf5ff; stroke: #a78bfa; stroke-width: 3; filter: url(#glow); }
-      .panel { fill: url(#panel); stroke: rgba(148,163,184,.32); stroke-width: 1; }
-      .label { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 17px; font-weight: 750; letter-spacing: 0; }
-      .small { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; font-size: 12.5px; font-weight: 560; letter-spacing: 0; }
-      .tiny { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; font-size: 11px; font-weight: 680; letter-spacing: 0; }
-      .badgeText { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; font-size: 11px; font-weight: 850; letter-spacing: 0; }
-      .packetUp { fill: #cffafe; filter: url(#glow); }
-      .packetDown { fill: #fde68a; filter: url(#glow); }
-      .packetStore { fill: #ddd6fe; filter: url(#glow); }
-      @keyframes dash { to { stroke-dashoffset: -120; } }
+      .grid { stroke: rgba(148, 163, 184, .13); stroke-width: 1; fill: none; }
+      .title { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 33px; font-weight: 820; letter-spacing: 0; }
+      .subtitle { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; font-size: 13px; font-weight: 560; letter-spacing: 0; }
+      .label { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 15px; font-weight: 740; letter-spacing: 0; }
+      .small { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; font-size: 12px; font-weight: 620; letter-spacing: 0; }
+      .tiny { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; font-size: 10.5px; font-weight: 620; letter-spacing: 0; }
+      .panel { fill: rgba(15, 23, 42, .78); stroke: rgba(148, 163, 184, .30); stroke-width: 1; }
+      .ocean { fill: url(#ocean); stroke: rgba(125, 211, 252, .48); stroke-width: 8; }
+      .latlon { fill: none; stroke: rgba(191, 219, 254, .28); stroke-width: 1.1; }
+      .land { fill: rgba(74, 222, 128, .64); stroke: rgba(236, 253, 245, .78); stroke-width: 1.3; }
+      .terrain { fill: none; stroke: rgba(5, 150, 105, .45); stroke-width: 1; stroke-linecap: round; }
+      .bubble { fill: rgba(34, 211, 238, .32); stroke: #22d3ee; stroke-width: 2.6; filter: url(#glow); }
+      .bubble2 { fill: rgba(251, 191, 36, .28); stroke: #fbbf24; stroke-width: 2.4; filter: url(#glow); }
+      .missing { fill: rgba(148, 163, 184, .15); stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 7 7; }
+      .barBg { fill: rgba(30, 41, 59, .82); }
+      .bar { fill: url(#barBlue); filter: url(#glow); }
+      .barWarm { fill: url(#barAmber); filter: url(#glow); }
+      .barUnknown { fill: rgba(148, 163, 184, .55); }
+      .source { fill: #64748b; font-size: 10.5px; }
+      .pulse { fill: none; stroke: #67e8f9; stroke-width: 2; opacity: .5; animation: pulse 2.8s ease-out infinite; }
+      @keyframes pulse { 0% { r: 8; opacity: .55; } 100% { r: 46; opacity: 0; } }
     </style>
   </defs>
 
   <rect class="bg" width="1200" height="680"/>
   <path class="grid" d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M0 640H1200"/>
   <path class="grid" d="M80 0V680M200 0V680M320 0V680M440 0V680M560 0V680M680 0V680M800 0V680M920 0V680M1040 0V680M1160 0V680"/>
-  <circle class="star" cx="93" cy="138" r="1.5"/>
-  <circle class="star" cx="180" cy="82" r="1.2"/>
-  <circle class="star" cx="1018" cy="82" r="1.6"/>
-  <circle class="star" cx="1114" cy="154" r="1.1"/>
-  <circle class="star" cx="145" cy="624" r="1.4"/>
-  <circle class="star" cx="1090" cy="610" r="1.4"/>
 
-  <text x="58" y="62" class="label" style="font-size:33px">全球 MaaS / LLMAPI 网关网络</text>
-  <text x="60" y="93" class="small">中美欧是更大的模型 token 上行枢纽；东南亚、印度、非洲、拉美承接更多下行资产分发与持久化上下文。</text>
+  <text x="54" y="58" class="title">全球 LLM 使用强度代理 / Regional Token Demand Proxy</text>
+  <text x="56" y="88" class="subtitle">数据源：Anthropic Economic Index，Claude.ai Free/Pro country-level usage_count，2025-08-04 至 2025-08-11；单位为使用次数代理，不是全行业 token 真值。</text>
 
-  <circle cx="565" cy="360" r="282" class="globeRing"/>
-  <circle cx="565" cy="360" r="270" fill="url(#ocean)" filter="url(#softShadow)"/>
+  <circle cx="388" cy="360" r="238" class="ocean"/>
   <g clip-path="url(#globeClip)">
-    <ellipse cx="565" cy="360" rx="270" ry="88" class="latlon"/>
-    <ellipse cx="565" cy="360" rx="270" ry="166" class="latlon"/>
-    <ellipse cx="565" cy="360" rx="270" ry="232" class="latlon"/>
-    <path class="latlon" d="M295 360C388 276 474 234 565 234s177 42 270 126"/>
-    <path class="latlon" d="M295 360C388 444 474 486 565 486s177-42 270-126"/>
-    <path class="latlon" d="M565 90C511 178 484 268 484 360s27 182 81 270"/>
-    <path class="latlon" d="M565 90C619 178 646 268 646 360s-27 182-81 270"/>
-    <path class="latlon" d="M379 160C435 236 462 303 462 360s-27 124-83 200"/>
-    <path class="latlon" d="M751 160C695 236 668 303 668 360s27 124 83 200"/>
+    <ellipse cx="388" cy="360" rx="238" ry="78" class="latlon"/>
+    <ellipse cx="388" cy="360" rx="238" ry="148" class="latlon"/>
+    <path class="latlon" d="M150 360C232 284 309 246 388 246s156 38 238 114"/>
+    <path class="latlon" d="M150 360C232 436 309 474 388 474s156-38 238-114"/>
+    <path class="latlon" d="M388 122C340 199 316 279 316 360s24 161 72 238"/>
+    <path class="latlon" d="M388 122C436 199 460 279 460 360s-24 161-72 238"/>
 
-    <!-- Recognizable continent silhouettes, simplified from an equirectangular world view. -->
-    <path class="coast" d="M326 257c24-54 83-88 144-84 43 3 80 25 110 60-18 9-40 7-58 18-19 12-25 35-49 41-24 6-48-9-70-1-26 10-32 41-61 39-22-2-44-23-45-46-1-12 9-22 29-27z"/>
-    <path class="coast" d="M405 325c28-8 67 2 88 24 21 23 15 50-18 58-23 6-52-5-72-19-20-15-26-40 2-63z"/>
-    <path class="coast" d="M479 394c37 5 70 41 70 81 0 35-24 66-37 102-7 20-24 29-39 13-15-16-9-38-24-59-18-26-17-59-2-88 10-18 10-37 32-49z"/>
-    <path class="coast" d="M492 185c34-25 85-24 115 2 21 18 16 39-16 49-39 13-89 2-111-23-10-12-6-21 12-28z"/>
-    <path class="coast" d="M577 250c39-27 91-26 127 0-10 21-36 23-54 39-20 17-55 21-76 4-16-13-15-30 3-43z"/>
-    <path class="coast" d="M605 320c55-19 111 12 130 68 18 54-13 121-61 148-27 15-50-5-48-37 2-28-21-46-32-74-15-39-18-87 11-105z"/>
-    <path class="coast" d="M663 262c63-48 160-43 208 13 31 36 23 87-24 105-31 12-43 41-80 46-39 5-67-14-84-43-12-20-44-15-61-38-21-29 5-58 41-83z"/>
-    <path class="coast" d="M712 379c27 16 40 50 24 81-24-16-43-47-24-81z"/>
-    <path class="coast" d="M764 404c35 3 66 29 70 62-38-3-73-24-70-62z"/>
-    <path class="coast" d="M773 492c47-24 107-9 138 26-27 31-100 42-139 12-13-10-12-27 1-38z"/>
-    <path class="island" d="M856 342c10-8 24-6 30 4-8 11-24 11-30-4z"/>
-    <path class="island" d="M850 389c10 0 20 7 24 18-16 4-27-2-24-18z"/>
-    <path class="island" d="M803 456c10 2 22 10 25 22-15-1-27-8-25-22z"/>
-    <path class="island" d="M371 364c22-2 44 8 54 25-25 3-48-6-54-25z"/>
-
-    <path class="terrain" d="M344 269c38-20 84-24 123-11M368 298c34 15 74 18 109 4M602 272c32-9 63-8 93 3M639 350c31-8 64 2 78 27M647 410c32 7 49 32 51 64M699 298c48-18 104-12 143 15M728 346c34 16 73 17 107 4M487 436c29 22 42 54 28 89M787 515c31 12 70 13 101 0"/>
-    <rect width="1200" height="680" fill="url(#sphereShade)"/>
+    <path class="land" d="M190 260c25-50 77-78 131-72 38 4 69 24 92 54-24 8-42 12-63 29-21 17-43 6-67 10-31 5-43 44-72 34-24-9-32-35-21-55z"/>
+    <path class="land" d="M255 324c32-8 68 4 86 29 18 25 7 55-26 63-35 9-77-18-78-52-1-20 8-32 18-40z"/>
+    <path class="land" d="M312 400c36 8 67 44 62 82-4 33-28 58-36 91-4 17-23 24-35 8-14-18-2-40-20-62-20-25-18-69 4-96 10-12 11-20 25-23z"/>
+    <path class="land" d="M383 199c35-25 83-21 112 5 20 18 13 39-20 48-40 11-86-4-103-31-7-11-3-17 11-22z"/>
+    <path class="land" d="M468 266c63-47 151-38 196 16 34 41 17 93-33 105-33 8-42 38-82 44-44 7-82-18-95-54-12-32-30-33-16-66 7-17 15-31 30-45z"/>
+    <path class="land" d="M443 330c42-14 91 11 111 60 21 52-4 114-51 142-28 17-49-5-49-36 0-25-20-45-30-70-15-39-13-80 19-96z"/>
+    <path class="land" d="M534 420c31 6 58 30 65 61-36 1-68-22-65-61z"/>
+    <path class="land" d="M580 492c45-21 94-5 122 27-30 30-96 36-127 8-12-11-8-25 5-35z"/>
+    <path class="terrain" d="M204 270c37-20 79-23 116-9M230 300c32 13 70 14 103 0M395 220c30-9 66-6 96 7M486 302c52-16 105-8 145 21M496 356c34 14 72 14 105 0M466 408c30 13 48 38 49 72M314 447c25 22 35 55 21 86M592 516c29 10 63 11 91 0"/>
   </g>
 
-  <!-- Routing paths. -->
-  <path id="upUS" class="uplink" d="M418 303C470 250 531 266 566 347"/>
-  <path id="upEU" class="uplink" d="M632 286C621 318 598 340 566 360"/>
-  <path id="upCN" class="uplink" d="M765 333C706 311 633 327 566 360"/>
-  <path id="downSEA" class="downlink" d="M586 366C691 358 779 389 808 441"/>
-  <path id="downIN" class="downlink" d="M582 371C637 371 696 390 725 421"/>
-  <path id="downAF" class="downlink" d="M574 374C610 404 632 438 654 474"/>
-  <path id="downLATAM" class="downlink" d="M552 371C496 398 479 444 493 501"/>
-  <path id="storeSEA" class="storelink" d="M808 441C895 452 981 485 1044 529"/>
-  <path id="storeAF" class="storelink" d="M654 474C740 536 857 567 1004 574"/>
-  <path id="storeLATAM" class="storelink" d="M493 501C392 550 282 553 169 524"/>
+  <!-- Country / region bubbles based on usage_count proxy. -->
+  <circle cx="252" cy="306" r="38" class="bubble"/><circle cx="252" cy="306" r="10" class="pulse"/>
+  <text x="205" y="260" class="label">美国 US</text>
+  <text x="205" y="279" class="small">208.2k · 25.6%</text>
 
-  <circle class="packetUp" r="5"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#upUS"/></animateMotion></circle>
-  <circle class="packetUp" r="5"><animateMotion dur="3.1s" begin=".45s" repeatCount="indefinite"><mpath href="#upEU"/></animateMotion></circle>
-  <circle class="packetUp" r="5"><animateMotion dur="3.3s" begin=".8s" repeatCount="indefinite"><mpath href="#upCN"/></animateMotion></circle>
-  <circle class="packetDown" r="5"><animateMotion dur="2.5s" repeatCount="indefinite"><mpath href="#downSEA"/></animateMotion></circle>
-  <circle class="packetDown" r="5"><animateMotion dur="2.7s" begin=".3s" repeatCount="indefinite"><mpath href="#downIN"/></animateMotion></circle>
-  <circle class="packetDown" r="5"><animateMotion dur="2.9s" begin=".6s" repeatCount="indefinite"><mpath href="#downAF"/></animateMotion></circle>
-  <circle class="packetDown" r="5"><animateMotion dur="3s" begin=".9s" repeatCount="indefinite"><mpath href="#downLATAM"/></animateMotion></circle>
-  <circle class="packetStore" r="4"><animateMotion dur="4.2s" repeatCount="indefinite"><mpath href="#storeSEA"/></animateMotion></circle>
-  <circle class="packetStore" r="4"><animateMotion dur="4.6s" begin=".7s" repeatCount="indefinite"><mpath href="#storeAF"/></animateMotion></circle>
-  <circle class="packetStore" r="4"><animateMotion dur="4.8s" begin="1.2s" repeatCount="indefinite"><mpath href="#storeLATAM"/></animateMotion></circle>
+  <circle cx="425" cy="248" r="32" class="bubble"/>
+  <text x="390" y="193" class="label">欧洲 Europe</text>
+  <text x="390" y="212" class="small">173.0k · 21.3%</text>
 
-  <!-- Nodes and infrastructure markers. -->
-  <circle cx="566" cy="360" r="13" class="hub"/>
-  <text x="566" y="387" text-anchor="middle" class="tiny">策略路由 Policy Router</text>
+  <circle cx="510" cy="384" r="23" class="bubble2"/>
+  <text x="528" y="386" class="label">南亚</text>
+  <text x="528" y="405" class="small">87.7k · 10.8%</text>
 
-  <circle cx="418" cy="303" r="19" class="hubLarge"/>
-  <use href="#server" x="388" y="241" width="60" height="60"/>
-  <text x="418" y="334" text-anchor="middle" class="tiny">美国上行 US Hub</text>
+  <circle cx="585" cy="338" r="22" class="bubble2"/>
+  <text x="606" y="330" class="label">东亚</text>
+  <text x="606" y="349" class="small">80.4k · 9.9%</text>
 
-  <circle cx="632" cy="286" r="18" class="hubLarge"/>
-  <use href="#server" x="603" y="224" width="58" height="58"/>
-  <text x="632" y="318" text-anchor="middle" class="tiny">欧洲上行 EU Hub</text>
+  <circle cx="286" cy="470" r="22" class="bubble2"/>
+  <text x="190" y="478" class="label">拉美 LatAm</text>
+  <text x="190" y="497" class="small">79.5k · 9.8%</text>
 
-  <circle cx="765" cy="333" r="20" class="hubLarge"/>
-  <use href="#server" x="735" y="271" width="62" height="62"/>
-  <text x="765" y="365" text-anchor="middle" class="tiny">中国上行 CN Hub</text>
+  <circle cx="593" cy="425" r="19" class="bubble2"/>
+  <text x="612" y="430" class="label">东南亚 SEA</text>
+  <text x="612" y="449" class="small">61.4k · 7.6%</text>
 
-  <circle cx="808" cy="441" r="13" class="edge"/>
-  <text x="838" y="445" class="tiny">东南亚下行 SEA</text>
-  <circle cx="725" cy="421" r="12" class="edge"/>
-  <text x="738" y="416" class="tiny">印度 India</text>
-  <circle cx="654" cy="474" r="12" class="edge"/>
-  <text x="667" y="485" class="tiny">非洲 Africa</text>
-  <circle cx="493" cy="501" r="12" class="edge"/>
-  <text x="407" y="505" class="tiny">拉美下行 LatAm</text>
+  <circle cx="455" cy="456" r="15" class="bubble2"/>
+  <text x="402" y="504" class="label">非洲</text>
+  <text x="402" y="523" class="small">38.5k · 4.7%</text>
 
-  <use href="#cloud" x="978" y="492" width="92" height="62"/>
-  <text x="1024" y="568" text-anchor="middle" class="tiny">亚太 CDN 分发</text>
-  <use href="#s3" x="991" y="566" width="62" height="70"/>
-  <text x="1022" y="651" text-anchor="middle" class="tiny">持久媒体 Durable</text>
-  <use href="#s3" x="132" y="492" width="62" height="70"/>
-  <text x="163" y="575" text-anchor="middle" class="tiny">拉美缓存 Cache</text>
-  <circle cx="1044" cy="529" r="9" class="storage"/>
-  <circle cx="1004" cy="574" r="9" class="storage"/>
-  <circle cx="169" cy="524" r="9" class="storage"/>
+  <circle cx="486" cy="338" r="14" class="bubble2"/>
+  <text x="458" y="318" class="small">中东 33.2k</text>
 
-  <g transform="translate(54 126)">
-    <rect class="panel" width="244" height="128" rx="14"/>
-    <text x="18" y="34" class="label">上行枢纽 Upstream</text>
-    <circle cx="27" cy="62" r="7" fill="#34d399"/>
-    <text x="44" y="66" class="small">中美欧：模型 token 主供给</text>
-    <path d="M20 91h36" stroke="#22d3ee" stroke-width="5" stroke-dasharray="10 8" stroke-linecap="round"/>
-    <text x="66" y="96" class="small">Token 上行 · Provider 路由</text>
+  <circle cx="568" cy="330" r="15" class="missing"/>
+  <text x="604" y="291" class="tiny">中国/国产 MaaS</text>
+  <text x="604" y="307" class="tiny">本数据集未覆盖</text>
+
+  <g transform="translate(690 128)">
+    <rect class="panel" width="438" height="462" rx="18"/>
+    <text x="24" y="38" class="label" style="font-size:21px">地区聚合：usage_count 代理指标</text>
+    <text x="24" y="62" class="tiny">Known geo total = 813.5k；not_classified = 151.0k（15.7% of all rows）</text>
+
+    <g transform="translate(24 92)">
+      <text x="0" y="16" class="small">北美 North America</text>
+      <rect x="150" y="3" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="3" width="360" height="18" rx="9" class="bar"/>
+      <text x="375" y="17" class="small">228.6k · 28.1%</text>
+
+      <text x="0" y="52" class="small">欧洲 Europe</text>
+      <rect x="150" y="39" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="39" width="272" height="18" rx="9" class="bar"/>
+      <text x="375" y="53" class="small">173.0k · 21.3%</text>
+
+      <text x="0" y="88" class="small">南亚 South Asia</text>
+      <rect x="150" y="75" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="75" width="138" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="89" class="small">87.7k · 10.8%</text>
+
+      <text x="0" y="124" class="small">东亚 East Asia</text>
+      <rect x="150" y="111" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="111" width="127" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="125" class="small">80.4k · 9.9%</text>
+
+      <text x="0" y="160" class="small">拉美 LatAm</text>
+      <rect x="150" y="147" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="147" width="125" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="161" class="small">79.5k · 9.8%</text>
+
+      <text x="0" y="196" class="small">东南亚 SEA</text>
+      <rect x="150" y="183" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="183" width="97" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="197" class="small">61.4k · 7.6%</text>
+
+      <text x="0" y="232" class="small">非洲 Africa</text>
+      <rect x="150" y="219" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="219" width="61" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="233" class="small">38.5k · 4.7%</text>
+
+      <text x="0" y="268" class="small">中东 MENA</text>
+      <rect x="150" y="255" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="255" width="52" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="269" class="small">33.2k · 4.1%</text>
+
+      <text x="0" y="304" class="small">大洋洲 Oceania</text>
+      <rect x="150" y="291" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="291" width="35" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="305" class="small">22.5k · 2.8%</text>
+
+      <text x="0" y="340" class="small">其他 Other</text>
+      <rect x="150" y="327" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="327" width="13" height="18" rx="9" class="barWarm"/>
+      <text x="375" y="341" class="small">8.5k · 1.0%</text>
+
+      <text x="0" y="386" class="small">未归类 not_classified</text>
+      <rect x="150" y="373" width="360" height="18" rx="9" class="barBg"/>
+      <rect x="150" y="373" width="238" height="18" rx="9" class="barUnknown"/>
+      <text x="375" y="387" class="small">151.0k</text>
+    </g>
   </g>
 
-  <g transform="translate(902 116)">
-    <rect class="panel" width="244" height="144" rx="14"/>
-    <text x="18" y="34" class="label">下行分发 Downstream</text>
-    <circle cx="27" cy="62" r="7" fill="#fbbf24"/>
-    <text x="44" y="66" class="small">东南亚 / 印度 / 非洲 / 拉美</text>
-    <path d="M20 91h36" stroke="#fbbf24" stroke-width="6" stroke-dasharray="2 10" stroke-linecap="round"/>
-    <text x="66" y="96" class="small">资产分发 · Edge fallback</text>
-    <path d="M20 120h36" stroke="#a78bfa" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round"/>
-    <text x="66" y="125" class="small">S3/CDN 持久上下文</text>
-  </g>
-
-  <g transform="translate(64 564)">
-    <rect class="panel" width="350" height="72" rx="14"/>
-    <text x="18" y="30" class="label">类 DNS 模型路由</text>
-    <text x="18" y="54" class="small">能力 · 合规 · 延迟 · 成本 · 健康度 · 存储位置</text>
-  </g>
-
-  <g transform="translate(760 36)">
-    <rect class="panel" width="366" height="70" rx="14"/>
-    <text x="18" y="30" class="label">不只是 API 代理</text>
-    <text x="18" y="54" class="small">模型上行 + 多模态下行 + 持久资源引用</text>
+  <g transform="translate(54 590)">
+    <rect class="panel" width="576" height="54" rx="14"/>
+    <text x="18" y="24" class="small">口径说明：usage_count 是公开可得的地区使用量代理；OpenAI、Google、阿里、腾讯、字节等模型 API 的地区 token 消耗未公开。</text>
+    <text x="18" y="43" class="source">Source: Anthropic Economic Index dataset on Hugging Face, release_2025_09_15. Region grouping calculated from country-level rows.</text>
   </g>
 </svg>

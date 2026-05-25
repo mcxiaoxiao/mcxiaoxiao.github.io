@@ -56,9 +56,9 @@ AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。St
 
 模型层本身也在分化：闭源 API 模型继续提供最高上限和多模态产品化能力，OpenAI、Claude、Gemini 这类模型族持续强化工具调用、长上下文、音视频和 agent 能力；开源或开放权重模型则让私有化、低成本和可控部署变得现实，Qwen、DeepSeek、Llama、Mistral 等生态正在快速成熟。与此同时，vLLM、SGLang、TensorRT-LLM、TGI、Ollama、llama.cpp 这类推理框架把自托管推理从“能跑”推向“可服务化”。[^29][^30][^31][^32][^33][^34] 这意味着 LLMAPI 网关不能只假设“上游是一个 OpenAI 兼容接口”，而要准备面对闭源 API、国产云、聚合商、自托管推理、离线模型和多模态专用模型的混合运行。
 
-![MaaS 与 LLMAPI 全球网关多节点扩散图](/images/2026/llmapi/global-maas-gateway-mesh.svg)
+![全球 LLM 使用强度代理数据可视化](/images/2026/llmapi/global-maas-gateway-mesh.svg)
 
-*🛜 一个偏想象的全球 MaaS / LLMAPI 网关基础设施：中美欧承担更大的模型 token 上行枢纽，东南亚、印度、非洲、拉美承接更多下行多模态资产分发；路由依据从域名升级为模型能力、地区合规、成本、延迟、任务状态和 S3/CDN 资源归档策略。*
+*🛜 公开模型厂商通常不披露全球 token 消耗绝对值。这里用 Anthropic Economic Index 的 Claude.ai Free/Pro country-level `usage_count` 做地区需求代理：北美、欧洲、南亚、东亚、拉美和东南亚构成主要使用区域；中国及国产 MaaS 的 token 消耗没有可比公开数据，因此在图中单独标注为未覆盖。[^63]*
 
 ***
 
@@ -86,20 +86,22 @@ LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成
 
 参考 APIPark 系列文章，它们已经把“为什么企业需要 LLM 网关”讲到可理解的程度；但站在 AI-native 产品实践里，更值得比较的是：谁解决统一入口，谁解决生产治理，谁接近媒体资产和 agent 工具链，谁适合小团队低门槛自托管。[^40] 下面这个表按公开仓库和文档做一个近似快照，Stars 会波动，只能当生态热度的弱信号。📄
 
-| 产品 | 更像哪一层 | 安装方式 | 能力亮点 | 多模态 / Agent | Stars / 协议 | 适用观察 |
-| --- | --- | --- | --- | --- | --- | --- |
-| LiteLLM[^41] | L1/L2 | Python SDK、Proxy、Docker、Helm | OpenAI 兼容、100+ provider、virtual key、budget、fallback、logging | 已覆盖 images/audio/batches/rerank/A2A 等接口 | 约 48.2k / MIT 为主，enterprise 目录另行许可 | 生态成熟，适合先统一模型调用 |
-| One API[^35] | L1 | 单可执行文件、Docker、Docker Compose、宝塔 | 渠道、令牌、额度、分组倍率、负载均衡、绘图接口 | 偏文本/绘图聚合，国内 provider 友好 | 约 34.2k / MIT | 适合国内个人和小团队二次分发场景 |
-| New API[^42][^43] | L1/L2 | Docker、Docker Compose、宝塔 | OpenAI/Claude/Gemini 格式转换、计费、token、重试、rate limit | 支持图像、音频、视频、rerank、realtime 等接口 | 约 31.6k / AGPL-3.0 | 产品化程度较高，AGPL-3.0 义务需评估 |
-| Portkey Gateway[^44] | L2 | npx、自托管、托管版 | guardrails、fallback、load balancing、routing、缓存、观测 | 面向语言、视觉、音频、图像模型 | 约 11.7k / MIT | 适合企业治理和托管平台场景 |
-| Higress[^4] | L2 | all-in-one Docker、Helm、Kubernetes、云服务 | 协议转换、语义缓存、token 限流、内容安全、插件、MCP | AI Gateway + MCP + Agent 路由 | 约 8.3k / Apache-2.0 | 适合云原生团队、阿里生态和 K8s 场景 |
-| Bifrost[^45] | L2 | npx、Docker、Go SDK、Helm | 高性能 Go gateway、fallback、load balance、semantic cache、budget、MCP | 明确支持 text/images/audio/streaming | 约 5.2k / Apache-2.0 | 适合关注低延迟和自托管的团队 |
-| APIPark[^37] | L2/API 平台 | 一键脚本、容器化、云原生部署 | API 门户、审批、订阅、统计、日志、多模型灾备、Prompt API 化 | 强调 AI API 与 API developer portal 结合 | 约 1.7k / Apache-2.0 | 偏 AI API 开放平台，适合企业 API 治理视角 |
-| Apache APISIX[^46] | L2 通用网关 + AI 插件 | Docker、Helm、Kubernetes、源码 | `ai-proxy`、负载均衡、fallback、token 级限流、传统网关插件生态 | 当前更偏 LLM/embedding proxy | 约 16.6k / Apache-2.0 | 代表传统 API 网关向 AI 流量扩展 |
-| Envoy AI Gateway[^23] | L2 云原生网关 | Kubernetes、Envoy Gateway、Gateway API | 双层网关、全局限流、self-hosted model endpoint picker | 面向 LLM 与 agent 流量 | 约 1.6k / Apache-2.0 | 接近云原生标准件，落地门槛相对更高 |
-| Helicone AI Gateway[^47] | L2/观测 | npx、Docker、托管版 | routing、rate limit、cache、OpenTelemetry、Helicone observability | 100+ models，偏 LLM 请求观测与路由 | 约 0.6k / GitHub 标注 GPL-3.0，README 需核验 | 适合观测和路由一体化场景，许可信息需核对 |
-| Inference Gateway[^48] | L1/L2 轻量网关 | install script、binary、CLI、K8s | OpenAI/Ollama/Groq/Cohere/DeepSeek 聚合、MCP、metrics | vision/multimodal、streaming、tool-use | 约 0.08k / MIT | 适合作为低复杂度自托管参考 |
-| agentgateway[^49] | Agent 网关 / 数据面 | standalone、Kubernetes、kgateway | MCP、A2A、LLM、Inference Extension、policy | 明确面向 agent-to-agent 与 agent-to-tool | 约 1.4k / Apache-2.0 | 表明下一代网关会同时治理模型、agent 与工具连接 |
+| 产品 | 层级 | 部署 | 核心能力 | 多模态 / Agent | Stars / 协议 |
+| --- | --- | --- | --- | --- | --- |
+| LiteLLM[^41] | L1/L2 | SDK、Proxy、Docker、Helm | 多 provider、virtual key、budget、fallback | 图像/音频/A2A | 约 48.2k / MIT |
+| One API[^35] | L1 | Binary、Docker、宝塔 | 渠道、令牌、额度、倍率、分组 | 文本/绘图 | 约 34.2k / MIT |
+| New API[^42][^43] | L1/L2 | Docker、宝塔 | 格式转换、计费、重试、限流 | 图像/音频/视频 | 约 31.6k / AGPL-3.0 |
+| Portkey[^44] | L2 | npx、自托管、托管版 | guardrails、routing、cache、observability | 语言/视觉/音频/图像 | 约 11.7k / MIT |
+| Higress[^4] | L2 | Docker、Helm、K8s | 协议转换、语义缓存、限流、插件 | AI Gateway + MCP | 约 8.3k / Apache-2.0 |
+| Bifrost[^45] | L2 | npx、Docker、Go SDK、Helm | 高性能、fallback、budget、MCP | text/images/audio | 约 5.2k / Apache-2.0 |
+| APIPark[^37] | L2/API 平台 | 一键脚本、容器化 | API 门户、审批、统计、多模型灾备 | Prompt API 化 | 约 1.7k / Apache-2.0 |
+| APISIX[^46] | L2 通用网关 | Docker、Helm、K8s | `ai-proxy`、fallback、token 限流 | LLM/embedding | 约 16.6k / Apache-2.0 |
+| Envoy AI Gateway[^23] | L2 云原生 | K8s、Gateway API | 双层网关、全局限流、endpoint picker | LLM/agent 流量 | 约 1.6k / Apache-2.0 |
+| Helicone[^47] | L2/观测 | npx、Docker、托管版 | routing、rate limit、cache、OTel | 100+ models | 约 0.6k / GPL-3.0 |
+| Inference Gateway[^48] | L1/L2 | Script、binary、CLI、K8s | 多 provider、MCP、metrics | vision/tool-use | 约 0.08k / MIT |
+| agentgateway[^49] | Agent 数据面 | standalone、K8s | MCP、A2A、LLM、policy | agent-to-tool | 约 1.4k / Apache-2.0 |
+
+简化后可以看出三类位置：LiteLLM、One API、New API 更偏统一接入；Portkey、Higress、APIPark、APISIX、Envoy 更偏生产治理；agentgateway 说明下一代网关会同时治理模型、agent 与工具连接。
 
 从这个横向比较看，当前市场的薄弱处也更清楚：
 
@@ -435,5 +437,7 @@ logs/llmapi/{date}/
 [^61]: [Kong AI Gateway Documentation](https://developer.konghq.com/ai-gateway/)。Kong AI Gateway 文档覆盖 prompt guard、LLM 路由、认证、限流、缓存、负载均衡和 AI 插件治理。
 
 [^62]: [NIST Privacy-Enhancing Cryptography](https://csrc.nist.gov/projects/privacy-enhancing-cryptography)。NIST 将 private set intersection 等隐私增强密码技术作为在不暴露完整数据集合时完成协作计算的方向之一。
+
+[^63]: [Anthropic Economic Index Dataset](https://huggingface.co/datasets/Anthropic/EconomicIndex)。图中地区使用强度基于该数据集 `release_2025_09_15` 的 `aei_raw_claude_ai_2025-08-04_to_2025-08-11.csv`，筛选 `geography=country`、`variable=usage_count` 后按地区聚合；它是 Claude.ai Free/Pro 的公开使用代理，不代表全行业 token 消耗绝对值。
 
 ***
