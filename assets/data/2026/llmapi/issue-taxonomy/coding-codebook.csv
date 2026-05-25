@@ -2,5 +2,5 @@ field,definition
 primary_category,Single dominant issue class assigned from title and surrounding issue context.
 secondary_tags,Non-exclusive classes matched by keyword and manual review.
 build_locus,"community_build_in / self_operated / mixed, indicating likely productization locus."
-relevance_to_l3,low / medium / high relevance to business asset layer and compliance evidence chain.
+relevance_to_l3,low / medium / high relevance to the L3 business asset and compliance layer: resource persistence, permission, audit evidence, long-term logs, cost ledger, CDN/S3/object storage, and policy enforcement.
 evidence_type,exact_issue_html means issue metadata was collected from public GitHub HTML issue search pages.

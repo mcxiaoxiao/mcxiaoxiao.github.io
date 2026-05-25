@@ -37,7 +37,7 @@ Primary category is mutually exclusive:
 | `multimodal_resource` | Images, audio, video, files, URLs, base64, object storage and persistent resource handling. |
 | `security_guardrails` | Auth, permission, tenant isolation, secrets, guardrails, prompt/tool safety and abuse prevention. |
 
-Secondary tags are non-exclusive and preserve overlapping interpretations. `build_locus` marks whether a capability is more suitable for community build-in, platform self-operation, or a mixed approach. `relevance_to_l3` estimates whether the issue touches business asset persistence or compliance evidence.
+Secondary tags are non-exclusive and preserve overlapping interpretations. `build_locus` marks whether a capability is more suitable for community build-in, platform self-operation, or a mixed approach. `relevance_to_l3` does not refer to OSI Layer 3; it estimates whether the issue touches the L3 business asset and compliance layer, including durable resources, object storage/CDN persistence, permissions, audit evidence, long-term logs, cost ledger, and policy enforcement.
 
 ## D. Aggregate Results
 

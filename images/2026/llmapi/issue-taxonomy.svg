@@ -1,1 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc"><title id="title">LLM Gateway Issue Taxonomy Sample</title><desc id="desc">A coded purposeful sample of 75 public GitHub issues from LLM gateway and serving projects.</desc><defs><style>.bg{fill:#fff}.band{fill:#f8fafc}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:1.2}.track{fill:#e2e8f0}.title{font:820 30px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a;letter-spacing:0}.subtitle{font:620 12.5px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#475569;letter-spacing:0}.h2{font:800 18px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#111827;letter-spacing:0}.label{font:710 13px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1f2937;letter-spacing:0}.small{font:620 11.2px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#475569;letter-spacing:0}.tiny{font:600 10.2px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#64748b;letter-spacing:0}.score{font:740 12.2px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#111827;letter-spacing:0}</style></defs><rect class="bg" width="1200" height="720"/><rect class="band" width="1200" height="116"/><text x="56" y="50" class="title">Issue 样本编码：LLM 网关的工程摩擦点</text><text x="58" y="80" class="subtitle">n = 75 public GitHub issue observations, 12 projects, retrieved 2026-05-25. Purposeful sample, not a probability sample.</text><g transform="translate(56 142)"><rect class="panel" width="714" height="424" rx="18"/><text x="24" y="38" class="h2">Primary pain point count / 主问题分类计数</text><text x="24" y="61" class="tiny">每条 issue 只编码一个 primary category；多标签和来源 URL 保存在 CSV。</text><g transform="translate(24 92)"><text x="0" y="15" class="label">Provider adapter / schema</text><rect x="230" y="0" width="380" height="18" rx="9" class="track"/><rect x="230" y="0" width="380.0" height="18" rx="9" fill="#2563eb"/><text x="628" y="15" class="score">18 · 24.0%</text><text x="0" y="55" class="label">Deployment / ops</text><rect x="230" y="40" width="380" height="18" rx="9" class="track"/><rect x="230" y="40" width="253.3" height="18" rx="9" fill="#0d9488"/><text x="628" y="55" class="score">12 · 16.0%</text><text x="0" y="95" class="label">Agent / tool state</text><rect x="230" y="80" width="380" height="18" rx="9" class="track"/><rect x="230" y="80" width="232.2" height="18" rx="9" fill="#7c3aed"/><text x="628" y="95" class="score">11 · 14.7%</text><text x="0" y="135" class="label">Logging / audit / cost</text><rect x="230" y="120" width="380" height="18" rx="9" class="track"/><rect x="230" y="120" width="190.0" height="18" rx="9" fill="#ea580c"/><text x="628" y="135" class="score">9 · 12.0%</text><text x="0" y="175" class="label">Streaming / protocol parity</text><rect x="230" y="160" width="380" height="18" rx="9" class="track"/><rect x="230" y="160" width="190.0" height="18" rx="9" fill="#64748b"/><text x="628" y="175" class="score">9 · 12.0%</text><text x="0" y="215" class="label">Reliability / routing / key</text><rect x="230" y="200" width="380" height="18" rx="9" class="track"/><rect x="230" y="200" width="147.8" height="18" rx="9" fill="#dc2626"/><text x="628" y="215" class="score">7 · 9.3%</text><text x="0" y="255" class="label">Security / guardrails</text><rect x="230" y="240" width="380" height="18" rx="9" class="track"/><rect x="230" y="240" width="105.6" height="18" rx="9" fill="#0891b2"/><text x="628" y="255" class="score">5 · 6.7%</text><text x="0" y="295" class="label">Multimodal / resource</text><rect x="230" y="280" width="380" height="18" rx="9" class="track"/><rect x="230" y="280" width="84.4" height="18" rx="9" fill="#9333ea"/><text x="628" y="295" class="score">4 · 5.3%</text></g></g><g transform="translate(802 142)"><rect class="panel" width="342" height="206" rx="18"/><text x="22" y="38" class="h2">Build locus / 能力归属</text><g transform="translate(22 74)"><text x="0" y="14" class="small">Community build-in</text><rect x="154" y="0" width="180" height="17" rx="8.5" class="track"/><rect x="154" y="0" width="180.0" height="17" rx="8.5" fill="#2563eb"/><text x="346" y="14" class="small">39 · 52.0%</text><text x="0" y="50" class="small">Self-operated</text><rect x="154" y="36" width="180" height="17" rx="8.5" class="track"/><rect x="154" y="36" width="96.9" height="17" rx="8.5" fill="#0d9488"/><text x="346" y="50" class="small">21 · 28.0%</text><text x="0" y="86" class="small">Mixed</text><rect x="154" y="72" width="180" height="17" rx="8.5" class="track"/><rect x="154" y="72" width="69.2" height="17" rx="8.5" fill="#7c3aed"/><text x="346" y="86" class="small">15 · 20.0%</text></g></g><g transform="translate(802 376)"><rect class="panel" width="342" height="190" rx="18"/><text x="22" y="38" class="h2">L3 relevance / L3 相关性</text><g transform="translate(22 74)"><text x="0" y="14" class="small">Medium L3 relevance</text><rect x="154" y="0" width="180" height="17" rx="8.5" class="track"/><rect x="154" y="0" width="180.0" height="17" rx="8.5" fill="#2563eb"/><text x="346" y="14" class="small">34 · 45.3%</text><text x="0" y="50" class="small">High L3 relevance</text><rect x="154" y="36" width="180" height="17" rx="8.5" class="track"/><rect x="154" y="36" width="153.5" height="17" rx="8.5" fill="#dc2626"/><text x="346" y="50" class="small">29 · 38.7%</text><text x="0" y="86" class="small">Low L3 relevance</text><rect x="154" y="72" width="180" height="17" rx="8.5" class="track"/><rect x="154" y="72" width="63.5" height="17" rx="8.5" fill="#64748b"/><text x="346" y="86" class="small">12 · 16.0%</text></g></g><g transform="translate(56 594)"><rect class="panel" width="1088" height="70" rx="16"/><text x="18" y="26" class="small">读法：样本显示高频摩擦集中在 provider/schema、部署、agent/tool state、日志和流式一致性；资源化与安全样本较少但 L3 相关性更高。</text><text x="18" y="46" class="tiny">Projects: APIPark 8, Bifrost 8, Envoy AI Gateway 8, Helicone 8, Higress 8, LiteLLM 8, Portkey 8, New API 7 ...</text><text x="18" y="61" class="tiny">Data: /assets/data/2026/llmapi/issue-taxonomy/*.csv; Appendix PDF includes sampling protocol, codebook and full sample table.</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Gateway Issue Taxonomy Sample</title>
+  <desc id="desc">A coded purposeful sample of 75 public GitHub issues from LLM gateway and serving projects, showing primary pain point counts, build locus, and L3 relevance.</desc>
+  <defs>
+    <style>
+      text{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+      .bg{fill:#fff}.band{fill:#f8fafc}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:1.3}.track{fill:#e6edf5}
+      .title{font-size:32px;font-weight:820;fill:#0f172a}.subtitle{font-size:14px;font-weight:650;fill:#56657a}
+      .h2{font-size:22px;font-weight:820;fill:#111827}.small{font-size:12px;font-weight:650;fill:#65748b}
+      .label{font-size:16px;font-weight:760;fill:#1f2937}.label-sm{font-size:13px;font-weight:740;fill:#374151}
+      .value{font-size:16px;font-weight:820;fill:#111827}.value-sm{font-size:13px;font-weight:820;fill:#273449}
+      .note{font-size:12.5px;font-weight:650;fill:#52627a}.foot{font-size:12px;font-weight:650;fill:#61708a}
+      .bar-blue{fill:#2563eb}.bar-teal{fill:#0d9488}.bar-violet{fill:#7c3aed}.bar-orange{fill:#ea580c}
+      .bar-slate{fill:#64748b}.bar-red{fill:#dc2626}.bar-cyan{fill:#0891b2}.bar-purple{fill:#9333ea}
+      .bar-gold{fill:#e69f00}.bar-sky{fill:#56b4e9}.bar-green{fill:#009e73}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="760"/>
+  <rect class="band" width="1280" height="112"/>
+  <text class="title" x="56" y="48">Issue taxonomy sample / LLMAPI 网关问题样本编码</text>
+  <text class="subtitle" x="56" y="77">n=75 public GitHub issue observations; one primary category per row; secondary tags and source URLs are kept in CSV.</text>
+  <text class="subtitle" x="56" y="99">L3 relevance = relevance to the business asset and compliance layer, not OSI Layer 3.</text>
+
+  <g transform="translate(56 132)">
+    <rect class="panel" width="760" height="450" rx="18"/>
+    <text class="h2" x="28" y="44">Primary pain point count / 主问题分类计数</text>
+    <text class="small" x="28" y="70">每条 issue 只编码一个 primary category；多标签和来源 URL 保存在 CSV。</text>
+
+    <text class="label" x="28" y="127">Provider adapter / schema</text>
+    <rect class="track" x="280" y="108" width="360" height="22" rx="11"/>
+    <rect class="bar-blue" x="280" y="108" width="360" height="22" rx="11"/>
+    <text class="value" x="665" y="127">18 · 24.0%</text>
+
+    <text class="label" x="28" y="171">Deployment / ops</text>
+    <rect class="track" x="280" y="152" width="360" height="22" rx="11"/>
+    <rect class="bar-teal" x="280" y="152" width="240" height="22" rx="11"/>
+    <text class="value" x="665" y="171">12 · 16.0%</text>
+
+    <text class="label" x="28" y="215">Agent / tool state</text>
+    <rect class="track" x="280" y="196" width="360" height="22" rx="11"/>
+    <rect class="bar-violet" x="280" y="196" width="220" height="22" rx="11"/>
+    <text class="value" x="665" y="215">11 · 14.7%</text>
+
+    <text class="label" x="28" y="259">Logging / audit / cost</text>
+    <rect class="track" x="280" y="240" width="360" height="22" rx="11"/>
+    <rect class="bar-orange" x="280" y="240" width="180" height="22" rx="11"/>
+    <text class="value" x="665" y="259">9 · 12.0%</text>
+
+    <text class="label" x="28" y="303">Streaming / protocol parity</text>
+    <rect class="track" x="280" y="284" width="360" height="22" rx="11"/>
+    <rect class="bar-slate" x="280" y="284" width="180" height="22" rx="11"/>
+    <text class="value" x="665" y="303">9 · 12.0%</text>
+
+    <text class="label" x="28" y="347">Reliability / routing / key</text>
+    <rect class="track" x="280" y="328" width="360" height="22" rx="11"/>
+    <rect class="bar-red" x="280" y="328" width="140" height="22" rx="11"/>
+    <text class="value" x="665" y="347">7 · 9.3%</text>
+
+    <text class="label" x="28" y="391">Security / guardrails</text>
+    <rect class="track" x="280" y="372" width="360" height="22" rx="11"/>
+    <rect class="bar-cyan" x="280" y="372" width="100" height="22" rx="11"/>
+    <text class="value" x="665" y="391">5 · 6.7%</text>
+
+    <text class="label" x="28" y="435">Multimodal / resource</text>
+    <rect class="track" x="280" y="416" width="360" height="22" rx="11"/>
+    <rect class="bar-purple" x="280" y="416" width="80" height="22" rx="11"/>
+    <text class="value" x="665" y="435">4 · 5.3%</text>
+  </g>
+
+  <g transform="translate(850 132)">
+    <rect class="panel" width="374" height="222" rx="18"/>
+    <text class="h2" x="26" y="44">Build locus / 能力归属</text>
+    <text class="small" x="26" y="70">粗分为社区可内建、平台自运营或两者混合。</text>
+
+    <text class="label-sm" x="26" y="113">Community build-in</text>
+    <rect class="track" x="206" y="96" width="72" height="18" rx="9"/>
+    <rect class="bar-blue" x="206" y="96" width="72" height="18" rx="9"/>
+    <text class="value-sm" x="346" y="111" text-anchor="end">39 · 52%</text>
+
+    <text class="label-sm" x="26" y="153">Self-operated</text>
+    <rect class="track" x="206" y="136" width="72" height="18" rx="9"/>
+    <rect class="bar-teal" x="206" y="136" width="39" height="18" rx="9"/>
+    <text class="value-sm" x="346" y="151" text-anchor="end">21 · 28%</text>
+
+    <text class="label-sm" x="26" y="193">Mixed</text>
+    <rect class="track" x="206" y="176" width="72" height="18" rx="9"/>
+    <rect class="bar-violet" x="206" y="176" width="28" height="18" rx="9"/>
+    <text class="value-sm" x="346" y="191" text-anchor="end">15 · 20%</text>
+  </g>
+
+  <g transform="translate(850 380)">
+    <rect class="panel" width="374" height="260" rx="18"/>
+    <text class="h2" x="26" y="44">L3 relevance / L3 相关性</text>
+    <text class="small" x="26" y="70">是否触及业务资产层与合规证据链。</text>
+
+    <text class="label-sm" x="26" y="109">Medium relevance</text>
+    <rect class="track" x="206" y="92" width="72" height="18" rx="9"/>
+    <rect class="bar-blue" x="206" y="92" width="72" height="18" rx="9"/>
+    <text class="value-sm" x="346" y="107" text-anchor="end">34 · 45%</text>
+
+    <text class="label-sm" x="26" y="147">High relevance</text>
+    <rect class="track" x="206" y="130" width="72" height="18" rx="9"/>
+    <rect class="bar-red" x="206" y="130" width="61" height="18" rx="9"/>
+    <text class="value-sm" x="346" y="145" text-anchor="end">29 · 39%</text>
+
+    <text class="label-sm" x="26" y="185">Low relevance</text>
+    <rect class="track" x="206" y="168" width="72" height="18" rx="9"/>
+    <rect class="bar-slate" x="206" y="168" width="25" height="18" rx="9"/>
+    <text class="value-sm" x="346" y="183" text-anchor="end">12 · 16%</text>
+
+    <text class="note" x="26" y="216">L3 = 业务资产与合规层，不是 OSI 三层。</text>
+    <text class="note" x="26" y="235">High: resource_id / S3-CDN / audit / policy.</text>
+  </g>
+
+  <g transform="translate(56 660)">
+    <rect class="panel" width="1168" height="72" rx="16"/>
+    <text class="foot" x="22" y="26">读法：样本显示高频摩擦集中在 provider/schema、部署、agent/tool state、日志和流式一致性；资源化与安全样本较少，但 L3 相关性更高。</text>
+    <text class="foot" x="22" y="48">Projects: APIPark 8, Bifrost 8, Envoy AI Gateway 8, Helicone 8, Higress 8, LiteLLM 8, Portkey 8, New API 7 ...</text>
+    <text class="foot" x="22" y="64">Data: /assets/data/2026/llmapi/issue-taxonomy/*.csv; appendix PDF includes sampling protocol, codebook and full sample table.</text>
+  </g>
+</svg>

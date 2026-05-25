@@ -26,6 +26,8 @@ The sample is purposeful rather than probabilistic. It is intended to support qu
 
 The coding unit is one public issue observation. Each row receives one `primary_category`; secondary matched dimensions are kept in `secondary_tags`.
 
+`relevance_to_l3` does not refer to OSI Layer 3 networking. It estimates whether an issue touches the paper's L3 business asset and compliance layer: durable resource identifiers, object storage/CDN persistence, permissions, audit evidence, long-term logs, cost ledger, and policy enforcement.
+
 ## Limitations
 
 The dataset uses public issue titles and list-page metadata; full issue bodies are not reproduced. GitHub issue traffic is shaped by project size, user base, maintainership, and reporting culture. Counts therefore indicate observed friction patterns in the sampled corpus, not market-wide frequency.
