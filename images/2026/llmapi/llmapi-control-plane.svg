@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
   <title id="title">LLMAPI 执行控制面 Execution control plane</title>
   <desc id="desc">LLMAPI 网关执行控制面的分层图：覆盖调用入口、运行时配置、网关核心、模型供应商、资源持久化和可观测性。</desc>
   <defs>
@@ -24,8 +24,8 @@
       .line { stroke: url(#accent); stroke-width: 3; fill: none; stroke-linecap: round; marker-end: url(#arrow); }
       .dash { stroke-dasharray: 8 12; animation: move 3s linear infinite; }
       .txt { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; font-weight: 700; font-size: 18px; }
-      .sub { fill: #cbd5e1; font-size: 13px; font-weight: 500; }
-      .mini { fill: #93c5fd; font-size: 12px; font-weight: 600; }
+      .sub { fill: #cbd5e1; font-size: 14px; font-weight: 560; }
+      .mini { fill: #93c5fd; font-size: 13px; font-weight: 650; }
       .chip { fill: rgba(15,23,42,.75); stroke: rgba(125,211,252,.35); }
       @keyframes move { to { stroke-dashoffset: -80; } }
     </style>
@@ -34,62 +34,62 @@
     </marker>
   </defs>
 
-  <rect class="bg" width="1120" height="620"/>
+  <rect class="bg" width="1280" height="640"/>
   <text x="58" y="62" class="txt" style="font-size:34px">LLMAPI 执行控制面</text>
   <text x="60" y="92" class="sub">不是只代理 HTTP，而是把模型调用、任务生命周期、资源入库、审计和统计收拢成一个可治理的执行面。</text>
 
   <g transform="translate(64 144)">
-    <rect class="card" width="220" height="116" rx="18"/>
+    <rect class="card" width="252" height="126" rx="18"/>
     <text x="24" y="38" class="txt">客户端 API</text>
     <text x="24" y="66" class="sub">model_id + params 参数</text>
     <text x="24" y="88" class="sub">等待/监听 wait/watch</text>
   </g>
 
-  <g transform="translate(64 362)">
-    <rect class="card" width="220" height="116" rx="18"/>
+  <g transform="translate(64 370)">
+    <rect class="card" width="252" height="126" rx="18"/>
     <text x="24" y="38" class="txt">运行时配置 Runtime</text>
     <text x="24" y="66" class="sub">模型实例 / key / URL</text>
     <text x="24" y="88" class="sub">Redis 缓存 + DB 源</text>
   </g>
 
-  <g transform="translate(384 176)">
-    <rect class="core" width="352" height="264" rx="26"/>
+  <g transform="translate(396 172)">
+    <rect class="core" width="458" height="292" rx="28"/>
     <text x="40" y="48" class="txt" style="font-size:28px">网关核心 Gateway Core</text>
     <text x="42" y="82" class="sub">Adapter 注册表 · Policy 策略 · Key 池</text>
     <g transform="translate(42 112)">
-      <rect class="chip" width="120" height="38" rx="10"/><text x="20" y="25" class="mini">同步返回 req/res</text>
-      <rect class="chip" x="138" width="104" height="38" rx="10"/><text x="156" y="25" class="mini">异步轮询 poll</text>
-      <rect class="chip" x="260" width="82" height="38" rx="10"/><text x="275" y="25" class="mini">流式 stream</text>
+      <rect class="chip" width="136" height="44" rx="11"/><text x="18" y="28" class="mini">同步返回 req/res</text>
+      <rect class="chip" x="160" width="128" height="44" rx="11"/><text x="178" y="28" class="mini">异步轮询 poll</text>
+      <rect class="chip" x="310" width="106" height="44" rx="11"/><text x="326" y="28" class="mini">流式 stream</text>
     </g>
-    <g transform="translate(42 170)">
-      <rect class="chip" width="132" height="38" rx="10"/><text x="20" y="25" class="mini">Key 冷却 cooldown</text>
-      <rect class="chip" x="150" width="92" height="38" rx="10"/><text x="169" y="25" class="mini">重试 retry</text>
-      <rect class="chip" x="260" width="82" height="38" rx="10"/><text x="275" y="25" class="mini">审计 audit</text>
+    <g transform="translate(42 178)">
+      <rect class="chip" width="154" height="44" rx="11"/><text x="18" y="28" class="mini">Key 冷却 cooldown</text>
+      <rect class="chip" x="178" width="112" height="44" rx="11"/><text x="200" y="28" class="mini">重试 retry</text>
+      <rect class="chip" x="312" width="104" height="44" rx="11"/><text x="330" y="28" class="mini">审计 audit</text>
     </g>
   </g>
 
-  <g transform="translate(850 112)">
-    <rect class="card" width="220" height="112" rx="18"/>
+  <g transform="translate(958 108)">
+    <rect class="card" width="276" height="126" rx="18"/>
     <text x="24" y="38" class="txt">模型供应 MaaS</text>
     <text x="24" y="66" class="sub">OpenAI 兼容接口</text>
     <text x="24" y="88" class="sub">国产云 / 自托管 self-host</text>
   </g>
-  <g transform="translate(850 292)">
-    <rect class="card" width="220" height="112" rx="18"/>
+  <g transform="translate(958 294)">
+    <rect class="card" width="276" height="126" rx="18"/>
     <text x="24" y="38" class="txt">资源层 Resources</text>
     <text x="24" y="66" class="sub">远程 URL / base64 / bytes</text>
     <text x="24" y="88" class="sub">S3 + resources 资源表</text>
   </g>
-  <g transform="translate(850 466)">
-    <rect class="card" width="220" height="112" rx="18"/>
+  <g transform="translate(958 480)">
+    <rect class="card" width="276" height="126" rx="18"/>
     <text x="24" y="38" class="txt">可观测 Observability</text>
     <text x="24" y="66" class="sub">运行 / 审计 / payload</text>
     <text x="24" y="88" class="sub">统计 stats / 成本 / 错误</text>
   </g>
 
-  <path class="line dash" d="M284 202 C330 202 340 240 384 260"/>
-  <path class="line dash" d="M284 420 C334 420 338 366 384 346"/>
-  <path class="line dash" d="M736 246 C790 216 800 170 850 168"/>
-  <path class="line dash" d="M736 320 C792 320 800 342 850 348"/>
-  <path class="line dash" d="M736 396 C792 438 808 508 850 518"/>
+  <path class="line dash" d="M316 207 C350 210 366 240 396 266"/>
+  <path class="line dash" d="M316 433 C356 430 368 378 396 356"/>
+  <path class="line dash" d="M854 248 C894 218 912 174 958 171"/>
+  <path class="line dash" d="M854 322 C908 326 920 350 958 357"/>
+  <path class="line dash" d="M854 402 C908 444 922 532 958 543"/>
 </svg>
