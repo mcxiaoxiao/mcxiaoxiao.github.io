@@ -108,6 +108,15 @@ LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成
 - **合规默认项还不够产品化。** 很多网关有日志和 guardrails，但数据脱敏、跨境策略、内容标识、留存期限、用户授权、模型备案状态仍需要业务层自己补齐。
 - **真正的业务闭环仍在 L3。** 对媒体生成和多 agent 产品来说，网关只把响应转发回来还不够；结果必须变成平台内可权限控制、可审计、可复用的资源。
 
+再看 issue，会比官网更接近产品真相：
+
+- APIPark 里，`ccly1996` 提出“离线网络环境下部署失败、需要离线部署教程”，`SamCheng0717` 提出“请求日志归档”，`alexmelt2582` 提出“本地模型非流式返回为空、流式正常”。[^50] 这说明企业 AI 网关的第一关不是炫技，而是内网可部署、日志可留存、流式/非流式一致。
+- LiteLLM 里，`YangJonggyu` 提出 Vercel AI Gateway 流式 `reasoning` 字段丢失，`dustinplattefourkites` 提出 Azure 缺 `base_model` 会让 router crash，`andresC98` 提出 hosted vLLM 不支持 `reasoning_effort`。[^51] 这说明 provider 参数、增量字段和错误降级都要保真，不能把“不认识”简单丢掉。
+- Higress、New API、Portkey、Bifrost 的 issue 也指向同一类问题：`johnlanni` 提出网关层透明上下文压缩，`sunmery` 提出 Kubernetes Gateway API 版本兼容，`zuoez02` 提出新增 SiliconFlow channel 后服务 panic；Portkey 和 Bifrost issue 里还反复出现 thinking 支持、retry 尾延迟、cost 重算、禁用 key、多 backend、homelab 部署等诉求。[^52][^53][^54][^55]
+- 强相关 serving 库也在背书这个方向：`FlynnOwen` 希望 vLLM Responses API 支持多模态输入，`qandrew` 把 vLLM H1 2026 重点放在 MCP、tool calling、parser/renderer 和 state offload；`jhinpan` 提出 SGLang Responses API 缺 custom function tools；`alvis233` 提出 llama-server `tool_calls` 参数类型破坏 OpenAI 兼容。[^56][^57][^58]
+
+所以，能 build in community 的是 provider adapter、参数 schema、OpenAPI/MCP 包、smoke case、部署 recipe 和复现模板；适合自运营的是托管对象存储/CDN、provider 健康探测、合规策略包、长期日志归档、成本账单、SLA 和企业支持。前者扩大生态，后者形成可收费的信任层。
+
 但这些方案通常解决的是“请求如何到模型”。媒体生成类产品还会遇到另一层问题：provider 返回的是临时 URL、base64、二进制、轮询任务结果或多子任务聚合结果。业务真正需要的不是临时链接，而是平台内稳定的 `resource_id`、对象存储 key、权限、审计记录和后续可编辑资产。
 
 因此，通用 L1/L2 网关可以作为入口或参考，但对图像、视频、音频、CV 和 agent 工作流来说，业务侧仍需要一层 L3：把外部执行结果收口进自己的资产体系和合规证据链。
@@ -397,5 +406,23 @@ logs/llmapi/{date}/
 [^48]: [Inference Gateway GitHub Repository](https://github.com/inference-gateway/inference-gateway)。Inference Gateway 是轻量级开源 AI gateway，覆盖多 provider 聚合、streaming、tool-use、vision、MCP 和 Prometheus metrics。
 
 [^49]: [agentgateway GitHub Repository](https://github.com/agentgateway/agentgateway)。agentgateway 面向 agent-to-agent、agent-to-tool、MCP、A2A 和 LLM 流量，体现了 agent 网络层治理正在形成独立方向。
+
+[^50]: APIPark issue 样本：[“离线网络环境下部署失败，无法下载相关镜像”](https://github.com/APIParkLab/APIPark/issues/438)、[“希望增加请求日志归档功能”](https://github.com/APIParkLab/APIPark/issues/428)、[“本地模型非流式返回为空，流式正常”](https://github.com/APIParkLab/APIPark/issues/427)。这些问题集中暴露了离线部署、日志归档和流式一致性诉求。
+
+[^51]: LiteLLM issue 样本：[Vercel AI Gateway 流式 reasoning 字段处理](https://github.com/BerriAI/litellm/issues/16155)、[Azure model 缺 base_model 导致 router 崩溃](https://github.com/BerriAI/litellm/issues/12351)、[hosted_vllm 不支持 reasoning_effort](https://github.com/BerriAI/litellm/issues/13608)。这些问题说明 provider 参数漂移和错误降级是网关核心复杂度。
+
+[^52]: Higress issue 样本：[agent 透明的上下文压缩与存储](https://github.com/higress-group/higress/issues/3077)、[Kubernetes Gateway API 版本兼容问题](https://github.com/higress-group/higress/issues/1667)。这些问题把长上下文外置记忆和云原生兼容性拉到网关设计里。
+
+[^53]: New API issue 样本：[新增 SiliconFlow channel 后服务 panic](https://github.com/QuantumNous/new-api/issues/2125)。这类问题提示渠道配置、迁移、回滚和故障隔离不能只靠人工排查。
+
+[^54]: Portkey AI Gateway issue 列表可见对 thinking、provider 兼容、流式响应和 retry 行为的持续反馈：[Portkey-AI/gateway issues](https://github.com/Portkey-AI/gateway/issues)。
+
+[^55]: Bifrost issue 列表可见 cost 重算、禁用 key、多 backend、homelab 部署和错误信息透出等诉求：[maximhq/bifrost issues](https://github.com/maximhq/bifrost/issues)。
+
+[^56]: vLLM issue 样本：[Responses API 多模态输入请求](https://github.com/vllm-project/vllm/issues/32685)、[vLLM H1 2026 roadmap / lookahead](https://github.com/vllm-project/vllm/issues/34857)。这些问题把 MCP、tool calling、parser/renderer、state offload 和多模态 serving 放到同一张技术路线图里。
+
+[^57]: SGLang issue 样本：[Responses API 缺 custom function tools](https://github.com/sgl-project/sglang/issues/10177)、[OpenAI tool calling / responses API 行为澄清](https://github.com/sgl-project/sglang/issues/9681)。这些问题说明 OpenAI-compatible 不等于 agent-compatible。
+
+[^58]: llama.cpp issue 样本：[llama-server tool_calls 参数类型破坏 OpenAI 兼容](https://github.com/ggml-org/llama.cpp/issues/15231)。本地推理服务也会遇到工具调用字段、JSON schema 和客户端兼容问题。
 
 ***
