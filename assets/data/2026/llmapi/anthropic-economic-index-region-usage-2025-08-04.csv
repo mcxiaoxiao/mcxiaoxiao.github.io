@@ -1,0 +1,12 @@
+source_dataset,release,date_start,date_end,metric,scope,region_zh,region_en,usage_count,known_geo_share_pct,all_rows_share_pct,notes
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,北美,North America,228626,28.1,23.7,US+CA
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,欧洲,Europe,172998,21.3,17.9,Europe country grouping
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,南亚,South Asia,87683,10.8,9.1,IN+PK+BD+LK+NP+AF+BT+MV
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,东亚,East Asia,80441,9.9,8.3,JP+KR+TW+CN+HK+MO+MN where present
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,拉美,Latin America,79540,9.8,8.2,Latin America country grouping
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,东南亚,Southeast Asia,61440,7.6,6.4,ID+TH+VN+PH+SG+MY+KH+MM+LA+BN+TL
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,非洲,Africa,38495,4.7,4.0,Africa country grouping
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,中东,MENA,33231,4.1,3.4,Middle East and North Africa country grouping
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,大洋洲,Oceania,22527,2.8,2.3,AU+NZ+FJ+PG
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,其他,Other,8514,1.0,0.9,Known countries outside listed groups
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,未归类,not_classified,150999,,15.7,Rows labeled not_classified in source data

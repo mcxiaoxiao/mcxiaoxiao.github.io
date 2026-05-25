@@ -1,0 +1,21 @@
+source_dataset,release,date_start,date_end,metric,scope,rank,geo_id,country_zh,country_en,usage_count,known_geo_share_pct,all_rows_share_pct
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,1,US,美国,United States,208200,25.6,21.6
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,2,IN,印度,India,68964,8.5,7.2
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,3,BR,巴西,Brazil,35482,4.4,3.7
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,4,JP,日本,Japan,35298,4.3,3.7
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,5,KR,韩国,South Korea,35285,4.3,3.7
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,6,GB,英国,United Kingdom,30474,3.7,3.2
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,7,DE,德国,Germany,25143,3.1,2.6
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,8,FR,法国,France,21314,2.6,2.2
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,9,CA,加拿大,Canada,20426,2.5,2.1
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,10,AU,澳大利亚,Australia,18753,2.3,1.9
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,11,ID,印尼,Indonesia,18030,2.2,1.9
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,12,IT,意大利,Italy,14383,1.8,1.5
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,13,TH,泰国,Thailand,12219,1.5,1.3
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,14,IL,以色列,Israel,10941,1.3,1.1
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,15,VN,越南,Vietnam,10651,1.3,1.1
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,16,ES,西班牙,Spain,10582,1.3,1.1
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,17,TR,土耳其,Turkey,10402,1.3,1.1
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,18,PL,波兰,Poland,9972,1.2,1.0
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,19,TW,中国台湾,Taiwan,9680,1.2,1.0
+Anthropic/EconomicIndex,release_2025_09_15,2025-08-04,2025-08-11,usage_count,Claude.ai Free/Pro country rows,20,PK,巴基斯坦,Pakistan,9264,1.1,1.0

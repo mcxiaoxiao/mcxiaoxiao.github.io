@@ -58,7 +58,7 @@ AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。St
 
 ![全球 LLM 使用强度代理数据可视化](/images/2026/llmapi/global-maas-gateway-mesh.svg)
 
-*🛜 公开模型厂商通常不披露全球 token 消耗绝对值。这里用 Anthropic Economic Index 的 Claude.ai Free/Pro country-level `usage_count` 做地区需求代理：北美、欧洲、南亚、东亚、拉美和东南亚构成主要使用区域；中国及国产 MaaS 的 token 消耗没有可比公开数据，因此在图中单独标注为未覆盖。[^63]*
+*🛜 公开模型厂商通常不披露全球 token 消耗绝对值。这里用 Anthropic Economic Index 的 Claude.ai Free/Pro country-level `usage_count` 做地区需求代理：北美、欧洲、南亚、东亚、拉美和东南亚构成主要使用区域；中国及国产 MaaS 的 token 消耗没有可比公开数据，因此在图中单独标注为未覆盖。衍生数据可直接打开：[地区聚合 CSV](/assets/data/2026/llmapi/anthropic-economic-index-region-usage-2025-08-04.csv)、[Top 国家 CSV](/assets/data/2026/llmapi/anthropic-economic-index-top-countries-2025-08-04.csv)。[^63]*
 
 ***
 
@@ -438,6 +438,6 @@ logs/llmapi/{date}/
 
 [^62]: [NIST Privacy-Enhancing Cryptography](https://csrc.nist.gov/projects/privacy-enhancing-cryptography)。NIST 将 private set intersection 等隐私增强密码技术作为在不暴露完整数据集合时完成协作计算的方向之一。
 
-[^63]: [Anthropic Economic Index Dataset](https://huggingface.co/datasets/Anthropic/EconomicIndex)。图中地区使用强度基于该数据集 `release_2025_09_15` 的 `aei_raw_claude_ai_2025-08-04_to_2025-08-11.csv`，筛选 `geography=country`、`variable=usage_count` 后按地区聚合；它是 Claude.ai Free/Pro 的公开使用代理，不代表全行业 token 消耗绝对值。
+[^63]: [Anthropic Economic Index Dataset](https://huggingface.co/datasets/Anthropic/EconomicIndex)。图中地区使用强度基于该数据集 `release_2025_09_15` 的 `aei_raw_claude_ai_2025-08-04_to_2025-08-11.csv`，筛选 `geography=country`、`variable=usage_count` 后按地区聚合；它是 Claude.ai Free/Pro 的公开使用代理，不代表全行业 token 消耗绝对值。本文保留了可直接打开的衍生 CSV：[地区聚合](/assets/data/2026/llmapi/anthropic-economic-index-region-usage-2025-08-04.csv)、[Top 国家](/assets/data/2026/llmapi/anthropic-economic-index-top-countries-2025-08-04.csv)。
 
 ***
