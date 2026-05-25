@@ -9,7 +9,7 @@ tags:
   - 市场
 ---
 
-LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-native 产品来说，它更像一层执行控制面：在 MaaS、对象存储、任务状态机、内容安全、成本统计和合规审计之间建立秩序。本文从我在 AI 漫画平台里自建 LLMAPI 模块的实践出发，讨论为什么通用聚合层还不够、媒体生成和多 agent 场景会怎样放大网关价值，以及以后面向国内小微团队的低门槛大模型网关可能长成什么样。
+LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-native 产品来说，它更像一层执行控制面：在 MaaS（Model-as-a-Service）、对象存储、任务状态机、内容安全、成本统计和合规审计之间建立秩序。本文从我在剧平台里自建 LLMAPI 模块的实践出发，讨论为什么通用聚合层还不够、媒体生成和多 agent 场景会怎样放大网关价值，以及以后面向国内小微团队的低门槛大模型网关可能长成什么样。
 
 ![标题图](/images/2026/llmapi/cover.png)
 
@@ -19,7 +19,7 @@ LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-na
 
 一条是工程线：我在开发某 AI 产品的 llmapi 模块时，面对多家 provider、多种模态、多种执行路径和越来越多的合规要求，最终选择自建网关，并逐步搭出一套包含任务状态机、资源持久化、key 运行时治理、日志审计和调用统计的系统。
 
-另一条是商业线：LLM API 接入正在从“调模型”变成“管理不确定的智能执行”。模型能力、价格、限流、地区、内容安全、数据出境、审计留痕都会变化。对 AI-native 产品来说，网关不只是技术中间件，而是把推理 aaS、模型供应商、业务资产和合规证据接到一起的控制面。
+另一条是商业线：LLM API 接入正在从“调模型”变成“管理不确定的智能执行”。模型能力、价格、限流、地区、内容安全、数据出境、审计留痕都会变化。对 AI-native 产品来说，网关不只是技术中间件，而是把 MaaS、模型供应商、业务资产和合规证据接到一起的控制面。
 
 我的结论很简单：通用 LLM 聚合层已经有价值，但在国内小微团队、媒体生成任务和合规友好自托管场景里，仍然存在一个没有被完全填上的位置。
 
@@ -33,7 +33,7 @@ LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-na
 
 **API 网关时代**：微服务之后，Kong、APISIX、Nginx Plus、AWS API Gateway 这一代基础设施把重点放到路由、认证、限流和观测。
 
-**LLM API 网关时代**：现在的问题又变了一层。OpenAI、Anthropic、阿里云百炼、火山方舟、MiniMax、Google AI、各类推理 aaS 和聚合平台都在快速变化。文本、图像、视频、音频、CV 服务的协议不同；同步返回、流式返回、提交任务后轮询的生命周期也不同。LiteLLM、OpenRouter、Portkey、Higress 等工具已经说明这个市场真实存在，但它们的侧重点不同：有的偏 OpenAI 兼容代理，有的偏 provider routing，有的偏企业治理和 guardrails，有的偏云原生网关插件化。[^1][^2][^3][^4]
+**LLM API 网关时代**：现在的问题又变了一层。OpenAI、Anthropic、阿里云百炼、火山方舟、MiniMax、Google AI、各类 MaaS 和聚合平台都在快速变化。文本、图像、视频、音频、CV 服务的协议不同；同步返回、流式返回、提交任务后轮询的生命周期也不同。LiteLLM、OpenRouter、Portkey、Higress 等工具已经说明这个市场真实存在，但它们的侧重点不同：有的偏 OpenAI 兼容代理，有的偏 provider routing，有的偏企业治理和 guardrails，有的偏云原生网关插件化。[^1][^2][^3][^4]
 
 历史规律很清楚：新的后端生态爆发之后，中间层会从“能接入”走向“可运维”，再走向“可审计”。LLM API 这条线正在这个过程中。
 
@@ -46,15 +46,15 @@ LLM API 网关不是“把几个模型接口包一层”这么简单。对 AI-na
 | 层级 | 定位       | 典型形态                                                     | 核心价值                      |
 | -- | -------- | -------------------------------------------------------- | ------------------------- |
 | L0 | 模型与推理执行层 | OpenAI、Claude、Gemini、Qwen、DeepSeek、Llama、vLLM、SGLang、TGI | 产出 token、图片、视频、音频或分析结果    |
-| L1 | API 聚合层  | LiteLLM、OpenRouter、One API、Evolink                       | 统一接口、模型路由、fallback、key 管理 |
-| L2 | 网关治理层    | Portkey、Higress、Cloudflare AI Gateway、Kong AI Gateway、Envoy AI Gateway | 预算、限流、观测、guardrails、插件治理  |
+| L1 | API 聚合层  | LiteLLM[^1]、OpenRouter[^2]、One API[^35]、Evolink[^36]                       | 统一接口、模型路由、fallback、key 管理 |
+| L2 | 网关治理层    | Portkey[^3]、Higress[^4]、Cloudflare AI Gateway[^21]、Kong AI Gateway[^22]、Envoy AI Gateway[^23] | 预算、限流、观测、guardrails、插件治理  |
 | L3 | 业务资产与合规层 | 自建或深度定制                                                  | 任务状态机、资源入库、内容审核、审计证据、业务权限 |
 
 AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。Stanford AI Index 记录到生成式 AI 私人投资持续增长；McKinsey 2025 年调研也显示企业正在从试点走向 agentic AI 实验和局部扩展，但真正把价值吃下来的公司仍是少数。[^5][^6] Gartner 对 agentic AI 的判断更冷静：一边预测企业软件会快速加入 agentic 能力，一边提醒大量项目会因为 ROI、风险控制和产品包装不清而取消。[^7]
 
-这对 LLMAPI 网关的启发是：未来的瓶颈不只是“有没有模型可用”，而是“能不能把模型调用变成可治理、可追踪、可计费、可复盘的业务执行”。推理 aaS 会继续降低算力和模型门槛，但它也会把 provider 波动、区域合规、价格策略和结果持久化问题留给上层系统。
+这对 LLMAPI 网关的启发是：未来的瓶颈不只是“有没有模型可用”，而是“能不能把模型调用变成可治理、可追踪、可计费、可复盘的业务执行”。MaaS 会继续降低算力和模型门槛，但它也会把 provider 波动、区域合规、价格策略和结果持久化问题留给上层系统。
 
-模型层本身也在分化：闭源 API 模型继续提供最高上限和多模态产品化能力，OpenAI、Claude、Gemini 这类模型族持续强化工具调用、长上下文、音视频和 agent 能力。[^35][^36][^37] 开源或开放权重模型则让私有化、低成本和可控部署变得现实，Qwen、DeepSeek、Llama、Mistral 等生态正在快速成熟。[^38][^39][^40][^41] 与此同时，vLLM、SGLang、TensorRT-LLM、TGI、Ollama、llama.cpp 这类推理框架把自托管推理从“能跑”推向“可服务化”。[^29][^30][^31][^32][^33][^34] 这意味着 LLMAPI 网关不能只假设“上游是一个 OpenAI 兼容接口”，而要准备面对闭源 API、国产云、聚合商、自托管推理、离线模型和多模态专用模型的混合运行。
+模型层本身也在分化：闭源 API 模型继续提供最高上限和多模态产品化能力，OpenAI、Claude、Gemini 这类模型族持续强化工具调用、长上下文、音视频和 agent 能力；开源或开放权重模型则让私有化、低成本和可控部署变得现实，Qwen、DeepSeek、Llama、Mistral 等生态正在快速成熟。与此同时，vLLM、SGLang、TensorRT-LLM、TGI、Ollama、llama.cpp 这类推理框架把自托管推理从“能跑”推向“可服务化”。[^29][^30][^31][^32][^33][^34] 这意味着 LLMAPI 网关不能只假设“上游是一个 OpenAI 兼容接口”，而要准备面对闭源 API、国产云、聚合商、自托管推理、离线模型和多模态专用模型的混合运行。
 
 ***
 
@@ -188,7 +188,7 @@ logs/llmapi/{date}/
 
 每个关键节点记录 `request_id / trace_id / task_id / provider_task_id / key_id / latency_ms` 等信息。`submit_poll` 进度变化达到阈值时会单独写轮询事件，方便回放任务生命周期。
 
-> 详细架构、执行链路和 adapter 开发规范见 [docs/llmapi](./docs/llmapi/README.md)。
+
 
 ***
 
@@ -208,11 +208,11 @@ logs/llmapi/{date}/
 
 ***
 
-## 八、展望：推理 aaS 与 LLMAPI 网关会走向哪里
+## 八、展望：MaaS 与 LLMAPI 网关会走向哪里
 
 我更愿意把未来的 LLMAPI 网关理解成 AI-native 产品的控制面，而不是传统意义上的代理。
 
-**第一，推理 aaS 会商品化，但调用治理不会商品化。** 模型和推理资源会越来越像云计算里的算力实例，价格下降、可替换性上升。但真正困难的是动态选择：哪次请求该走哪个 provider，是否需要零留存，是否允许境外端点，失败后能不能 fallback，结果是否已经落库，成本是否超预算。
+**第一，MaaS 会商品化，但调用治理不会商品化。** 模型和推理资源会越来越像云计算里的算力实例，价格下降、可替换性上升。但真正困难的是动态选择：哪次请求该走哪个 provider，是否需要零留存，是否允许境外端点，失败后能不能 fallback，结果是否已经落库，成本是否超预算。
 
 **第二，网关的合约会从 API contract 升级为 execution contract。** 过去的 API 网关关心路径、鉴权和限流；LLMAPI 网关还要关心 prompt、输入资源、输出资源、任务状态、内容安全、审计证据和人类复核点。它管理的不是一次 HTTP 请求，而是一段不确定执行。
 
@@ -314,32 +314,20 @@ logs/llmapi/{date}/
 
 [^28]: [Microsoft Semantic Kernel Agents](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/)。Semantic Kernel 的 agent 框架提供 agent 定义、协作和工具编排能力。
 
-[^29]: [vLLM Documentation](https://docs.vllm.ai/)。vLLM 是高吞吐 LLM serving 框架，常用于自托管开源模型和兼容 OpenAI API 的推理服务。
+[^29]: [vLLM GitHub Repository](https://github.com/vllm-project/vllm)。vLLM 是高吞吐 LLM serving 框架，常用于自托管开源模型和兼容 OpenAI API 的推理服务。
 
-[^30]: [SGLang Documentation](https://docs.sglang.ai/)。SGLang 面向 LLM 和 VLM 的高性能 serving 与结构化生成场景。
+[^30]: [SGLang GitHub Repository](https://github.com/sgl-project/sglang)。SGLang 面向 LLM 和 VLM 的高性能 serving 与结构化生成场景。
 
-[^31]: [NVIDIA TensorRT-LLM Documentation](https://nvidia.github.io/TensorRT-LLM/)。TensorRT-LLM 提供面向 NVIDIA GPU 的 LLM 优化、部署和推理加速能力。
+[^31]: [NVIDIA TensorRT-LLM GitHub Repository](https://github.com/NVIDIA/TensorRT-LLM)。TensorRT-LLM 提供面向 NVIDIA GPU 的 LLM 优化、部署和推理加速能力。
 
-[^32]: [Hugging Face Text Generation Inference Documentation](https://huggingface.co/docs/text-generation-inference/index)。TGI 是 Hugging Face 的生产级文本生成推理服务。
+[^32]: [Hugging Face Text Generation Inference GitHub Repository](https://github.com/huggingface/text-generation-inference)。TGI 是 Hugging Face 的生产级文本生成推理服务。
 
 [^33]: [Ollama](https://github.com/ollama/ollama)。Ollama 提供本地运行和管理开源模型的工具链，适合个人开发和轻量私有化实验。
 
 [^34]: [llama.cpp](https://github.com/ggml-org/llama.cpp)。llama.cpp 是本地和边缘设备运行 LLM 的重要开源项目，强调低依赖和多硬件后端。
 
-[^35]: [OpenAI Models Documentation](https://platform.openai.com/docs/models)。OpenAI 模型文档列出 GPT、音频、图像等模型族及其能力边界。
+[^35]: [One API GitHub Repository](https://github.com/songquanpeng/one-api)。One API 是开源的 LLM API 管理与分发系统，用于统一多 provider 接入、key 管理和二次分发。
 
-[^36]: [Anthropic Claude Models Documentation](https://docs.anthropic.com/en/docs/about-claude/models/overview)。Anthropic 文档说明 Claude 模型族、能力、上下文窗口和使用建议。
-
-[^37]: [Google Gemini API Models Documentation](https://ai.google.dev/gemini-api/docs/models)。Gemini API 文档列出 Google Gemini 模型族和多模态能力。
-
-[^38]: [Qwen Documentation](https://qwen.readthedocs.io/en/latest/)。Qwen 文档覆盖阿里通义千问开源模型、部署、推理和应用示例。
-
-[^39]: [DeepSeek API Documentation](https://api-docs.deepseek.com/)。DeepSeek 文档提供模型、API 调用、价格和接入说明。
-
-[^40]: [Meta Llama Documentation](https://www.llama.com/docs/overview/)。Llama 官方文档介绍 Meta Llama 模型生态、部署和使用方式。
-
-[^41]: [Mistral AI Models Documentation](https://docs.mistral.ai/getting-started/models/models_overview/)。Mistral AI 文档介绍其开源和商业模型族、能力边界和部署方式。
+[^36]: [EvoLink Documentation](https://docs.evolink.ai/en/introduction)。EvoLink 定位为企业 AI gateway / 统一模型访问层，覆盖文本、图像、视频、音频模型接入、任务管理和用量追踪。
 
 ***
-
-
