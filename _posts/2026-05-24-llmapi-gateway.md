@@ -112,11 +112,11 @@ LiteLLM 的优势在于 OpenAI 兼容接口、虚拟 key、预算、路由和成
 - **合规默认项还不够产品化。** 很多网关有日志和 guardrails，但数据脱敏、跨境策略、内容标识、留存期限、用户授权、模型备案状态仍需要业务层自己补齐。
 - **业务闭环可能继续上移到 L3。** 对媒体生成、长任务和 agent 工具链来说，网关只把响应转发回来往往还不够；结果还要进入平台内可权限控制、可审计、可复用的资源体系。
 
-再看 issue，会比官网更接近产品摩擦，但它也只能作为样本证据。这里把 APIPark、LiteLLM、Higress、New API、Portkey、Bifrost、vLLM、SGLang、llama.cpp 中 18 条公开 issue observation 做了一个目的性编码：每条只归入一个主类，保留 secondary tags，用来减少“凭直觉下结论”的风险。[^50][^51][^52][^53][^54][^55][^56][^57][^58]
+再看 issue，会比官网更接近产品摩擦，但它也只能作为样本证据。这里把 APIPark、LiteLLM、Higress、New API、Portkey、Bifrost、APISIX、Envoy AI Gateway、Helicone、vLLM、SGLang、llama.cpp 中 75 条公开 issue observation 做了一个目的性编码：每条只归入一个主类，保留 secondary tags，用来减少“凭直觉下结论”的风险。[^50][^51][^52][^53][^54][^55][^56][^57][^58]
 
 ![LLM 网关 issue 样本编码统计](/images/2026/llmapi/issue-taxonomy.svg)
 
-*📄 样本不随机，不能代表全部市场；它更适合用来识别工程摩擦的类型。完整数据可直接打开：[样本编码 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-sample.csv)、[分类计数 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-category-counts.csv)、[能力归属 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-build-locus-counts.csv)。*
+*📄 样本不随机，不能代表全部市场；它更适合用来识别工程摩擦的类型。完整数据可直接打开：[样本编码 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-sample.csv)、[分类计数 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-category-counts.csv)、[能力归属 CSV](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-build-locus-counts.csv)、[论文附录式 PDF](/assets/data/2026/llmapi/issue-taxonomy/llm-gateway-issue-appendix.pdf)。*
 
 这组样本中，最密集的问题不是“多接几个模型”，而是 provider adapter/schema、流式协议一致性、agent/tool 状态、部署运维、日志成本和可靠性治理。更稳妥的表述是：provider adapter、参数 schema、OpenAPI/MCP 包、smoke case、部署 recipe 和复现模板适合 build in community；托管对象存储/CDN、provider 健康探测、合规策略包、长期日志归档、成本账单、SLA 和企业支持更偏平台自运营。
 

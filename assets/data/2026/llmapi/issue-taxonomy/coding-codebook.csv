@@ -1,0 +1,6 @@
+field,definition
+primary_category,Single dominant issue class assigned from title and surrounding issue context.
+secondary_tags,Non-exclusive classes matched by keyword and manual review.
+build_locus,"community_build_in / self_operated / mixed, indicating likely productization locus."
+relevance_to_l3,low / medium / high relevance to business asset layer and compliance evidence chain.
+evidence_type,exact_issue_html means issue metadata was collected from public GitHub HTML issue search pages.

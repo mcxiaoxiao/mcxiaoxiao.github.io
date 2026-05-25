@@ -1,0 +1,34 @@
+{
+  "retrieved_at": "2026-05-25",
+  "source": "GitHub HTML issue search pages",
+  "repos": {
+    "APIPark": "APIParkLab/APIPark",
+    "LiteLLM": "BerriAI/litellm",
+    "Higress": "higress-group/higress",
+    "New API": "QuantumNous/new-api",
+    "Portkey": "Portkey-AI/gateway",
+    "Bifrost": "maximhq/bifrost",
+    "vLLM": "vllm-project/vllm",
+    "SGLang": "sgl-project/sglang",
+    "llama.cpp": "ggml-org/llama.cpp",
+    "Envoy AI Gateway": "envoyproxy/ai-gateway",
+    "Helicone": "Helicone/helicone",
+    "APISIX": "apache/apisix"
+  },
+  "queries": [
+    "is:issue",
+    "is:issue stream",
+    "is:issue tool",
+    "is:issue deploy",
+    "is:issue log",
+    "is:issue openai",
+    "is:issue retry",
+    "is:issue image"
+  ],
+  "raw_unique": 615,
+  "coded_unique": 427,
+  "selected": 75,
+  "sampling": "purposeful cross-project issue sample; not a probability sample",
+  "supplement": "11 exact issues were added from strongly related serving/API-gateway projects already cited or adjacent to the article: vLLM, SGLang, llama.cpp, and APISIX ai-proxy/ai-cache/ai-rag issues.",
+  "limits": "titles and list-page metadata are used for coding; issue bodies are not reproduced"
+}
