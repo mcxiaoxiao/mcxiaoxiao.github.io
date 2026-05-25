@@ -1,0 +1,10 @@
+region_zh,region_en,composite_index_0_100,confidence_band,anthropic_usage_count_2025_08_04,anthropic_known_geo_share_pct,evidence_summary,correction_note
+东亚,East Asia,100,very_high,80441,9.9,"中国生成式 AI 用户规模、日韩台 Claude/ChatGPT 使用、WIPO/Stanford 供给侧指标、国产 MaaS 与应用生态","Anthropic Claude.ai 国家数据不完整覆盖中国大陆和国产 MaaS，因此不宜把 9.9% 直接解释为东亚 token 份额。"
+北美,North America,95,very_high,228626,28.1,"美国 Claude.ai 使用第一梯队、模型/API 供应商集中、企业 AI 投入和数据中心供给强","公开 Claude 代理和供给侧指标都强，综合指数接近东亚。"
+欧洲,Europe,72,high,172998,21.3,"Claude.ai 使用高、企业采用和监管治理需求强、区域市场分散","供给侧集中度低于中美，但治理型网关需求明确。"
+南亚,South Asia,62,high,87683,10.8,"印度用户规模、开发者生态和 GenAI Web 流量强","Anthropic 对印度覆盖较好，需求更偏应用和开发者侧。"
+东南亚,Southeast Asia,48,medium_high,61440,7.6,"印尼、越南、泰国、菲律宾、新加坡等移动优先市场增长快","绝对消费增长明显，但自有模型/API 供给和企业预算集中度低于中美欧。"
+拉美,Latin America,42,medium_high,79540,9.8,"巴西、墨西哥、阿根廷、哥伦比亚等 GenAI Web 流量和 Claude 代理较强","需求强于供给侧基础设施，网关更偏聚合、成本和可用性。"
+中东,MENA,32,medium,33231,4.1,"阿联酋、沙特、以色列等 AI 投资和治理需求集中","高投入国家拉高区域质量，但总体人口和开发者规模小于东亚/北美/欧洲。"
+非洲,Africa,24,emerging,38495,4.7,"尼日利亚、埃及、南非、肯尼亚等使用增长，网络和支付基础设施仍限制规模化","更适合看作高增长潜力区，不宜用当期绝对量判断长期需求。"
+大洋洲,Oceania,18,medium,22527,2.8,"澳大利亚和新西兰人均使用较高但人口基数小","绝对需求较小，但企业治理型场景较成熟。"

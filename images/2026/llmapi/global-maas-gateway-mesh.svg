@@ -1,185 +1,201 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
-  <title id="title">全球 LLM 地区使用强度代理数据可视化</title>
-  <desc id="desc">基于 Anthropic Economic Index 公开 country-level usage_count 数据，将 Claude.ai Free/Pro 在 2025-08-04 至 2025-08-11 的地区使用量聚合为 token 需求代理。该图不是全行业 token 绝对消耗量。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">全球 LLM 区域需求综合代理指数</title>
+  <desc id="desc">多源综合估算 2026 年全球 LLM 与 MaaS 区域需求强度，东亚、北美、欧洲、南亚为主要需求带。该图不是全球 token 消耗真值。</desc>
   <defs>
-    <radialGradient id="ocean" cx="43%" cy="35%" r="72%">
-      <stop offset="0%" stop-color="#67e8f9"/>
-      <stop offset="42%" stop-color="#2563eb"/>
-      <stop offset="100%" stop-color="#06111f"/>
-    </radialGradient>
-    <linearGradient id="barBlue" x1="0" x2="1">
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="54%" stop-color="#07162e"/>
+      <stop offset="100%" stop-color="#101827"/>
+    </linearGradient>
+    <linearGradient id="asia" x1="0" x2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="52%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="1">
       <stop offset="0%" stop-color="#22d3ee"/>
       <stop offset="100%" stop-color="#6366f1"/>
     </linearGradient>
-    <linearGradient id="barAmber" x1="0" x2="1">
-      <stop offset="0%" stop-color="#fbbf24"/>
-      <stop offset="100%" stop-color="#fb7185"/>
+    <linearGradient id="green" x1="0" x2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
     </linearGradient>
-    <filter id="glow" x="-45%" y="-45%" width="190%" height="190%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <linearGradient id="warm" x1="0" x2="1">
+      <stop offset="0%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-60%" width="180%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <clipPath id="globeClip">
-      <circle cx="388" cy="360" r="238"/>
-    </clipPath>
     <style>
-      .bg { fill: #020617; }
-      .grid { stroke: rgba(148, 163, 184, .13); stroke-width: 1; fill: none; }
-      .title { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 33px; font-weight: 820; letter-spacing: 0; }
-      .subtitle { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; font-size: 13px; font-weight: 560; letter-spacing: 0; }
-      .label { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; font-size: 15px; font-weight: 740; letter-spacing: 0; }
-      .small { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; font-size: 12px; font-weight: 620; letter-spacing: 0; }
-      .tiny { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; font-size: 10.5px; font-weight: 620; letter-spacing: 0; }
-      .panel { fill: rgba(15, 23, 42, .78); stroke: rgba(148, 163, 184, .30); stroke-width: 1; }
-      .ocean { fill: url(#ocean); stroke: rgba(125, 211, 252, .48); stroke-width: 8; }
-      .latlon { fill: none; stroke: rgba(191, 219, 254, .28); stroke-width: 1.1; }
-      .land { fill: rgba(74, 222, 128, .64); stroke: rgba(236, 253, 245, .78); stroke-width: 1.3; }
-      .terrain { fill: none; stroke: rgba(5, 150, 105, .45); stroke-width: 1; stroke-linecap: round; }
-      .bubble { fill: rgba(34, 211, 238, .32); stroke: #22d3ee; stroke-width: 2.6; filter: url(#glow); }
-      .bubble2 { fill: rgba(251, 191, 36, .28); stroke: #fbbf24; stroke-width: 2.4; filter: url(#glow); }
-      .missing { fill: rgba(148, 163, 184, .15); stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 7 7; }
-      .barBg { fill: rgba(30, 41, 59, .82); }
-      .bar { fill: url(#barBlue); filter: url(#glow); }
-      .barWarm { fill: url(#barAmber); filter: url(#glow); }
-      .barUnknown { fill: rgba(148, 163, 184, .55); }
-      .source { fill: #64748b; font-size: 10.5px; }
-      .pulse { fill: none; stroke: #67e8f9; stroke-width: 2; opacity: .5; animation: pulse 2.8s ease-out infinite; }
-      @keyframes pulse { 0% { r: 8; opacity: .55; } 100% { r: 46; opacity: 0; } }
+      .bg { fill: url(#bg); }
+      .grid { stroke: rgba(148, 163, 184, .12); stroke-width: 1; }
+      .title { font: 820 32px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
+      .subtitle { font: 640 13px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #a8b3c7; letter-spacing: 0; }
+      .h2 { font: 800 19px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f8fafc; letter-spacing: 0; }
+      .label { font: 760 15px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e5e7eb; letter-spacing: 0; }
+      .small { font: 650 12px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #cbd5e1; letter-spacing: 0; }
+      .tiny { font: 620 10.6px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #94a3b8; letter-spacing: 0; }
+      .num { font: 860 28px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; letter-spacing: 0; }
+      .panel { fill: rgba(15, 23, 42, .72); stroke: rgba(148, 163, 184, .26); stroke-width: 1.2; }
+      .chip { fill: rgba(30, 41, 59, .82); stroke: rgba(148, 163, 184, .22); stroke-width: 1; }
+      .track { fill: rgba(51, 65, 85, .70); }
+      .barAsia { fill: url(#asia); filter: url(#glow); }
+      .barBlue { fill: url(#blue); filter: url(#glow); }
+      .barGreen { fill: url(#green); filter: url(#glow); }
+      .barWarm { fill: url(#warm); filter: url(#glow); }
+      .dotAsia { fill: #fb7185; stroke: #fde68a; stroke-width: 2; }
+      .dotBlue { fill: #22d3ee; stroke: #bfdbfe; stroke-width: 2; }
+      .dotGreen { fill: #34d399; stroke: #ccfbf1; stroke-width: 2; }
+      .muted { fill: #64748b; }
+      .mapLand { fill: rgba(45, 212, 191, .28); stroke: rgba(165, 243, 252, .42); stroke-width: 1.2; }
+      .route { fill: none; stroke: rgba(125, 211, 252, .42); stroke-width: 1.5; stroke-dasharray: 6 8; }
+      .pulse { fill: none; stroke: #67e8f9; stroke-width: 2; opacity: .55; animation: pulse 2.6s ease-out infinite; }
+      @keyframes pulse { 0% { r: 8; opacity: .55; } 100% { r: 42; opacity: 0; } }
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="680"/>
-  <path class="grid" d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M0 640H1200"/>
-  <path class="grid" d="M80 0V680M200 0V680M320 0V680M440 0V680M560 0V680M680 0V680M800 0V680M920 0V680M1040 0V680M1160 0V680"/>
+  <rect class="bg" width="1200" height="760"/>
+  <path class="grid" d="M0 86H1200M0 172H1200M0 258H1200M0 344H1200M0 430H1200M0 516H1200M0 602H1200M0 688H1200"/>
+  <path class="grid" d="M90 0V760M180 0V760M270 0V760M360 0V760M450 0V760M540 0V760M630 0V760M720 0V760M810 0V760M900 0V760M990 0V760M1080 0V760"/>
 
-  <text x="54" y="58" class="title">全球 LLM 使用强度代理 / Regional Token Demand Proxy</text>
-  <text x="56" y="88" class="subtitle">数据源：Anthropic Economic Index，Claude.ai Free/Pro country-level usage_count，2025-08-04 至 2025-08-11；单位为使用次数代理，不是全行业 token 真值。</text>
+  <text x="44" y="54" class="title">全球 LLM 需求综合代理 / Regional LLM Demand Proxy 2026E</text>
+  <text x="46" y="84" class="subtitle">多源估算：用户规模 + GenAI 流量 + Claude.ai usage_count + AI 供给侧 + readiness；不是全球 token 账单，也不代表单一厂商份额。</text>
 
-  <circle cx="388" cy="360" r="238" class="ocean"/>
-  <g clip-path="url(#globeClip)">
-    <ellipse cx="388" cy="360" rx="238" ry="78" class="latlon"/>
-    <ellipse cx="388" cy="360" rx="238" ry="148" class="latlon"/>
-    <path class="latlon" d="M150 360C232 284 309 246 388 246s156 38 238 114"/>
-    <path class="latlon" d="M150 360C232 436 309 474 388 474s156-38 238-114"/>
-    <path class="latlon" d="M388 122C340 199 316 279 316 360s24 161 72 238"/>
-    <path class="latlon" d="M388 122C436 199 460 279 460 360s-24 161-72 238"/>
-
-    <path class="land" d="M190 260c25-50 77-78 131-72 38 4 69 24 92 54-24 8-42 12-63 29-21 17-43 6-67 10-31 5-43 44-72 34-24-9-32-35-21-55z"/>
-    <path class="land" d="M255 324c32-8 68 4 86 29 18 25 7 55-26 63-35 9-77-18-78-52-1-20 8-32 18-40z"/>
-    <path class="land" d="M312 400c36 8 67 44 62 82-4 33-28 58-36 91-4 17-23 24-35 8-14-18-2-40-20-62-20-25-18-69 4-96 10-12 11-20 25-23z"/>
-    <path class="land" d="M383 199c35-25 83-21 112 5 20 18 13 39-20 48-40 11-86-4-103-31-7-11-3-17 11-22z"/>
-    <path class="land" d="M468 266c63-47 151-38 196 16 34 41 17 93-33 105-33 8-42 38-82 44-44 7-82-18-95-54-12-32-30-33-16-66 7-17 15-31 30-45z"/>
-    <path class="land" d="M443 330c42-14 91 11 111 60 21 52-4 114-51 142-28 17-49-5-49-36 0-25-20-45-30-70-15-39-13-80 19-96z"/>
-    <path class="land" d="M534 420c31 6 58 30 65 61-36 1-68-22-65-61z"/>
-    <path class="land" d="M580 492c45-21 94-5 122 27-30 30-96 36-127 8-12-11-8-25 5-35z"/>
-    <path class="terrain" d="M204 270c37-20 79-23 116-9M230 300c32 13 70 14 103 0M395 220c30-9 66-6 96 7M486 302c52-16 105-8 145 21M496 356c34 14 72 14 105 0M466 408c30 13 48 38 49 72M314 447c25 22 35 55 21 86M592 516c29 10 63 11 91 0"/>
+  <g transform="translate(44 118)">
+    <rect class="panel" width="346" height="104" rx="18"/>
+    <text x="24" y="34" class="small">最高需求带 Top band</text>
+    <text x="24" y="72" class="num">东亚 East Asia · 100</text>
+    <text x="24" y="92" class="tiny">中国 AI 用户规模 + 国产 MaaS + 日韩台公开工具使用</text>
+  </g>
+  <g transform="translate(424 118)">
+    <rect class="panel" width="346" height="104" rx="18"/>
+    <text x="24" y="34" class="small">模型/API 供给中心 Supply hub</text>
+    <text x="24" y="72" class="num">北美 North America · 95</text>
+    <text x="24" y="92" class="tiny">美国 Claude 可见使用、企业 AI 投入和模型公司集中</text>
+  </g>
+  <g transform="translate(804 118)">
+    <rect class="panel" width="352" height="104" rx="18"/>
+    <text x="24" y="34" class="small">治理与企业市场 Governance market</text>
+    <text x="24" y="72" class="num">欧洲 Europe · 72</text>
+    <text x="24" y="92" class="tiny">使用强、监管强，网关更像审计与合规控制面</text>
   </g>
 
-  <!-- Country / region bubbles based on usage_count proxy. -->
-  <circle cx="252" cy="306" r="38" class="bubble"/><circle cx="252" cy="306" r="10" class="pulse"/>
-  <text x="205" y="260" class="label">美国 US</text>
-  <text x="205" y="279" class="small">208.2k · 25.6%</text>
+  <g transform="translate(44 254)">
+    <rect class="panel" width="690" height="408" rx="22"/>
+    <text x="28" y="42" class="h2">区域需求指数 / Demand Index (0-100)</text>
+    <text x="28" y="64" class="tiny">按公开资料综合归一化：能说明相对强度，不能换算为 token 数。</text>
 
-  <circle cx="425" cy="248" r="32" class="bubble"/>
-  <text x="390" y="193" class="label">欧洲 Europe</text>
-  <text x="390" y="212" class="small">173.0k · 21.3%</text>
+    <g transform="translate(28 94)">
+      <text x="0" y="17" class="label">东亚 East Asia</text>
+      <rect x="172" y="0" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="0" width="430" height="22" rx="11" class="barAsia"/>
+      <text x="620" y="17" class="label">100</text>
 
-  <circle cx="510" cy="384" r="23" class="bubble2"/>
-  <text x="528" y="386" class="label">南亚</text>
-  <text x="528" y="405" class="small">87.7k · 10.8%</text>
+      <text x="0" y="57" class="label">北美 North America</text>
+      <rect x="172" y="40" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="40" width="409" height="22" rx="11" class="barBlue"/>
+      <text x="620" y="57" class="label">95</text>
 
-  <circle cx="585" cy="338" r="22" class="bubble2"/>
-  <text x="606" y="330" class="label">东亚</text>
-  <text x="606" y="349" class="small">80.4k · 9.9%</text>
+      <text x="0" y="97" class="label">欧洲 Europe</text>
+      <rect x="172" y="80" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="80" width="310" height="22" rx="11" class="barGreen"/>
+      <text x="620" y="97" class="label">72</text>
 
-  <circle cx="286" cy="470" r="22" class="bubble2"/>
-  <text x="190" y="478" class="label">拉美 LatAm</text>
-  <text x="190" y="497" class="small">79.5k · 9.8%</text>
+      <text x="0" y="137" class="label">南亚 South Asia</text>
+      <rect x="172" y="120" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="120" width="267" height="22" rx="11" class="barWarm"/>
+      <text x="620" y="137" class="label">62</text>
 
-  <circle cx="593" cy="425" r="19" class="bubble2"/>
-  <text x="612" y="430" class="label">东南亚 SEA</text>
-  <text x="612" y="449" class="small">61.4k · 7.6%</text>
+      <text x="0" y="177" class="label">东南亚 SEA</text>
+      <rect x="172" y="160" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="160" width="206" height="22" rx="11" class="barWarm"/>
+      <text x="620" y="177" class="label">48</text>
 
-  <circle cx="455" cy="456" r="15" class="bubble2"/>
-  <text x="402" y="504" class="label">非洲</text>
-  <text x="402" y="523" class="small">38.5k · 4.7%</text>
+      <text x="0" y="217" class="label">拉美 LatAm</text>
+      <rect x="172" y="200" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="200" width="181" height="22" rx="11" class="barWarm"/>
+      <text x="620" y="217" class="label">42</text>
 
-  <circle cx="486" cy="338" r="14" class="bubble2"/>
-  <text x="458" y="318" class="small">中东 33.2k</text>
+      <text x="0" y="257" class="label">中东 MENA</text>
+      <rect x="172" y="240" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="240" width="138" height="22" rx="11" class="barWarm"/>
+      <text x="620" y="257" class="label">32</text>
 
-  <circle cx="568" cy="330" r="15" class="missing"/>
-  <text x="604" y="291" class="tiny">中国/国产 MaaS</text>
-  <text x="604" y="307" class="tiny">本数据集未覆盖</text>
+      <text x="0" y="297" class="label">非洲 Africa</text>
+      <rect x="172" y="280" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="280" width="103" height="22" rx="11" class="barWarm"/>
+      <text x="620" y="297" class="label">24</text>
 
-  <g transform="translate(690 128)">
-    <rect class="panel" width="438" height="462" rx="18"/>
-    <text x="24" y="38" class="label" style="font-size:21px">地区聚合：usage_count 代理指标</text>
-    <text x="24" y="62" class="tiny">Known geo total = 813.5k；not_classified = 151.0k（15.7% of all rows）</text>
-
-    <g transform="translate(24 92)">
-      <text x="0" y="16" class="small">北美 North America</text>
-      <rect x="150" y="3" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="3" width="360" height="18" rx="9" class="bar"/>
-      <text x="375" y="17" class="small">228.6k · 28.1%</text>
-
-      <text x="0" y="52" class="small">欧洲 Europe</text>
-      <rect x="150" y="39" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="39" width="272" height="18" rx="9" class="bar"/>
-      <text x="375" y="53" class="small">173.0k · 21.3%</text>
-
-      <text x="0" y="88" class="small">南亚 South Asia</text>
-      <rect x="150" y="75" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="75" width="138" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="89" class="small">87.7k · 10.8%</text>
-
-      <text x="0" y="124" class="small">东亚 East Asia</text>
-      <rect x="150" y="111" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="111" width="127" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="125" class="small">80.4k · 9.9%</text>
-
-      <text x="0" y="160" class="small">拉美 LatAm</text>
-      <rect x="150" y="147" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="147" width="125" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="161" class="small">79.5k · 9.8%</text>
-
-      <text x="0" y="196" class="small">东南亚 SEA</text>
-      <rect x="150" y="183" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="183" width="97" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="197" class="small">61.4k · 7.6%</text>
-
-      <text x="0" y="232" class="small">非洲 Africa</text>
-      <rect x="150" y="219" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="219" width="61" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="233" class="small">38.5k · 4.7%</text>
-
-      <text x="0" y="268" class="small">中东 MENA</text>
-      <rect x="150" y="255" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="255" width="52" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="269" class="small">33.2k · 4.1%</text>
-
-      <text x="0" y="304" class="small">大洋洲 Oceania</text>
-      <rect x="150" y="291" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="291" width="35" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="305" class="small">22.5k · 2.8%</text>
-
-      <text x="0" y="340" class="small">其他 Other</text>
-      <rect x="150" y="327" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="327" width="13" height="18" rx="9" class="barWarm"/>
-      <text x="375" y="341" class="small">8.5k · 1.0%</text>
-
-      <text x="0" y="386" class="small">未归类 not_classified</text>
-      <rect x="150" y="373" width="360" height="18" rx="9" class="barBg"/>
-      <rect x="150" y="373" width="238" height="18" rx="9" class="barUnknown"/>
-      <text x="375" y="387" class="small">151.0k</text>
+      <text x="0" y="337" class="label">大洋洲 Oceania</text>
+      <rect x="172" y="320" width="430" height="22" rx="11" class="track"/>
+      <rect x="172" y="320" width="77" height="22" rx="11" class="barWarm"/>
+      <text x="620" y="337" class="label">18</text>
     </g>
   </g>
 
-  <g transform="translate(54 590)">
-    <rect class="panel" width="576" height="54" rx="14"/>
-    <text x="18" y="24" class="small">口径说明：usage_count 是公开可得的地区使用量代理；OpenAI、Google、阿里、腾讯、字节等模型 API 的地区 token 消耗未公开。</text>
-    <text x="18" y="43" class="source">Source: Anthropic Economic Index dataset on Hugging Face, release_2025_09_15. Region grouping calculated from country-level rows.</text>
+  <g transform="translate(760 254)">
+    <rect class="panel" width="396" height="248" rx="22"/>
+    <text x="24" y="42" class="h2">证据栈 / Evidence stack</text>
+    <text x="24" y="64" class="tiny">指数来自多类 proxy，避免单一厂商覆盖偏差。</text>
+
+    <g transform="translate(24 92)">
+      <text x="0" y="16" class="small">用户规模 adoption</text>
+      <rect x="160" y="2" width="184" height="18" rx="9" class="track"/>
+      <rect x="160" y="2" width="138" height="18" rx="9" class="barAsia"/>
+      <text x="352" y="16" class="tiny">30%</text>
+
+      <text x="0" y="50" class="small">GenAI 流量 traffic</text>
+      <rect x="160" y="36" width="184" height="18" rx="9" class="track"/>
+      <rect x="160" y="36" width="115" height="18" rx="9" class="barBlue"/>
+      <text x="352" y="50" class="tiny">25%</text>
+
+      <text x="0" y="84" class="small">Claude usage 代理</text>
+      <rect x="160" y="70" width="184" height="18" rx="9" class="track"/>
+      <rect x="160" y="70" width="69" height="18" rx="9" class="barGreen"/>
+      <text x="352" y="84" class="tiny">15%</text>
+
+      <text x="0" y="118" class="small">供给侧 infra / models</text>
+      <rect x="160" y="104" width="184" height="18" rx="9" class="track"/>
+      <rect x="160" y="104" width="69" height="18" rx="9" class="barWarm"/>
+      <text x="352" y="118" class="tiny">15%</text>
+
+      <text x="0" y="152" class="small">readiness / regulation</text>
+      <rect x="160" y="138" width="184" height="18" rx="9" class="track"/>
+      <rect x="160" y="138" width="46" height="18" rx="9" class="barBlue"/>
+      <text x="352" y="152" class="tiny">10%</text>
+
+      <text x="0" y="186" class="small">质性校正 qualitative</text>
+      <rect x="160" y="172" width="184" height="18" rx="9" class="track"/>
+      <rect x="160" y="172" width="23" height="18" rx="9" class="barAsia"/>
+      <text x="352" y="186" class="tiny">5%</text>
+    </g>
+  </g>
+
+  <g transform="translate(760 526)">
+    <rect class="panel" width="396" height="136" rx="22"/>
+    <text x="24" y="40" class="h2">关键校正 / Key correction</text>
+    <text x="24" y="68" class="small">Anthropic country rows 低估中国大陆和国产 MaaS。</text>
+    <text x="24" y="92" class="small">CNNIC 6.02 亿 AI 产品用户、World Bank 本地工具流量、</text>
+    <text x="24" y="116" class="small">WIPO/Stanford 供给侧强度共同支撑东亚 top band。</text>
+  </g>
+
+  <g transform="translate(72 690)">
+    <rect class="chip" width="1056" height="46" rx="16"/>
+    <text x="18" y="21" class="small">读图方式：它回答“LLMAPI 网关应把哪些区域、合规、路由、成本、存储和多模态资源当成核心变量”。</text>
+    <text x="18" y="38" class="tiny">Sources: Anthropic Economic Index, World Bank GenAI traffic paper/package, Microsoft AI Diffusion, CNNIC, Stanford AI Index/Vibrancy, WIPO, Oxford Insights, ITU. See CSV + PDF appendix.</text>
+  </g>
+
+  <g transform="translate(844 112)">
+    <path class="route" d="M-418 320C-210 190-86 136 56 168C180 196 248 274 320 338"/>
+    <circle cx="-418" cy="320" r="7" class="dotBlue"/>
+    <circle cx="-418" cy="320" r="8" class="pulse"/>
+    <circle cx="-20" cy="174" r="7" class="dotGreen"/>
+    <circle cx="152" cy="232" r="8" class="dotAsia"/>
+    <circle cx="152" cy="232" r="8" class="pulse"/>
   </g>
 </svg>

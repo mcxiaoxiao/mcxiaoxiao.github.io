@@ -60,7 +60,7 @@ AI 投入已经从“尝鲜”进入“规模化但仍不稳定”的阶段。St
 
 ![全球 LLM 使用强度代理数据可视化](/images/2026/llmapi/global-maas-gateway-mesh.svg)
 
-*🛜 公开模型厂商通常不披露全球 token 消耗绝对值。这里用 Anthropic Economic Index 的 Claude.ai Free/Pro country-level `usage_count` 做地区需求代理：北美、欧洲、南亚、东亚、拉美和东南亚构成主要使用区域；中国及国产 MaaS 的 token 消耗没有可比公开数据，因此在图中单独标注为未覆盖。衍生数据可直接打开：[地区聚合 CSV](/assets/data/2026/llmapi/anthropic-economic-index-region-usage-2025-08-04.csv)、[Top 国家 CSV](/assets/data/2026/llmapi/anthropic-economic-index-top-countries-2025-08-04.csv)。[^63]*
+*🛜 公开模型厂商通常不披露全球 token 消耗绝对值，所以这张图改用多源综合代理指数：把 Anthropic Claude.ai `usage_count`、World Bank 对 GenAI 工具流量的研究、Microsoft AI Diffusion、CNNIC 中国 AI 产品用户规模、Stanford AI Index / Global AI Vibrancy、WIPO GenAI 专利格局、Oxford AI readiness 与 ITU 连接度一起校正。它的用途是判断 LLMAPI 网关要服务哪些区域变量，不是把指数换算成真实 token 账单。支撑材料可直接打开：[指数 CSV](/assets/data/2026/llmapi/global-demand-proxy/regional-llm-demand-proxy-2026.csv)、[来源清单](/assets/data/2026/llmapi/global-demand-proxy/source-inventory.csv)、[PDF 简报](/assets/data/2026/llmapi/global-demand-proxy/llm-demand-proxy-source-report.pdf)。[^63]*
 
 ***
 
@@ -444,7 +444,7 @@ logs/llmapi/{date}/
 
 [^62]: [NIST Privacy-Enhancing Cryptography](https://csrc.nist.gov/projects/privacy-enhancing-cryptography)。NIST 将 private set intersection 等隐私增强密码技术作为在不暴露完整数据集合时完成协作计算的方向之一。
 
-[^63]: [Anthropic Economic Index Dataset](https://huggingface.co/datasets/Anthropic/EconomicIndex)。图中地区使用强度基于该数据集 `release_2025_09_15` 的 `aei_raw_claude_ai_2025-08-04_to_2025-08-11.csv`，筛选 `geography=country`、`variable=usage_count` 后按地区聚合；它是 Claude.ai Free/Pro 的公开使用代理，不代表全行业 token 消耗绝对值。本文保留了可直接打开的衍生 CSV：[地区聚合](/assets/data/2026/llmapi/anthropic-economic-index-region-usage-2025-08-04.csv)、[Top 国家](/assets/data/2026/llmapi/anthropic-economic-index-top-countries-2025-08-04.csv)。
+[^63]: 全球 LLM 区域需求图使用的是多源综合代理，而非 token 消耗真值。公开可得来源包括 [Anthropic Economic Index Dataset](https://huggingface.co/datasets/Anthropic/EconomicIndex)、[World Bank《Who on Earth Is Using Generative AI?》](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099856110152535288)、[World Bank reproducibility package](https://reproducibility.worldbank.org/catalog/332)、[Microsoft Global AI Adoption 2025](https://www.microsoft.com/en-us/corporate-responsibility/topics/AI-Economy-Institute/reports/Global-AI-Adoption-2025/)、[CNNIC / 国务院英文摘要](https://english.www.gov.cn/archive/statistics/202602/05/content_WS698442cac6d00ca5f9a08edc.html)、[WIPO Generative AI Patent Landscape Report](https://www.wipo.int/web-publications/patent-landscape-report-generative-artificial-intelligence-genai/en/)、[Stanford 2025 AI Index](https://hai.stanford.edu/ai-index/2025-ai-index-report)、[Stanford Global AI Vibrancy Tool](https://aiindex.stanford.edu/vibrancy/)、[Oxford Government AI Readiness Index](https://oxfordinsights.com/ai-readiness/ai-readiness-index/) 与 [ITU Facts and Figures 2025](https://www.itu.int/itu-d/reports/statistics/facts-figures-2025/)。支撑文件包括：[指数 CSV](/assets/data/2026/llmapi/global-demand-proxy/regional-llm-demand-proxy-2026.csv)、[来源清单](/assets/data/2026/llmapi/global-demand-proxy/source-inventory.csv)、[研究简报 MD](/assets/data/2026/llmapi/global-demand-proxy/llm-demand-proxy-source-report.md)、[研究简报 PDF](/assets/data/2026/llmapi/global-demand-proxy/llm-demand-proxy-source-report.pdf)。
 
 [^64]: [阿里云开发者社区，《AI 原生应用架构白皮书》文章页](https://developer.aliyun.com/article/1684778)。该文从产业架构角度梳理 AI 原生应用的模型、Agent、RAG、记忆、工具、网关、运行时、可观测、评估与安全等关键要素。
 

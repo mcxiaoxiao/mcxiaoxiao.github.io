@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>全球 LLM / MaaS 区域需求代理指数：支撑材料简报</title>
+  <style>
+    @page { margin: 18mm; }
+    body {
+      margin: 0;
+      color: #111827;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+    h1 { margin: 0 0 8px; font-size: 24px; line-height: 1.2; }
+    h2 { margin: 18px 0 8px; font-size: 15px; border-bottom: 1px solid #d1d5db; padding-bottom: 4px; }
+    p { margin: 6px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0 10px; }
+    th, td { border: 1px solid #d1d5db; padding: 5px 6px; vertical-align: top; }
+    th { background: #f3f4f6; text-align: left; }
+    .meta { color: #4b5563; margin-bottom: 12px; }
+    .callout { border-left: 4px solid #2563eb; background: #eff6ff; padding: 8px 10px; margin: 10px 0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .box { border: 1px solid #d1d5db; border-radius: 8px; padding: 8px 10px; background: #fafafa; }
+    .score { font-weight: 700; color: #be123c; }
+    ol { padding-left: 18px; }
+    li { margin: 4px 0; }
+    a { color: #1d4ed8; text-decoration: none; }
+    .small { color: #4b5563; font-size: 10px; }
+  </style>
+</head>
+<body>
+  <h1>全球 LLM / MaaS 区域需求代理指数：支撑材料简报</h1>
+  <div class="meta">日期：2026-05-25 ｜ 用途：支撑博客中的 Regional LLM Demand Proxy 2026E 图 ｜ 口径：多源代理指数，不是全球 token 消耗真值。</div>
+
+  <div class="callout">
+    目前没有公开来源披露 OpenAI、Google、Anthropic、阿里云百炼、腾讯混元、火山方舟、DeepSeek、MiniMax 等平台按地区可比的 token 消耗总账。本文采用用户规模、GenAI 流量、Claude.ai 使用代理、供给侧指标、AI readiness 与互联网基础设施的综合 proxy，用于产品和架构推理，不能用于财务核算。
+  </div>
+
+  <h2>1. 指数结果</h2>
+  <table>
+    <thead>
+      <tr><th>区域</th><th>指数</th><th>解释</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>东亚 East Asia</td><td class="score">100</td><td>中国 AI 产品用户规模和国产 MaaS / 应用生态把 Anthropic 数据低估的部分补回来；日韩台在公开模型工具中也有可见使用。</td></tr>
+      <tr><td>北美 North America</td><td class="score">95</td><td>美国在 Claude.ai 使用、模型/API 供给、AI 投资和企业部署上都处于第一梯队。</td></tr>
+      <tr><td>欧洲 Europe</td><td>72</td><td>使用代理和企业治理需求强，但供给侧集中度低于中美。</td></tr>
+      <tr><td>南亚 South Asia</td><td>62</td><td>印度用户规模、开发者生态和公开 GenAI 流量强。</td></tr>
+      <tr><td>东南亚 Southeast Asia</td><td>48</td><td>移动优先、增长快，但预算和基础设施集中度仍低于一线区域。</td></tr>
+      <tr><td>拉美 Latin America</td><td>42</td><td>巴西、墨西哥等公开流量明显，但基础设施和模型供给较弱。</td></tr>
+      <tr><td>中东 MENA</td><td>32</td><td>阿联酋、沙特、以色列等投入强，但区域总量较小。</td></tr>
+      <tr><td>非洲 Africa</td><td>24</td><td>高增长潜力区，受连接、支付、企业预算约束。</td></tr>
+      <tr><td>大洋洲 Oceania</td><td>18</td><td>澳新人均使用成熟，人口基数限制绝对量。</td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. 证据栈</h2>
+  <div class="grid">
+    <div class="box"><strong>用户规模与产品采用</strong><br>CNNIC / 国务院英文摘要显示，截至 2025 年 12 月，中国 AI 产品用户规模达到 6.02 亿；Microsoft AI Diffusion 用于补充国家采用差异。</div>
+    <div class="box"><strong>GenAI Web/App 流量</strong><br>World Bank 2025 工作论文研究 ChatGPT 与各国本地 GenAI 工具访问，补充“谁在实际用工具”的视角。</div>
+    <div class="box"><strong>可见模型用量代理</strong><br>Anthropic Economic Index 的 Claude.ai usage_count 可观察美国、欧洲、印度、日本、韩国、巴西等地区，但对中国和国产 MaaS 不完整。</div>
+    <div class="box"><strong>供给侧与部署准备度</strong><br>Stanford AI Index / Vibrancy、WIPO GenAI 专利、Oxford AI readiness、ITU 连接度用于约束中长期需求上限和基础设施条件。</div>
+  </div>
+
+  <h2>3. 对 LLMAPI 网关的含义</h2>
+  <ol>
+    <li>区域路由不能只按延迟做；模型可用性、合规、价格、内容策略和对象存储位置会同时影响路由。</li>
+    <li>东亚需求不能只从国际模型 API 可见流量推断；中国本地 MaaS、国产模型、企业私有化和多模态应用会形成独立高密度生态。</li>
+    <li>增长区更需要低门槛与成本治理；南亚、东南亚、拉美和非洲对价格、支付、网络、部署和运营门槛更敏感。</li>
+    <li>多模态会把 token 需求变成资源需求；图片、音频、视频和长上下文任务需要 CDN/S3/对象存储、任务状态和审计证据。</li>
+    <li>安全和滥用防护适合云原生内建，但早期产品仍应先解决调用、成本、日志、归档和合规默认项。</li>
+  </ol>
+
+  <h2>4. 主要来源</h2>
+  <ol>
+    <li>Anthropic, <em>Economic Index Dataset</em>, 2025. https://huggingface.co/datasets/Anthropic/EconomicIndex</li>
+    <li>Anthropic, <em>Economic Index</em>, 2025. https://www.anthropic.com/economic-index</li>
+    <li>World Bank, <em>Who on Earth Is Using Generative AI? Global Trends and Shifts in 2025</em>, 2025. https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099856110152535288</li>
+    <li>World Bank, <em>GenAI Traffic Reproducibility Package</em>, 2025. https://reproducibility.worldbank.org/catalog/332</li>
+    <li>Microsoft AI Economy Institute, <em>Global AI Adoption 2025 / AI Diffusion Report</em>, 2025. https://www.microsoft.com/en-us/corporate-responsibility/topics/AI-Economy-Institute/reports/Global-AI-Adoption-2025/</li>
+    <li>CNNIC / State Council, <em>57th Statistical Report on China's Internet Development</em>, 2026. https://english.www.gov.cn/archive/statistics/202602/05/content_WS698442cac6d00ca5f9a08edc.html</li>
+    <li>WIPO, <em>Generative AI Patent Landscape Report</em>, 2024. https://www.wipo.int/web-publications/patent-landscape-report-generative-artificial-intelligence-genai/en/</li>
+    <li>Stanford HAI, <em>2025 AI Index Report</em>, 2025. https://hai.stanford.edu/ai-index/2025-ai-index-report</li>
+    <li>Stanford AI Index, <em>Global AI Vibrancy Tool</em>, 2025. https://aiindex.stanford.edu/vibrancy/</li>
+    <li>Oxford Insights, <em>Government AI Readiness Index</em>, 2024. https://oxfordinsights.com/ai-readiness/ai-readiness-index/</li>
+    <li>International Telecommunication Union, <em>Facts and Figures 2025</em>, 2025. https://www.itu.int/itu-d/reports/statistics/facts-figures-2025/</li>
+    <li>McKinsey, <em>The State of AI: How Organizations Are Rewiring to Capture Value</em>, 2025. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai</li>
+    <li>Chen et al., <em>FrugalGPT</em>, 2023. https://arxiv.org/abs/2305.05176</li>
+    <li>Ong et al., <em>RouteLLM</em>, 2024. https://arxiv.org/abs/2406.18665</li>
+    <li>Kwon et al., <em>Efficient Memory Management for LLM Serving with PagedAttention</em>, SOSP 2023. https://arxiv.org/abs/2309.06180</li>
+  </ol>
+  <p class="small">配套数据：regional-llm-demand-proxy-2026.csv；source-inventory.csv。指数用于研究和产品判断，不构成市场份额、收入或 token 账单统计。</p>
+</body>
+</html>
