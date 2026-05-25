@@ -1,0 +1,19 @@
+project,issue_or_source,user,title_or_observation,primary_category,secondary_tags,community_build_in,self_operated,relevance_to_l3,source_url,evidence_type
+APIPark,#438,ccly1996,"离线网络环境下部署失败，需要离线部署教程",deployment_ops,"offline,private_network,install_recipe",yes,no,low,https://github.com/APIParkLab/APIPark/issues/438,exact_issue
+APIPark,#428,SamCheng0717,"希望增加请求日志归档功能",logging_audit_cost,"request_log,archive,audit",mixed,yes,medium,https://github.com/APIParkLab/APIPark/issues/428,exact_issue
+APIPark,#427,alexmelt2582,"本地模型非流式返回为空，流式正常",streaming_protocol_parity,"local_model,streaming,non_streaming,compatibility",yes,no,medium,https://github.com/APIParkLab/APIPark/issues/427,exact_issue
+LiteLLM,#16155,YangJonggyu,"Vercel AI Gateway 流式 reasoning 字段处理问题",streaming_protocol_parity,"reasoning,stream_delta,field_preservation",yes,no,medium,https://github.com/BerriAI/litellm/issues/16155,exact_issue
+LiteLLM,#12351,dustinplattefourkites,"Azure model 缺 base_model 导致 router 崩溃",provider_adapter_schema,"azure,base_model,router_crash,error_degradation",yes,no,medium,https://github.com/BerriAI/litellm/issues/12351,exact_issue
+LiteLLM,#13608,andresC98,"hosted_vllm 不支持 reasoning_effort",provider_adapter_schema,"hosted_vllm,reasoning_effort,param_schema",yes,no,medium,https://github.com/BerriAI/litellm/issues/13608,exact_issue
+Higress,#3077,johnlanni,"agent 透明的上下文压缩与存储",agent_context_state,"context_compression,storage,agent_memory",mixed,yes,high,https://github.com/higress-group/higress/issues/3077,exact_issue
+Higress,#1667,sunmery,"Kubernetes Gateway API 版本兼容问题",deployment_ops,"kubernetes,gateway_api,version_compatibility",yes,no,low,https://github.com/higress-group/higress/issues/1667,exact_issue
+New API,#2125,zuoez02,"新增 SiliconFlow channel 后服务 panic",provider_adapter_schema,"channel_config,siliconflow,panic,fault_isolation",yes,no,medium,https://github.com/QuantumNous/new-api/issues/2125,exact_issue
+Portkey,issues_index,unknown,"thinking 支持、provider 兼容、流式响应与 retry 行为反馈",provider_adapter_schema,"thinking,provider_compatibility,retry,streaming",yes,mixed,medium,https://github.com/Portkey-AI/gateway/issues,issue_index
+Portkey,issues_index,unknown,"retry 行为和尾延迟控制诉求",reliability_routing_key,"retry,tail_latency,fallback",mixed,yes,medium,https://github.com/Portkey-AI/gateway/issues,issue_index
+Bifrost,issues_index,unknown,"cost 重算与成本口径反馈",logging_audit_cost,"cost_recompute,billing,usage_stats",mixed,yes,medium,https://github.com/maximhq/bifrost/issues,issue_index
+Bifrost,issues_index,unknown,"禁用 key、多 backend 与 homelab 部署诉求",reliability_routing_key,"disable_key,multi_backend,homelab",mixed,yes,medium,https://github.com/maximhq/bifrost/issues,issue_index
+vLLM,#32685,FlynnOwen,"Responses API 支持多模态输入请求",multimodal_resource,"responses_api,multimodal_input,serving",yes,mixed,high,https://github.com/vllm-project/vllm/issues/32685,exact_issue
+vLLM,#34857,qandrew,"H1 2026 roadmap 强调 MCP、tool calling、parser/renderer、state offload",agent_context_state,"mcp,tool_calling,parser,renderer,state_offload",yes,mixed,high,https://github.com/vllm-project/vllm/issues/34857,exact_issue
+SGLang,#10177,jhinpan,"Responses API 缺 custom function tools",agent_context_state,"responses_api,custom_function_tools,tool_calling",yes,no,high,https://github.com/sgl-project/sglang/issues/10177,exact_issue
+SGLang,#9681,unknown,"OpenAI tool calling / responses API 行为澄清",streaming_protocol_parity,"openai_compatibility,tool_calling,responses_api",yes,no,medium,https://github.com/sgl-project/sglang/issues/9681,exact_issue
+llama.cpp,#15231,alvis233,"llama-server tool_calls 参数类型破坏 OpenAI 兼容",provider_adapter_schema,"tool_calls,json_schema,openai_compatibility",yes,no,medium,https://github.com/ggml-org/llama.cpp/issues/15231,exact_issue

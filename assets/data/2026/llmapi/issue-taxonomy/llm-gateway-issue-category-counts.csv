@@ -1,0 +1,8 @@
+primary_category,count,share_pct,interpretation
+provider_adapter_schema,5,27.8,"Provider 参数、字段保真、OpenAI-compatible 细节和渠道配置是最密集的问题组。"
+streaming_protocol_parity,3,16.7,"流式/非流式、增量字段和 Responses API 行为需要一致性测试。"
+agent_context_state,3,16.7,"MCP、tool calling、上下文压缩、state offload 正在把网关推向 agent runtime 边界。"
+deployment_ops,2,11.1,"离线部署、Kubernetes 兼容和内网安装仍是进入企业环境的基础门槛。"
+logging_audit_cost,2,11.1,"日志归档、成本重算和审计留痕更接近可运营信任层。"
+reliability_routing_key,2,11.1,"retry、tail latency、key 禁用和多 backend 与生产稳定性直接相关。"
+multimodal_resource,1,5.6,"多模态输入与资源化诉求在 serving 侧出现，但业务资产入库通常还要上层承接。"

@@ -1,0 +1,4 @@
+build_locus,count,share_pct,interpretation
+community_build_in,10,55.6,"Provider adapter、参数 schema、兼容性测试、OpenAPI/MCP 包和部署 recipe 适合通过社区共建沉淀。"
+self_operated,5,27.8,"日志归档、成本账单、长期 SLA、健康探测和托管对象存储/CDN 更适合平台自运营。"
+mixed,3,16.7,"上下文压缩、agent state、retry 策略等能力可开源接口与策略，但生产效果依赖平台运行数据。"
