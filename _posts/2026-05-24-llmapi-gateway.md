@@ -267,6 +267,8 @@ logs/llmapi/{date}/
 
 **第六，网关也要变成“模型喜欢调用的库”。** 下一代入口也许不一定先是一个复杂控制台，而可以很简单：一个 CLI、一个 npm package、一个 SDK、一个 MCP tool 或一份清晰的 OpenAPI schema。大道至简：一键启动、稳定参数、明确错误码、幂等任务、可复用 `resource_id`。对 agent 来说，这比花哨界面更重要；对长上下文和多模态模型来说，把图片、视频、音频、PDF 和中间结果沉淀到对象存储 + CDN，再用短引用回填上下文，本质上是在给小平台补一层持久化记忆。
 
+**第七，安全高防适合平台侧，但不一定是第一战场。** OWASP LLM Top 10 已经把 prompt injection、敏感信息泄露、模型 DoS、不安全插件、过度代理等列为核心风险。[^59] 对 LLMAPI 网关来说，IP 滥用、刷量、prompt 注入、tool 越权、MCP server 滥接、多租户 key 泄漏和成本打爆，都比普通 API 更贵。限流、配额、WAF、prompt guard、租户隔离、审计和异常熔断天然适合云原生平台侧做，而不是让每个用户在业务代码里重复集成。Cloudflare、Kong 这类 AI Gateway 已经把 rate limiting、prompt guard、语义缓存和流量治理放进网关能力里。[^60][^61] 更远一点，PSI 可以用于跨租户风险指纹、违规素材哈希或黑名单集合的隐私保护匹配，让平台判断“是否命中风险集”而不暴露完整集合。[^62] 但这只是一个可选方向：如果真实滥用还没出现，过早堆安全军备会拖慢产品。平台侧更好的节奏是先把权限、限流、审计、隔离做好，等攻击面被市场验证后再补强，不剑走偏锋。
+
 ***
 
 ## 九、多 agent 与这件事的关系
@@ -296,6 +298,7 @@ logs/llmapi/{date}/
 - 文本、图像、视频、音频、CV 服务走同一套 `model_id + params`
 - `submit_poll` 生命周期、资源持久化、key 管理、审计日志默认内置
 - 可选托管对象存储和 CDN，把多模态结果、长上下文材料和中间产物转成长期可引用的 `resource_id`
+- 基础安全包内置：租户级限流、预算熔断、key 隔离、prompt/tool guard hook 和审计留痕
 - 国内 provider 优先适配，境外 provider 通过路由和脱敏策略接入
 - 提供一个简单控制台，看 key、成本、错误率、任务状态和资源结果
 
@@ -424,5 +427,13 @@ logs/llmapi/{date}/
 [^57]: SGLang issue 样本：[Responses API 缺 custom function tools](https://github.com/sgl-project/sglang/issues/10177)、[OpenAI tool calling / responses API 行为澄清](https://github.com/sgl-project/sglang/issues/9681)。这些问题说明 OpenAI-compatible 不等于 agent-compatible。
 
 [^58]: llama.cpp issue 样本：[llama-server tool_calls 参数类型破坏 OpenAI 兼容](https://github.com/ggml-org/llama.cpp/issues/15231)。本地推理服务也会遇到工具调用字段、JSON schema 和客户端兼容问题。
+
+[^59]: [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)。OWASP LLM Top 10 将 prompt injection、敏感信息泄露、供应链风险、数据与模型投毒、模型 DoS、不安全输出处理、过度代理等作为 LLM 应用安全重点。
+
+[^60]: [Cloudflare AI Gateway Documentation](https://developers.cloudflare.com/ai-gateway/)。Cloudflare AI Gateway 文档覆盖模型调用日志、缓存、限流、回退和多 provider 统一治理。
+
+[^61]: [Kong AI Gateway Documentation](https://developer.konghq.com/ai-gateway/)。Kong AI Gateway 文档覆盖 prompt guard、LLM 路由、认证、限流、缓存、负载均衡和 AI 插件治理。
+
+[^62]: [NIST Privacy-Enhancing Cryptography](https://csrc.nist.gov/projects/privacy-enhancing-cryptography)。NIST 将 private set intersection 等隐私增强密码技术作为在不暴露完整数据集合时完成协作计算的方向之一。
 
 ***
