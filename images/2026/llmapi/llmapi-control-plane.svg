@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
-  <title id="title">LLMAPI control plane</title>
-  <desc id="desc">A layered control-plane diagram for LLMAPI gateway execution.</desc>
+  <title id="title">LLMAPI 执行控制面 Execution control plane</title>
+  <desc id="desc">LLMAPI 网关执行控制面的分层图：覆盖调用入口、运行时配置、网关核心、模型供应商、资源持久化和可观测性。</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0b1120"/>
@@ -35,56 +35,56 @@
   </defs>
 
   <rect class="bg" width="1120" height="620"/>
-  <text x="58" y="62" class="txt" style="font-size:34px">LLMAPI as an Execution Control Plane</text>
+  <text x="58" y="62" class="txt" style="font-size:34px">LLMAPI 执行控制面</text>
   <text x="60" y="92" class="sub">不是只代理 HTTP，而是把模型调用、任务生命周期、资源入库、审计和统计收拢成一个可治理的执行面。</text>
 
   <g transform="translate(64 144)">
     <rect class="card" width="220" height="116" rx="18"/>
-    <text x="24" y="38" class="txt">Client API</text>
-    <text x="24" y="66" class="sub">model_id + params</text>
-    <text x="24" y="88" class="sub">wait_result / watch_result</text>
+    <text x="24" y="38" class="txt">客户端 API</text>
+    <text x="24" y="66" class="sub">model_id + params 参数</text>
+    <text x="24" y="88" class="sub">等待/监听 wait/watch</text>
   </g>
 
   <g transform="translate(64 362)">
     <rect class="card" width="220" height="116" rx="18"/>
-    <text x="24" y="38" class="txt">Runtime Config</text>
-    <text x="24" y="66" class="sub">model instance / key / URL</text>
-    <text x="24" y="88" class="sub">Redis cache + DB source</text>
+    <text x="24" y="38" class="txt">运行时配置 Runtime</text>
+    <text x="24" y="66" class="sub">模型实例 / key / URL</text>
+    <text x="24" y="88" class="sub">Redis 缓存 + DB 源</text>
   </g>
 
   <g transform="translate(384 176)">
     <rect class="core" width="352" height="264" rx="26"/>
-    <text x="40" y="48" class="txt" style="font-size:28px">Gateway Core</text>
-    <text x="42" y="82" class="sub">Adapter Registry · Policy · Key Pool</text>
+    <text x="40" y="48" class="txt" style="font-size:28px">网关核心 Gateway Core</text>
+    <text x="42" y="82" class="sub">Adapter 注册表 · Policy 策略 · Key 池</text>
     <g transform="translate(42 112)">
-      <rect class="chip" width="120" height="38" rx="10"/><text x="20" y="25" class="mini">request_response</text>
-      <rect class="chip" x="138" width="104" height="38" rx="10"/><text x="158" y="25" class="mini">submit_poll</text>
-      <rect class="chip" x="260" width="82" height="38" rx="10"/><text x="276" y="25" class="mini">stream</text>
+      <rect class="chip" width="120" height="38" rx="10"/><text x="20" y="25" class="mini">同步返回 req/res</text>
+      <rect class="chip" x="138" width="104" height="38" rx="10"/><text x="156" y="25" class="mini">异步轮询 poll</text>
+      <rect class="chip" x="260" width="82" height="38" rx="10"/><text x="275" y="25" class="mini">流式 stream</text>
     </g>
     <g transform="translate(42 170)">
-      <rect class="chip" width="132" height="38" rx="10"/><text x="20" y="25" class="mini">key cooldown</text>
-      <rect class="chip" x="150" width="92" height="38" rx="10"/><text x="170" y="25" class="mini">retry</text>
-      <rect class="chip" x="260" width="82" height="38" rx="10"/><text x="276" y="25" class="mini">audit</text>
+      <rect class="chip" width="132" height="38" rx="10"/><text x="20" y="25" class="mini">Key 冷却 cooldown</text>
+      <rect class="chip" x="150" width="92" height="38" rx="10"/><text x="169" y="25" class="mini">重试 retry</text>
+      <rect class="chip" x="260" width="82" height="38" rx="10"/><text x="275" y="25" class="mini">审计 audit</text>
     </g>
   </g>
 
   <g transform="translate(850 112)">
     <rect class="card" width="220" height="112" rx="18"/>
-    <text x="24" y="38" class="txt">MaaS / Provider</text>
-    <text x="24" y="66" class="sub">OpenAI-compatible</text>
-    <text x="24" y="88" class="sub">domestic cloud / self-host</text>
+    <text x="24" y="38" class="txt">模型供应 MaaS</text>
+    <text x="24" y="66" class="sub">OpenAI 兼容接口</text>
+    <text x="24" y="88" class="sub">国产云 / 自托管 self-host</text>
   </g>
   <g transform="translate(850 292)">
     <rect class="card" width="220" height="112" rx="18"/>
-    <text x="24" y="38" class="txt">Resources</text>
-    <text x="24" y="66" class="sub">remote URL / base64 / bytes</text>
-    <text x="24" y="88" class="sub">S3 + resources table</text>
+    <text x="24" y="38" class="txt">资源层 Resources</text>
+    <text x="24" y="66" class="sub">远程 URL / base64 / bytes</text>
+    <text x="24" y="88" class="sub">S3 + resources 资源表</text>
   </g>
   <g transform="translate(850 466)">
     <rect class="card" width="220" height="112" rx="18"/>
-    <text x="24" y="38" class="txt">Observability</text>
-    <text x="24" y="66" class="sub">runtime / audit / payload</text>
-    <text x="24" y="88" class="sub">stats / cost / errors</text>
+    <text x="24" y="38" class="txt">可观测 Observability</text>
+    <text x="24" y="66" class="sub">运行 / 审计 / payload</text>
+    <text x="24" y="88" class="sub">统计 stats / 成本 / 错误</text>
   </g>
 
   <path class="line dash" d="M284 202 C330 202 340 240 384 260"/>

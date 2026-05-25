@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
-  <title id="title">Global MaaS and LLMAPI gateway mesh with real-world regional routing</title>
-  <desc id="desc">A speculative MaaS and LLMAPI gateway infrastructure map. US, Europe and China are drawn as larger model-token upstream hubs, while Southeast Asia, India, Africa and Latin America receive more downstream CDN and S3 distribution links.</desc>
+  <title id="title">全球 MaaS / LLMAPI 网关基础设施 Global gateway mesh</title>
+  <desc id="desc">一张 MaaS 与 LLMAPI 全球网关基础设施设想图：中美欧作为更大的模型 token 上行枢纽，东南亚、印度、非洲和拉美承接更多 CDN 与 S3 下行分发。</desc>
   <defs>
     <radialGradient id="ocean" cx="42%" cy="36%" r="68%">
       <stop offset="0%" stop-color="#67e8f9"/>
@@ -98,7 +98,7 @@
   <circle class="star" cx="145" cy="624" r="1.4"/>
   <circle class="star" cx="1090" cy="610" r="1.4"/>
 
-  <text x="58" y="62" class="label" style="font-size:33px">MaaS / LLMAPI Global Gateway Mesh</text>
+  <text x="58" y="62" class="label" style="font-size:33px">全球 MaaS / LLMAPI 网关网络</text>
   <text x="60" y="93" class="small">中美欧是更大的模型 token 上行枢纽；东南亚、印度、非洲、拉美承接更多下行资产分发与持久化上下文。</text>
 
   <circle cx="565" cy="360" r="282" class="globeRing"/>
@@ -159,68 +159,68 @@
 
   <!-- Nodes and infrastructure markers. -->
   <circle cx="566" cy="360" r="13" class="hub"/>
-  <text x="566" y="387" text-anchor="middle" class="tiny">Policy Router</text>
+  <text x="566" y="387" text-anchor="middle" class="tiny">策略路由 Policy Router</text>
 
   <circle cx="418" cy="303" r="19" class="hubLarge"/>
   <use href="#server" x="388" y="241" width="60" height="60"/>
-  <text x="418" y="334" text-anchor="middle" class="tiny">US token upstream</text>
+  <text x="418" y="334" text-anchor="middle" class="tiny">美国上行 US Hub</text>
 
   <circle cx="632" cy="286" r="18" class="hubLarge"/>
   <use href="#server" x="603" y="224" width="58" height="58"/>
-  <text x="632" y="318" text-anchor="middle" class="tiny">EU token upstream</text>
+  <text x="632" y="318" text-anchor="middle" class="tiny">欧洲上行 EU Hub</text>
 
   <circle cx="765" cy="333" r="20" class="hubLarge"/>
   <use href="#server" x="735" y="271" width="62" height="62"/>
-  <text x="765" y="365" text-anchor="middle" class="tiny">CN token upstream</text>
+  <text x="765" y="365" text-anchor="middle" class="tiny">中国上行 CN Hub</text>
 
   <circle cx="808" cy="441" r="13" class="edge"/>
-  <text x="838" y="445" class="tiny">SEA downlink</text>
+  <text x="838" y="445" class="tiny">东南亚下行 SEA</text>
   <circle cx="725" cy="421" r="12" class="edge"/>
-  <text x="738" y="416" class="tiny">India</text>
+  <text x="738" y="416" class="tiny">印度 India</text>
   <circle cx="654" cy="474" r="12" class="edge"/>
-  <text x="667" y="485" class="tiny">Africa</text>
+  <text x="667" y="485" class="tiny">非洲 Africa</text>
   <circle cx="493" cy="501" r="12" class="edge"/>
-  <text x="407" y="505" class="tiny">LatAm downlink</text>
+  <text x="407" y="505" class="tiny">拉美下行 LatAm</text>
 
   <use href="#cloud" x="978" y="492" width="92" height="62"/>
-  <text x="1024" y="568" text-anchor="middle" class="tiny">APAC CDN</text>
+  <text x="1024" y="568" text-anchor="middle" class="tiny">亚太 CDN 分发</text>
   <use href="#s3" x="991" y="566" width="62" height="70"/>
-  <text x="1022" y="651" text-anchor="middle" class="tiny">durable media</text>
+  <text x="1022" y="651" text-anchor="middle" class="tiny">持久媒体 Durable</text>
   <use href="#s3" x="132" y="492" width="62" height="70"/>
-  <text x="163" y="575" text-anchor="middle" class="tiny">LatAm cache</text>
+  <text x="163" y="575" text-anchor="middle" class="tiny">拉美缓存 Cache</text>
   <circle cx="1044" cy="529" r="9" class="storage"/>
   <circle cx="1004" cy="574" r="9" class="storage"/>
   <circle cx="169" cy="524" r="9" class="storage"/>
 
   <g transform="translate(54 126)">
     <rect class="panel" width="244" height="128" rx="14"/>
-    <text x="18" y="34" class="label">Upstream hubs</text>
+    <text x="18" y="34" class="label">上行枢纽 Upstream</text>
     <circle cx="27" cy="62" r="7" fill="#34d399"/>
-    <text x="44" y="66" class="small">US / EU / CN: larger model-token supply</text>
+    <text x="44" y="66" class="small">中美欧：模型 token 主供给</text>
     <path d="M20 91h36" stroke="#22d3ee" stroke-width="5" stroke-dasharray="10 8" stroke-linecap="round"/>
-    <text x="66" y="96" class="small">token uplink · provider routing</text>
+    <text x="66" y="96" class="small">Token 上行 · Provider 路由</text>
   </g>
 
   <g transform="translate(902 116)">
     <rect class="panel" width="244" height="144" rx="14"/>
-    <text x="18" y="34" class="label">Downstream layer</text>
+    <text x="18" y="34" class="label">下行分发 Downstream</text>
     <circle cx="27" cy="62" r="7" fill="#fbbf24"/>
-    <text x="44" y="66" class="small">SEA / India / Africa / LatAm</text>
+    <text x="44" y="66" class="small">东南亚 / 印度 / 非洲 / 拉美</text>
     <path d="M20 91h36" stroke="#fbbf24" stroke-width="6" stroke-dasharray="2 10" stroke-linecap="round"/>
-    <text x="66" y="96" class="small">asset distribution · edge fallback</text>
+    <text x="66" y="96" class="small">资产分发 · Edge fallback</text>
     <path d="M20 120h36" stroke="#a78bfa" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round"/>
-    <text x="66" y="125" class="small">S3/CDN durable context</text>
+    <text x="66" y="125" class="small">S3/CDN 持久上下文</text>
   </g>
 
   <g transform="translate(64 564)">
     <rect class="panel" width="350" height="72" rx="14"/>
-    <text x="18" y="30" class="label">DNS-like LLM routing</text>
-    <text x="18" y="54" class="small">capability · compliance · latency · budget · health · storage locality</text>
+    <text x="18" y="30" class="label">类 DNS 模型路由</text>
+    <text x="18" y="54" class="small">能力 · 合规 · 延迟 · 成本 · 健康度 · 存储位置</text>
   </g>
 
   <g transform="translate(760 36)">
     <rect class="panel" width="366" height="70" rx="14"/>
-    <text x="18" y="30" class="label">Not just API proxy</text>
-    <text x="18" y="54" class="small">model token upstream + multimodal downstream + persistent resource references</text>
+    <text x="18" y="30" class="label">不只是 API 代理</text>
+    <text x="18" y="54" class="small">模型上行 + 多模态下行 + 持久资源引用</text>
   </g>
 </svg>
