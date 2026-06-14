@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "zh-UCN"
-title                    : "Guo Ziming 郭子铭"
+title                    : "OrlosZiming 郭子铭"
 title_separator          : "-"
-name                     : &name "Guo Ziming"
-description              : &description "Guo Ziming's homepage"
+name                     : &name "OrlosZiming"
+description              : &description "OrlosZiming's homepage"
 url                      : https://mcxiaoxiao.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mcxiaoxiao/mcxiaoxiao.github.io"
@@ -22,7 +22,7 @@ repository               : "mcxiaoxiao/mcxiaoxiao.github.io"
 author:
   # Biographic information
   avatar           : "https://avatars.githubusercontent.com/u/27133057"
-  name             : "GuoZiming"
+  name             : "OrlosZiming"
   pronouns         : # "he/him"  
   bio              : "Pragmatic engineer harnessing AI, lifelong entrepreneur with rigorous cybersecurity grounding, roaming free and unrestrained"
   location         : "Harbin"
