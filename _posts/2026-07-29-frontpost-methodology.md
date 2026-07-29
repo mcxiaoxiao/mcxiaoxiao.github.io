@@ -11,7 +11,7 @@ tags:
   - 软件工程
 ---
 
-FrontPost 是面向科研与前沿资讯的持续追踪和可信交付系统。搜索、AI 问答、论文阅读、公开邮报和个人推荐不是独立产品，而是同一套研究证据系统的不同入口与输出。
+FrontPost 是面向科研与前沿资讯的持续追踪和可信交付系统。搜索、AI 问答、论文阅读、公开邮报和个人推荐均接入同一套研究证据系统，分别承担检索、交互、阅读、发布和个性化分发职责。
 
 ## 系统目标
 
@@ -45,7 +45,7 @@ FrontPost 接受三类用户意图：
 | 内容生产 | 来源、归一、证据、排序、成稿、审核、发布 | 生成 Work、Evidence 和 Edition |
 | 数据层 | PostgreSQL、对象存储 | 保存业务状态、长期工件和不可变版本 |
 
-TaskIQ 是执行池，不是第二个 Agent 编排器。assistant-ui 是交互层，不是事实存储。DeepAgent 统一管理 Ask、Track 和 Edition 的运行，但例行内容生产使用固定、版本化的 Skill runbook。
+TaskIQ 负责异步任务执行，不参与 Agent 编排。assistant-ui 负责消息、证据、工具状态和人工中断的交互呈现，不持久化事实状态。DeepAgent 负责 Ask、Track 和 Edition 的运行编排；例行内容生产采用固定、版本化的 Skill runbook。
 
 ## 运行闭环
 
