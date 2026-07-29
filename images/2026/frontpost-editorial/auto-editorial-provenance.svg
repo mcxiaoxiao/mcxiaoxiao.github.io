@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">FrontPost 内容与证据溯源</title>
+  <desc id="desc">对象存储中的多个原始来源快照合并为规范化 work manifest 和版本，候选评分引用证据快照，最终成为冻结 Edition 和五个渠道的一致内容。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#607981"/></marker>
+    <style>
+      .bg{fill:#f7f7f5}.box{fill:#fff;stroke:#c8d5d7;stroke-width:2}.soft{fill:#e8f4f3;stroke:#8fbfbe;stroke-width:2}.gold{fill:#fbf3df;stroke:#c99b3b;stroke-width:2}.brand{fill:#1f3238}.title{font:700 30px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#1f3238}.h{font:700 18px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#1f3238}.t{font:14px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#465f66}.small{font:12.5px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#607981}.white{fill:#fff}.line{stroke:#607981;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1440" height="760" rx="28"/>
+  <text class="title" x="56" y="62">从来源记录到可审计 Edition</text>
+  <text class="small" x="56" y="90">不覆盖原始值；每个结论保留来源、抓取时间、内容哈希和选择理由</text>
+
+  <rect class="box" x="56" y="142" width="240" height="420" rx="20"/>
+  <text class="h" x="84" y="180">RawRecord</text>
+  <rect class="soft" x="84" y="205" width="184" height="54" rx="11"/><text class="t" x="108" y="238">arXiv RSS / API</text>
+  <rect class="soft" x="84" y="275" width="184" height="54" rx="11"/><text class="t" x="102" y="308">HF Daily / Trending</text>
+  <rect class="soft" x="84" y="345" width="184" height="54" rx="11"/><text class="t" x="105" y="378">OpenAlex / Crossref</text>
+  <rect class="soft" x="84" y="415" width="184" height="54" rx="11"/><text class="t" x="111" y="448">期刊 / 实验室 Feed</text>
+  <text class="small" x="84" y="510">source_id · external_id</text>
+  <text class="small" x="84" y="532">raw_hash · fetched_at</text>
+
+  <rect class="box" x="365" y="142" width="260" height="420" rx="20"/>
+  <text class="h" x="395" y="180">Canonical Work Manifest</text>
+  <text class="t" x="395" y="220">稳定标识符</text>
+  <text class="small" x="395" y="246">DOI · PMID · PMCID · arXiv</text>
+  <text class="t" x="395" y="286">版本关系</text>
+  <text class="small" x="395" y="312">预印本 → 修订 → 正式发表</text>
+  <text class="t" x="395" y="352">来源映射</text>
+  <text class="small" x="395" y="378">source refs + field provenance</text>
+  <text class="t" x="395" y="418">内容快照</text>
+  <text class="small" x="395" y="444">content_versions + license</text>
+  <rect class="gold" x="395" y="482" width="200" height="48" rx="10"/><text class="small" x="419" y="511">低置信合并 → 人工确认</text>
+
+  <rect class="box" x="694" y="142" width="260" height="420" rx="20"/>
+  <text class="h" x="724" y="180">Candidate + Evidence</text>
+  <text class="t" x="724" y="220">candidate score artifact</text>
+  <text class="small" x="724" y="246">分项分数 · 惩罚 · 理由 · 版本</text>
+  <text class="t" x="724" y="286">summary artifact</text>
+  <text class="small" x="724" y="312">摘要 / 白话 / audio script</text>
+  <text class="t" x="724" y="352">citation trace artifact</text>
+  <text class="small" x="724" y="378">claim → source section / snapshot</text>
+  <text class="t" x="724" y="418">model_runs</text>
+  <text class="small" x="724" y="444">模型 · 提示版本 · input hash</text>
+  <text class="small" x="724" y="492">只有已登记证据可进入草稿</text>
+
+  <rect class="brand" x="1023" y="142" width="360" height="190" rx="20"/>
+  <text class="h white" x="1055" y="180">Frozen Edition revision</text>
+  <text class="t white" x="1055" y="220">items：顺序、层级、文案、来源</text>
+  <text class="t white" x="1055" y="252">review：批准与修订记录</text>
+  <text class="small white" x="1055" y="286">发布后不静默重写；更正产生新 revision</text>
+
+  <rect class="box" x="1023" y="372" width="360" height="190" rx="20"/>
+  <text class="h" x="1055" y="410">Channel Artifacts</text>
+  <text class="t" x="1055" y="450">Email / MCP / Zotero / RSS / Personal Home</text>
+  <text class="t" x="1055" y="482">channel manifest：幂等键、状态、重试</text>
+  <text class="small" x="1055" y="522">渠道只改变布局，不重新生成结论</text>
+
+  <path class="line" d="M296 352H365"/><path class="line" d="M625 352H694"/><path class="line" d="M954 250H1023"/><path class="line" d="M1203 332V372"/>
+  <text class="small" x="390" y="625">事实审计路径：Edition item → citation trace → content version → raw source snapshot → 原始链接</text>
+</svg>
