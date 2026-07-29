@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="840" viewBox="0 0 1540 840" role="img" aria-labelledby="title desc">
+  <title id="title">FrontPost 核心领域对象</title>
+  <desc id="desc">FrontPost 的用户、Track、运行、研究 Work、证据、Edition、投递和反馈对象关系。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#5b747b"/></marker>
+    <style>
+      .bg{fill:#f7f7f5}.box{fill:#fff;stroke:#c9d5d7;stroke-width:2}.teal{fill:#e8f4f3;stroke:#8fbfbe;stroke-width:2}.gold{fill:#fbf3df;stroke:#c99b3b;stroke-width:2}.dark{fill:#1f3238;stroke:#1f3238;stroke-width:2}.title{font:700 31px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#1f3238}.h{font:700 17px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#1f3238}.t{font:13.5px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#455f66}.small{font:12px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#61777d}.white{fill:#fff}.line{stroke:#5b747b;stroke-width:2.1;fill:none;marker-end:url(#arrow)}.dash{stroke:#8ca0a5;stroke-width:2;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1540" height="840" rx="28"/>
+  <text class="title" x="55" y="60">FrontPost 核心领域对象</text>
+  <text class="small" x="55" y="88">以稳定领域对象连接用户产品、AI 运行和内容交付，避免页面、渠道或模型各自维护一套状态</text>
+
+  <rect class="teal" x="70" y="145" width="240" height="125" rx="18"/>
+  <text class="h" x="100" y="183">User / Profile</text><text class="t" x="100" y="215">身份、语言、权限</text><text class="t" x="100" y="240">Focus、偏好、送达配置</text>
+  <rect class="gold" x="380" y="145" width="240" height="125" rx="18"/>
+  <text class="h" x="410" y="183">Track</text><text class="t" x="410" y="215">研究任务、范围、证据阈值</text><text class="t" x="410" y="240">来源、频率、当前证据状态</text>
+  <rect class="box" x="690" y="145" width="240" height="125" rx="18"/>
+  <text class="h" x="720" y="183">Run</text><text class="t" x="720" y="215">触发、状态、Skill checkpoints</text><text class="t" x="720" y="240">版本、成本、warnings</text>
+  <rect class="box" x="1000" y="145" width="240" height="125" rx="18"/>
+  <text class="h" x="1030" y="183">Artifact</text><text class="t" x="1030" y="215">输入输出对象 URI</text><text class="t" x="1030" y="240">内容哈希与 schema</text>
+  <rect class="dark" x="1310" y="145" width="160" height="125" rx="18"/>
+  <text class="h white" x="1345" y="183">Skill</text><text class="t white" x="1345" y="215">任务契约</text><text class="t white" x="1345" y="240">版本与幂等键</text>
+
+  <path class="line" d="M310 207H380"/><path class="line" d="M620 207H690"/><path class="line" d="M930 207H1000"/><path class="dash" d="M1310 207H1240"/>
+
+  <rect class="teal" x="70" y="385" width="240" height="125" rx="18"/>
+  <text class="h" x="100" y="423">SourceRecord</text><text class="t" x="100" y="455">来源快照、许可、抓取时间</text><text class="t" x="100" y="480">外部标识与原始链接</text>
+  <rect class="gold" x="380" y="385" width="240" height="125" rx="18"/>
+  <text class="h" x="410" y="423">Work / Version</text><text class="t" x="410" y="455">规范研究实体</text><text class="t" x="410" y="480">预印本、正式版、勘误、撤稿</text>
+  <rect class="gold" x="690" y="385" width="240" height="125" rx="18"/>
+  <text class="h" x="720" y="423">Evidence</text><text class="t" x="720" y="455">可引用事实与证据片段</text><text class="t" x="720" y="480">支持、反证、不确定</text>
+  <rect class="box" x="1000" y="385" width="240" height="125" rx="18"/>
+  <text class="h" x="1030" y="423">CitationTrace</text><text class="t" x="1030" y="455">结论到 Evidence</text><text class="t" x="1030" y="480">再到 SourceRecord</text>
+  <path class="line" d="M310 447H380"/><path class="line" d="M620 447H690"/><path class="line" d="M930 447H1000"/>
+
+  <rect class="dark" x="380" y="625" width="240" height="125" rx="18"/>
+  <text class="h white" x="410" y="663">Edition</text><text class="t white" x="410" y="695">Public / Personal</text><text class="t white" x="410" y="720">不可变 revision</text>
+  <rect class="box" x="690" y="625" width="240" height="125" rx="18"/>
+  <text class="h" x="720" y="663">EditionItem</text><text class="t" x="720" y="695">Work、排序、FrontBrief</text><text class="t" x="720" y="720">CitationTrace</text>
+  <rect class="teal" x="1000" y="625" width="240" height="125" rx="18"/>
+  <text class="h" x="1030" y="663">Delivery</text><text class="t" x="1030" y="695">渠道、接收者、幂等键</text><text class="t" x="1030" y="720">状态与 manifest</text>
+  <rect class="teal" x="1310" y="625" width="160" height="125" rx="18"/>
+  <text class="h" x="1338" y="663">Feedback</text><text class="t" x="1338" y="695">阅读与编辑</text><text class="t" x="1338" y="720">显式与系统指标</text>
+  <path class="line" d="M690 687H620"/><path class="line" d="M930 687H1000"/><path class="line" d="M1240 687H1310"/>
+  <path class="line" d="M500 510V625"/><path class="line" d="M810 510V625"/><path class="dash" d="M1390 625V565H190V270"/>
+</svg>

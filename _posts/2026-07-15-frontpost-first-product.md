@@ -97,7 +97,7 @@ MVP
 
 如果进展顺利，我希望能在 2026 年做出一个全平台 MVP，先跑通完整而可控的闭环。
 
-后来我把这个“完整而可控的闭环”继续拆成了可以实现的自动采编系统，具体记录在 [《FrontPost 的自动采编系统：用 DeepAgent 和 Skills 把一份邮报真正送出去》](/posts/frontpost-auto-editorial)。
+完整的产品、AI、内容生产与交付架构见 [《FrontPost 的方法论》](/posts/frontpost-methodology)。
 
 ![满血复活的啾啾](/images/2026/rest/recharged.jpg)
 
