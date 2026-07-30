@@ -41,9 +41,9 @@ tags:
 报纸为什么能赢，AI 报纸会是什么
 ======
 
-传统报业进入大众生活，先靠技术把成本降下来。Library of Congress 的历史资料提到，蒸汽印刷催生了 penny press，让工人阶层也买得起报纸；后来的 linotype 又让排版和印刷更快，一期能装下更多新闻。[^10]
+传统报业进入大众生活，先靠技术把成本降下来。Library of Congress 的历史资料提到，蒸汽印刷催生了 penny press，让工人阶层也买得起报纸；后来的 linotype 又让排版和印刷更快，一期能装下更多新闻。[^9]
 
-低价和产量只负责把报纸送到手里，编辑能力才决定人会不会留下。UNESCO 把编辑、事实核查和来源审视视为可靠信息的重要生产过程；Reuters Institute 的订阅研究也发现，每日使用是续订的重要预测因素，低价优惠能吸引第一次付费，真正留住人的仍是质量、易用性和习惯。[^11]
+低价和产量只负责把报纸送到手里，编辑能力才决定人会不会留下。UNESCO 把编辑、事实核查和来源审视视为可靠信息的重要生产过程；Reuters Institute 的订阅研究也发现，每日使用是续订的重要预测因素，低价优惠能吸引第一次付费，真正留住人的仍是质量、易用性和习惯。[^10]
 
 报纸能进入日常，大概靠几件事：价格够低，分发够稳，有人筛选和核查，版面也知道什么该放前面。读者每天打开，信任就一点点长出来。
 
@@ -76,7 +76,7 @@ FrontPost，前沿邮报，是一份可以高度定制、持续追踪、每天�
 
 FrontPost 团队会扎根中国，中文和英文会是主要工作语言。我们也希望从这里出发，把前沿信息送到世界各地，逐步支持更多语言和文字，尽量别让语言挡住人。标识暂时只做两套字标：中文和日文语境使用汉字“前沿邮报”；使用罗马字母的地区，以及暂时没有单独适配的其他地区，统一使用 FrontPost。字标只有两套，支持的语言不会只有两种。
 
-定价只能算其中一个很小的实施面。基础订阅每月 2 美元；小学、中学和大学阶段的学生认证后每月 1 美元；邀请码用户 75 折，每月 1.5 美元。地区优惠按世界银行每年更新的 Atlas method 人均 GNI 与收入分组判断（FY27 将低收入经济体划为 1,175 美元及以下，中低收入经济体划为 1,176–4,635 美元）[^9]：低收入和中低收入经济体半价，其中人均 GNI 低于 2,500 美元的经济体免费。半价先通过 IP 粗略判断，免费资格再结合 IP 与必要的身份认证，并尽量少收集和保存个人信息。这条 2,500 美元的免费线是 FrontPost 自己设定的公益方案，只是希望先在价格和获取门槛上做一点具体的事。
+定价我现在也只模模糊糊想过一点。基础订阅大概每月 2 美元，学生可能便宜一半；不同地区也可以按当地情况做些折扣，有些地方干脆免费。具体怎么定、怎么验证，都等真的有人开始用以后再慢慢调整。价格能让产品继续运行就好，我更希望它别成为获取前沿信息的新门槛。
 
 ![满头问号的啾啾](/images/2026/rest/confused.jpg)
 
@@ -111,6 +111,5 @@ MVP
 [^6]: 不同学术信源提供的能力并不一样。arXiv 是开放获取的预印本仓库；Web of Science Core Collection 则主要是覆盖期刊、图书和会议文献的引文数据库，很多内容的进一步访问取决于机构订阅。可参考 [arXiv 介绍](https://info.arxiv.org/about/index.html) 与 [Web of Science Core Collection 帮助文档](https://webofscience.help.clarivate.com/en-us/Content/wos-core-collection/wos-core-collection.htm)。
 [^7]: 李自然，[《AI 论文简报：方法论》](https://ai-brief.liziran.com/zh/methodology)。该页面也公开说明了它目前基于标题和摘要解读、采用 T+3 发布，以及自动化筛选可能漏掉缺少社区信号的小众高价值工作等局限。
 [^8]: 这里按各产品当前官方介绍粗略归类：[PaperDaily / 知新](https://paperdaily.org/library?field_id=23)、[论论全球](https://www.lunlunapp.com/paperLib/)、[AMiner](https://www.aminer.cn/) 和 [Semantic Scholar](https://www.semanticscholar.org/product/) 偏论文搜索、解读、推荐或提醒；[Consensus](https://help.consensus.app/en/articles/9922673-how-consensus-works)、[Elicit](https://elicit.com/)、[Perplexity](https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work) 与 [玻尔](https://www.bohrium.com/intro) 偏带来源问答、证据综合、深度调研或科研任务；[Moonlight](https://www.themoonlight.io/zh)、[ResearchRabbit](https://www.researchrabbit.ai/)、[Feedly AI](https://feedly.com/ai) 和 [Readwise Reader](https://readwise.io/read) 分别侧重论文阅读、文献关系探索、主题追踪和多来源阅读汇聚。
-[^9]: [世界银行 FY27 收入分组](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups)依据 Atlas method 人均 GNI 划分经济体，并在每年 7 月更新。这里的 2,500 美元是 FrontPost 暂定的公益免费线，不是联合国“最不发达国家”的官方标准；[联合国相关标准](https://www.un.org/development/desa/dpad/least-developed-country-category/ldc-criteria.html)还会综合人均 GNI、人力资产与经济环境脆弱性。
-[^10]: 美国国会图书馆在 [A History of Obituaries in American Newspapers](https://blogs.loc.gov/headlinesandheroes/2026/05/mourn-not-a-history-of-obituaries-in-american-newspapers/) 中提到，蒸汽印刷降低了报纸价格，推动 penny press 进入工人阶层；linotype 又提高了排版与印刷效率，使一期报纸可以容纳更多新闻、广告和普通人的故事。这里引用的是它对报业生产与受众扩张的历史梳理。
-[^11]: UNESCO 的 [Balancing Act](https://unesdoc.unesco.org/ark:/48223/pf0000377231) 把编辑、事实核查、来源审视与专业策展视为可靠新闻的重要生产能力。Reuters Institute 的 [Paying for news](https://reutersinstitute.politics.ox.ac.uk/paying-news-price-conscious-consumers-look-value-amid-cost-living-crisis) 研究则指出，规律的每日使用是持续订阅的重要预测因素；低价优惠有助于首次转化，内容质量、易用性和有组织的阅读体验更关系到长期留存。
+[^9]: 美国国会图书馆在 [A History of Obituaries in American Newspapers](https://blogs.loc.gov/headlinesandheroes/2026/05/mourn-not-a-history-of-obituaries-in-american-newspapers/) 中提到，蒸汽印刷降低了报纸价格，推动 penny press 进入工人阶层；linotype 又提高了排版与印刷效率，使一期报纸可以容纳更多新闻、广告和普通人的故事。这里引用的是它对报业生产与受众扩张的历史梳理。
+[^10]: UNESCO 的 [Balancing Act](https://unesdoc.unesco.org/ark:/48223/pf0000377231) 把编辑、事实核查、来源审视与专业策展视为可靠新闻的重要生产能力。Reuters Institute 的 [Paying for news](https://reutersinstitute.politics.ox.ac.uk/paying-news-price-conscious-consumers-look-value-amid-cost-living-crisis) 研究则指出，规律的每日使用是持续订阅的重要预测因素；低价优惠有助于首次转化，内容质量、易用性和有组织的阅读体验更关系到长期留存。
