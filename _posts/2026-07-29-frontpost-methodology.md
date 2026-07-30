@@ -11,106 +11,129 @@ tags:
   - 软件工程
 ---
 
-FrontPost 是面向科研与前沿资讯的持续追踪和可信交付系统。搜索、AI 问答、论文阅读、公开邮报和个人推荐均接入同一套研究证据系统，分别承担检索、交互、阅读、发布和个性化分发职责。
+FrontPost 持续完成来源发现、研究归一、质量评估、内容生成、个性化筛选和多渠道投递。搜索、AI 问答、论文阅读、公开邮报和个人推荐共用 Work、Markdown、Conversation、Run 与 Delivery 模型。
 
-## 系统目标
+## 内容如何产生
 
-FrontPost 接受三类用户意图：
+FrontPost 每天围绕六个公开大领域和二十二个细分领域生成两类内容：
 
-- 浏览和订阅公开领域邮报。
-- 围绕研究问题搜索、阅读、比较和追问。
-- 创建长期 Track，持续监控主题、作者、机构、方法、数据集或结论变化。
+- `News`：研究动态、产品发布、数据集、标准、政策及其他可核实的新变化。
+- `Paper`：围绕单篇或一组论文生成的研究解读。
 
-系统遵循五条原则：
+每份内容保存为独立 `ContentDocument` Markdown。一次整理可以生成多份 Markdown，并由一个 `Edition` manifest 记录顺序、摘要和内容哈希。Web、Email、RSS、MCP 和 Zotero 从同一组 Markdown 与 manifest 渲染。
 
-1. 同一研究维护一个规范 `Work`，来源和版本独立保留。
-2. 回答和简报中的结论必须关联可检查的证据。
-3. 公开版与个人版共用来源、证据、运行时和交付基础设施。
-4. 同一份邮报先冻结一个 `Edition revision`，渠道只做格式适配。
-5. AI 负责规模化处理，公开发布和高风险结论保留人工责任点。
+公共内容按日期、领域、细分领域和语言组织：
 
-## 系统架构
+```text
+public/{date}/{field}/{subfield}/{document_id}/{locale}.md
+```
+
+同一个内容 ID 分别保存中文、英文、阿拉伯文等语言文件。产品展示滚动最近七天目录，底层文件继续按自然日期归档。
 
 ![FrontPost 系统总架构](/images/2026/frontpost-methodology/frontpost-system-architecture.svg)
 
-系统分为七层：
+## 公共内容与个人内容
 
-| 层 | 主要组件 | 责任 |
-| --- | --- | --- |
-| 用户界面 | Web、Expo、Reader、Ask、Track、编辑控制台 | 输入、阅读、交互和审批 |
-| 产品服务 | Better Auth、FastAPI | 身份、权限、领域 API 和业务幂等 |
-| 统一 AI | DeepAgent、LangGraph、Skills、Tools | 长任务编排、上下文、工具调用和恢复 |
-| 交互运行时 | assistant-ui | 展示消息、证据、工具状态和人工中断 |
-| 异步执行 | TaskIQ、Redis | 抓取、解析、批处理和渠道投递 |
-| 内容生产 | 来源、归一、证据、排序、成稿、审核、发布 | 生成 Work、Evidence 和 Edition |
-| 数据层 | PostgreSQL、对象存储 | 保存业务状态、长期工件和不可变版本 |
+公共自动任务持续维护六个领域的内容池。每个细分领域分别生成 News 和 Paper。公共首页在最近七天范围内按全局质量选择内容，并应用领域配额、Work 去重和来源多样性约束。首页不计算个人相关性。
 
-TaskIQ 负责异步任务执行，不参与 Agent 编排。assistant-ui 负责消息、证据、工具状态和人工中断的交互呈现，不持久化事实状态。DeepAgent 负责 Ask、Track 和 Edition 的运行编排；例行内容生产采用固定、版本化的 Skill runbook。
+个人任务先检索最近七天公共内容，再根据用户显式编写的 Focus 执行专项搜索。系统合并两组候选、去重和排序，对公共目录尚未覆盖的候选生成个人 Markdown，并用公共高质量内容补齐用户要求的 News/Paper 数量。
 
-## 运行闭环
+公共 Markdown 进入个人工作区时保持内容哈希不变。个人 Edition 通过内容地址引用完成虚拟复制；导出工作区时再生成文件副本。公共内容不根据个人阅读历史或收藏改写。
 
-![FrontPost 用户与内容运行闭环](/images/2026/frontpost-methodology/frontpost-operating-loop.svg)
+个人任务发现具有公共价值的新 Work 时，公共 Worker 会移除 Focus、Conversation memory、收藏和阅读历史等用户上下文，再按公共模板生成多语言内容。
 
-系统有两种主要输出：
+![FrontPost 公共与个人内容运行](/images/2026/frontpost-methodology/frontpost-operating-loop.svg)
 
-- `Public Edition`：按公开领域策略生成，经过编辑审批后发布。
-- `Personal Track / Edition`：围绕用户研究任务运行，只在出现有效新增、版本变化、反证或趋势拐点时通知。
+## 如何判断研究质量
 
-二者共用一条基础链路：
+候选进入评分前必须有可解析的原始来源和规范 URL，主要陈述必须关联来源片段、公开数据或明确方法。来源许可、Work 归一或证据无法满足门槛时，候选退出生产链路。
+
+质量评估保存分项向量、0–100 汇总分、逐项依据、rubric 版本和模型/代码版本。它服务于候选筛选、算力分配和排序，不构成论文质量真值。
+
+Paper 的质量维度为：
+
+| 维度 | 分值 |
+| --- | ---: |
+| 研究重要性 | 20 |
+| 方法严谨性 | 25 |
+| 证据充分性 | 25 |
+| 可复现性与透明度 | 15 |
+| 新颖性与信息增量 | 15 |
+
+News 的质量维度为：
+
+| 维度 | 分值 |
+| --- | ---: |
+| 一手来源程度 | 25 |
+| 交叉验证 | 20 |
+| 事实完整性 | 20 |
+| 有效信息增量 | 20 |
+| 潜在影响 | 15 |
+
+期刊名次、引用数、机构声誉、社交热度和 GitHub star 只能作为有上限的辅助信号。全局质量只计算一次并缓存，供公共首页和所有个人任务复用。
+
+个人相关性按以下顺序取信号：用户显式 Focus、当前 Conversation 的任务上下文与长期记忆、收藏和阅读反馈、通用主题偏好。个人排序公式为：
 
 ```text
-用户意图或定时触发
-  → 多源发现
-  → Work 归一与版本关联
-  → Evidence 补全与比较
-  → 规则和 AI 处理
-  → 校验与人工责任点
-  → 冻结 Edition
-  → Web / Email / RSS / MCP / Zotero
-  → 阅读和编辑反馈
+personal_score = 0.65 × relevance_score + 0.35 × quality_score
 ```
 
-RSS / Atom 用于增量发现，搜索 API 用于回看和元数据补全，Hugging Face Daily / Trending 与 GitHub 只提供有限权重的社区信号。技术事实仍回到论文、正式出版元数据和合法来源。
+个性化候选不足时，系统按 quality_score 从公共池补齐内容。
 
-## 核心对象
+评分设计参考 [NIH 对重要性、严谨性与可行性的定义](https://www.grants.nih.gov/policy-and-compliance/policy-topics/peer-review/simplifying-review/framework)、[PLOS 可复现性共识](https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.3003726)、[TOP 透明度规范](https://www.cos.io/initiatives/top-guidelines)和 [DORA 指标使用原则](https://sfdora.org/resource/guidance-on-the-responsible-use-of-quantitative-indicators-in-research-assessment/)。模型评分还需考虑表面改写带来的操纵风险，相关实验见 [Gaming AI-Assisted Peer Reviews Poses New Risks](https://arxiv.org/abs/2606.10159)。
+
+## Conversation、Run 与自动投递
+
+`Conversation` 保存连续消息、记忆摘要、关联 Focus 和多个 Run。用户提问、继续追问、点击“立即整理”和定时任务都在 Conversation 下创建 Run。
+
+每个自动 Focus 关联一个长期 Conversation。每次定时触发创建独立 Run，记录输入快照、Skill 版本、checkpoint、成本、输出 URI 和状态。Skill context 依次装配 Focus、Conversation memory、当前触发参数、阅读反馈摘要、公共候选和外部来源。显式 Focus 拥有最高优先级。
+
+PostgreSQL 保存时区、目标发送时间、频率、提前量、下一次触发时间和幂等键。Scheduler 使用数据库行锁抢占到期规则，按 `schedule_id + scheduled_for` 创建唯一 Run，再把任务写入 Redis。
+
+生成任务根据历史耗时提前启动。同一发送时间的大批任务按稳定散列分布到提前窗口。临近截止时间时，Run 停止扩大搜索范围，使用已验证结果和公共内容补齐。Edition manifest 完成后才创建 Delivery。
+
+初始 Worker 分为两个独立队列：
+
+- `interactive`：至少五个副本，处理实时提问和立即整理。
+- `scheduled`：至少五个副本，处理公共采编、个人定时整理和投递。
+
+## 四层架构
+
+| 层 | 技术构件 | 责任 |
+| --- | --- | --- |
+| 产品与交付 | Web、Expo、Reader、Search、Ask、Email、RSS、MCP、Zotero | 用户输入、内容呈现与渠道适配 |
+| 产品服务与任务编排 | Better Auth、FastAPI、assistant-ui、DeepAgent/LangGraph、Skills、Scheduler、TaskIQ | 身份、领域 API、Conversation/Run 和任务执行 |
+| 内容生产 | 来源、Work 归一、质量评估、公共池、个人检索、Markdown、Edition | 生成和复用 News/Paper |
+| 数据基础设施 | PostgreSQL、对象存储、Redis | 持久状态、内容工件与 Worker 队列 |
+
+PostgreSQL 保存业务状态、Conversation/Run、定时规则、评分索引、Edition 索引和 Delivery。对象存储保存来源快照、Markdown、运行工件和 manifest。Redis 主要提供 TaskIQ 队列、任务结果、短锁和临时缓存。
+
+## 八个核心对象
 
 ![FrontPost 核心领域对象](/images/2026/frontpost-methodology/frontpost-core-objects.svg)
 
-核心领域对象包括：
+- `User / Profile`：身份、语言、权限、阅读和投递偏好。
+- `Focus`：研究范围、排除项、数量、语言、时序和渠道配置。
+- `Conversation`：连续消息、长期记忆和多个 Run 的上下文容器。
+- `Run`：一次交互、立即整理或定时执行及其状态与工件。
+- `Work`：规范研究或新闻实体、来源、版本和全局质量评估。
+- `ContentDocument`：一份原子 News/Paper Markdown 及语言变体。
+- `Edition`：一次 Run 产生的文档清单、顺序和摘要 manifest。
+- `Delivery`：接收者、渠道、状态、幂等键和实际内容哈希。
 
-- `Track`：研究任务、范围、排除项、来源、频率和证据阈值。
-- `Run`：一次可恢复执行及其 Skill checkpoints。
-- `Work / Version`：研究实体及预印本、正式版、勘误和撤稿关系。
-- `Evidence / CitationTrace`：结论到证据、版本和原始来源的路径。
-- `Edition / EditionItem`：公开或个性化内容及不可变 revision。
-- `Delivery`：某个 Edition 在某渠道上的幂等投递记录。
-- `Feedback`：阅读行为、编辑修改和系统质量指标。
+```text
+User → Focus → Conversation → Run
+Run → Work → ContentDocument
+Run → Edition ↔ ContentDocument
+Edition → Delivery
+```
 
-页面、提示词和渠道不单独维护事实状态，全部围绕这些领域对象工作。
+来源记录、引用轨迹、质量评估、Schedule 和反馈事件作为上述对象的结构化子记录或运行数据保存。
 
-## AI 与工程边界
+## 一致交付
 
-确定性工作优先由代码完成，包括抓取、解析、标识符归一、哈希、schema 校验和幂等发布。模型用于语义匹配、差异判断、排序辅助、成稿和证据一致性检查。
+Run 完成内容整理后直接写入 Edition manifest。重新整理会产生新的 Run 和 Edition ID。历史 Delivery 继续引用原 manifest。
 
-每个 Skill 只传递结构化 Artifact，记录输入输出 URI、内容哈希、Skill / policy / model 版本、耗时、成本和告警，不保存或依赖模型思维链。失败后从当前 checkpoint 恢复。
+Delivery 使用 `edition_id + recipient_or_feed + channel` 作为幂等键。渠道只渲染 manifest 指向的 Markdown，不重新排序或生成内容。阅读、收藏、完成、跳过、不相关和退订用于下一次相关性排序与 Conversation memory，不修改已经发送的 ContentDocument。
 
-公开发布、高风险内容、低置信 Work 合并、来源冲突和许可不明必须进入人工审核。
-
-## 存储与一致交付
-
-PostgreSQL 保存身份、Profile、Track、权限、订阅和查询索引。对象存储保存来源快照、Work versions、Evidence、Run checkpoints、Edition revisions 和渠道 manifests。Redis 只承担队列、短期锁、限流和可丢失缓存。
-
-`publish-edition` 先冻结 Edition，`deliver-edition` 再生成渠道视图。Email、RSS、MCP、Zotero 和个人推荐首页不得重新排序、重新调用模型或改写事实。
-
-## 实施顺序
-
-1. 稳定现有内容模型、测试和前端性能基线。
-2. 建立 Track、Work、Evidence、Run、Edition、Delivery 契约。
-3. 接入 arXiv、Hugging Face、OpenAlex、Crossref，跑通采集和归一。
-4. 接入 DeepAgent 与 assistant-ui，跑通 Ask、Track 和人工审批。
-5. 生成内部 Edition，再依次上线 Web、RSS、Email、MCP 和 Zotero。
-6. 接入阅读反馈和版本化评测，逐步开放个性化排序。
-
-第一阶段的完成标准是：一个公开领域连续稳定运行；单源失败可降级；每个结论可追溯；运行可恢复；重跑不重复投递；所有渠道指向同一 Edition revision。
-
-参考实现与资料：[Deep Agents](https://docs.langchain.com/oss/python/deepagents/overview)、[assistant-ui](https://www.assistant-ui.com/docs/runtimes/langchain)、[dailypaper-skills](https://github.com/huangkiki/dailypaper-skills)、[paper-daily](https://github.com/Futuresxy/paper-daily)、[AI 论文简报方法论](https://ai-brief.liziran.com/zh/methodology)、[arXiv API / RSS](https://info.arxiv.org/help/api/index.html)、[Hugging Face Daily Papers](https://huggingface.co/papers)、[OpenAlex](https://developers.openalex.org/) 和 [Crossref](https://www.crossref.org/documentation/retrieve-metadata/rest-api/)。
+完整架构文档维护在 [FrontPost 仓库](https://github.com/Huxun-Inc/frontpost)。

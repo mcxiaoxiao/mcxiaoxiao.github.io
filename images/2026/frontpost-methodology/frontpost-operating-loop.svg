@@ -1,54 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="790" viewBox="0 0 1540 790" role="img" aria-labelledby="title desc">
-  <title id="title">FrontPost 用户与内容运行闭环</title>
-  <desc id="desc">用户通过公开邮报、问题或 Track 表达意图，系统发现和验证证据，生成人工可审核的 Edition，通过多个渠道一致交付，并用阅读反馈改进下一轮。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">FrontPost 公共与个人内容运行</title>
+  <desc id="desc">公共自动采编生成最近七天内容池，个人运行复用公共内容并执行专项搜索，最终组装和投递。</desc>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#5b747b"/></marker>
     <style>
-      .bg{fill:#f7f7f5}.box{fill:#fff;stroke:#c9d5d7;stroke-width:2}.teal{fill:#e8f4f3;stroke:#8fbfbe;stroke-width:2}.gold{fill:#fbf3df;stroke:#c99b3b;stroke-width:2}.rose{fill:#f9ebe6;stroke:#b75d46;stroke-width:2}.dark{fill:#1f3238;stroke:#1f3238;stroke-width:2}.title{font:700 31px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#1f3238}.h{font:700 18px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#1f3238}.t{font:14px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#415c63}.small{font:12.5px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#61777d}.white{fill:#fff}.line{stroke:#5b747b;stroke-width:2.3;fill:none;marker-end:url(#arrow)}.dash{stroke:#8ca0a5;stroke-width:2;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
+      .bg{fill:#f7f8f5}.panel{fill:#fff;stroke:#cbd3ce;stroke-width:2}.blue{fill:#dceef8;stroke:#0072b2;stroke-width:2}.green{fill:#dff3ea;stroke:#009e73;stroke-width:2}.orange{fill:#fff0d2;stroke:#e69f00;stroke-width:2}.dark{fill:#17231e}.title{font:700 34px Arial,'Noto Sans SC',sans-serif;fill:#17231e}.lane{font:700 22px Arial,'Noto Sans SC',sans-serif;fill:#17231e}.text{font:600 18px Arial,'Noto Sans SC',sans-serif;fill:#27352f}.small{font:500 16px Arial,'Noto Sans SC',sans-serif;fill:#64716b}.white{fill:#fff}.arrow{stroke:#69766f;stroke-width:3;fill:none;marker-end:url(#end)}
     </style>
+    <marker id="end" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#69766f"/></marker>
   </defs>
-  <rect class="bg" width="1540" height="790" rx="28"/>
-  <text class="title" x="55" y="60">FrontPost 运行闭环</text>
-  <text class="small" x="55" y="88">公开 Edition 与个人 Track 共用 Work、Evidence、运行时和交付基础设施</text>
+  <rect class="bg" width="1600" height="900"/>
+  <text class="title" x="70" y="65">FrontPost 公共内容池与个人生成</text>
+  <text class="small" x="70" y="95">公共质量只计算一次；个人 Run 新增相关性并执行 Focus 专项搜索</text>
 
-  <rect class="teal" x="55" y="145" width="250" height="135" rx="18"/>
-  <text class="h" x="84" y="184">1. 用户意图</text>
-  <text class="t" x="84" y="218">浏览公开领域邮报</text><text class="t" x="84" y="243">提出问题或创建 Track</text><text class="t" x="84" y="268">配置 Focus 与送达方式</text>
+  <rect class="panel" x="70" y="135" width="1460" height="260" rx="22"/>
+  <text class="lane" x="100" y="180">公共自动采编</text>
+  <rect class="blue" x="100" y="220" width="250" height="82" rx="14"/><text class="text" x="146" y="255">六个大领域</text><text class="small" x="132" y="281">二十二个细分领域</text>
+  <path class="arrow" d="M350 261 L410 261"/>
+  <rect class="blue" x="410" y="220" width="250" height="82" rx="14"/><text class="text" x="449" y="255">来源发现 · 归一</text><text class="small" x="468" y="281">News / Paper</text>
+  <path class="arrow" d="M660 261 L720 261"/>
+  <rect class="blue" x="720" y="220" width="250" height="82" rx="14"/><text class="text" x="762" y="255">资格门槛 · 质量</text><text class="small" x="762" y="281">全局评分与依据</text>
+  <path class="arrow" d="M970 261 L1030 261"/>
+  <rect class="dark" x="1030" y="205" width="270" height="112" rx="16"/><text class="text white" x="1081" y="249">最近七天公共池</text><text class="small white" x="1066" y="278">分日期 · 领域 · 语言</text>
+  <path class="arrow" d="M1300 261 L1360 261"/>
+  <rect class="green" x="1360" y="220" width="140" height="82" rx="14"/><text class="text" x="1384" y="255">公开首页</text><text class="small" x="1382" y="281">按质量选稿</text>
 
-  <rect class="box" x="355" y="145" width="250" height="135" rx="18"/>
-  <text class="h" x="384" y="184">2. 计划与触发</text>
-  <text class="t" x="384" y="218">公开版 Scheduler</text><text class="t" x="384" y="243">个人 Track cadence</text><text class="t" x="384" y="268">手动 Ask / 编辑运行</text>
+  <path class="arrow" d="M1165 317 L1165 462"/>
+  <rect class="panel" x="70" y="455" width="1460" height="330" rx="22"/>
+  <text class="lane" x="100" y="500">个人 Conversation / Run</text>
+  <rect class="orange" x="100" y="555" width="220" height="84" rx="14"/><text class="text" x="147" y="590">用户 Focus</text><text class="small" x="125" y="616">显式约束优先</text>
+  <path class="arrow" d="M320 597 L375 597"/>
+  <rect class="orange" x="375" y="540" width="240" height="114" rx="14"/><text class="text" x="426" y="580">公共池召回</text><text class="small" x="416" y="608">Conversation memory</text><text class="small" x="422" y="632">收藏与阅读反馈</text>
+  <path class="arrow" d="M615 597 L670 597"/>
+  <rect class="orange" x="670" y="555" width="220" height="84" rx="14"/><text class="text" x="712" y="590">Focus 专项搜索</text><text class="small" x="707" y="616">合并与 Work 去重</text>
+  <path class="arrow" d="M890 597 L945 597"/>
+  <rect class="orange" x="945" y="540" width="250" height="114" rx="14"/><text class="text" x="990" y="580">个人综合排序</text><text class="small" x="981" y="608">65% 相关性 + 35% 质量</text><text class="small" x="984" y="632">公共内容按需补齐</text>
+  <path class="arrow" d="M1195 597 L1250 597"/>
+  <rect class="dark" x="1250" y="540" width="250" height="114" rx="14"/><text class="text white" x="1294" y="580">多份 Markdown</text><text class="small white" x="1283" y="608">Edition manifest</text><text class="small white" x="1277" y="632">Web · Email · RSS 等</text>
 
-  <rect class="gold" x="655" y="145" width="250" height="135" rx="18"/>
-  <text class="h" x="684" y="184">3. 发现与证据</text>
-  <text class="t" x="684" y="218">多来源采集与去重</text><text class="t" x="684" y="243">版本、引用与许可</text><text class="t" x="684" y="268">证据差异与趋势变化</text>
-
-  <rect class="gold" x="955" y="145" width="250" height="135" rx="18"/>
-  <text class="h" x="984" y="184">4. AI 与规则处理</text>
-  <text class="t" x="984" y="218">检索、比较、排序</text><text class="t" x="984" y="243">回答、FrontBrief、洞察</text><text class="t" x="984" y="268">结构与证据校验</text>
-
-  <rect class="rose" x="1255" y="145" width="230" height="135" rx="18"/>
-  <text class="h" x="1284" y="184">5. 责任点</text>
-  <text class="t" x="1284" y="218">编辑审核公开 Edition</text><text class="t" x="1284" y="243">高风险与低置信复核</text><text class="t" x="1284" y="268">批准后冻结 revision</text>
-
-  <path class="line" d="M305 212H355"/><path class="line" d="M605 212H655"/><path class="line" d="M905 212H955"/><path class="line" d="M1205 212H1255"/>
-
-  <rect class="dark" x="1130" y="410" width="355" height="135" rx="18"/>
-  <text class="h white" x="1160" y="449">6. 一致交付</text>
-  <text class="t white" x="1160" y="484">同一 Public / Personal Edition</text><text class="t white" x="1160" y="509">Web · Email · RSS · MCP · Zotero</text><text class="small white" x="1160" y="532">渠道只适配格式，不重新生成内容</text>
-
-  <rect class="teal" x="655" y="410" width="405" height="135" rx="18"/>
-  <text class="h" x="685" y="449">7. 阅读与继续研究</text>
-  <text class="t" x="685" y="484">阅读、翻译、收藏、批注、播客</text><text class="t" x="685" y="509">Ask this paper · compare with Track</text><text class="small" x="685" y="532">一次性问题可转为持续 Track</text>
-
-  <rect class="box" x="55" y="410" width="530" height="135" rx="18"/>
-  <text class="h" x="85" y="449">8. 可观测反馈</text>
-  <text class="t" x="85" y="484">用户：读完、保存、不相关、追问、退订</text><text class="t" x="85" y="509">系统：来源健康、证据覆盖、修改率、投递一致率</text><text class="small" x="85" y="532">反馈用于 Track、排序、模板和 Skill eval，不修改历史 Edition</text>
-
-  <path class="line" d="M1370 280V410"/><path class="line" d="M1130 477H1060"/><path class="line" d="M655 477H585"/>
-  <path class="dash" d="M320 410V340H180V280"/>
-
-  <rect class="box" x="250" y="650" width="1040" height="80" rx="16"/>
-  <text class="h" x="282" y="684">两种产品输出</text>
-  <text class="t" x="282" y="711">Public Edition：领域公共品，由编辑负责　　Personal Track / Edition：围绕用户研究任务持续更新，由证据阈值和用户策略约束</text>
+  <path class="arrow" d="M780 639 L780 720 L1120 720 L1120 654"/>
+  <text class="small" x="805" y="712">新发现可进入公共候选队列，移除用户上下文后生成公共稿</text>
+  <text class="small" x="70" y="835">定时 Run 由 PostgreSQL 保存时序事实，Scheduler 抢占到期规则后写入 Redis；Delivery 在 manifest 完成后创建。</text>
 </svg>
