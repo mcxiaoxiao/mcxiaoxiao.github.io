@@ -80,7 +80,7 @@ personal_score = 0.65 × relevance_score + 0.35 × quality_score
 
 个性化候选不足时，系统按 quality_score 从公共池补齐内容。
 
-评分设计参考 [NIH 对重要性、严谨性与可行性的定义](https://www.grants.nih.gov/policy-and-compliance/policy-topics/peer-review/simplifying-review/framework)、[PLOS 可复现性共识](https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.3003726)、[TOP 透明度规范](https://www.cos.io/initiatives/top-guidelines)和 [DORA 指标使用原则](https://sfdora.org/resource/guidance-on-the-responsible-use-of-quantitative-indicators-in-research-assessment/)。模型评分还需考虑表面改写带来的操纵风险，相关实验见 [Gaming AI-Assisted Peer Reviews Poses New Risks](https://arxiv.org/abs/2606.10159)。
+评分设计参考 [NIH 对重要性、严谨性与可行性的定义](https://www.grants.nih.gov/policy-and-compliance/policy-topics/peer-review/simplifying-review/framework)、[PLOS 可复现性共识](https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.3003726)、[TOP 透明度规范](https://www.cos.io/initiatives/top-guidelines)和 [DORA 指标使用原则](https://sfdora.org/resource/guidance-on-the-responsible-use-of-quantitative-indicators-in-research-assessment/)。模型评分还需考虑表面改写带来的操纵风险，相关实验见 [Gaming AI-Assisted Peer Reviews Poses New Risks](https://arxiv.org/abs/2606.10159)。基于此，我们建立了一套透明安全机制：限制 AI 单独给出终审意见，强化全文综合校验而非仅依赖摘要，并对好的文笔或好的"故事"持无视甚至降权的态度。
 
 ## Conversation、Run 与自动投递
 
