@@ -49,13 +49,13 @@ FrontPost 因此不能只做一台论文摘要机。它需要一套更完整的 
 
 ## 从 AI4Science Agent 借一点思路
 
-这些想法和近年的 AI4Science Agent 有些相邻。Google 的 AI co-scientist 让生成、反思、排序和 meta-review 等角色共同改进候选假设；PaperQA2 则把检索、带引用的综合和文献矛盾发现连成流程。[^5] 它们面向科学假设和知识综合，FrontPost 目前做的仍是更靠前、也更朴素的信息发现与采编，不能直接画等号。
+这些想法和近年的 AI4Science Agent 有些相邻。Google 的 AI co-scientist 让生成、反思、排序和 meta-review 等角色共同改进候选假设；PaperQA2 把检索、带引用的综合和文献矛盾发现连成流程；ARIS（Auto-Research-In-Sleep）则用可组合的 Markdown skills、跨模型审查、持久化研究 Wiki 和自动实验流程，尝试让研究任务在较长时间里持续推进。[^5] 它们面向科学假设和知识综合，FrontPost 目前做的仍是更靠前、也更朴素的信息发现与采编，不能直接画等号。
 
-其中的循环值得借鉴：先建立候选池，让不同角色寻找证据、反例和遗漏，再由编辑整合。一次运行不只留下成稿，也留下“问题—来源—主张—争议—下一步”的路径，让用户知道内容怎样得来、还缺什么。
+其中的循环值得借鉴：先建立候选池，让不同角色寻找证据、反例和遗漏，再由编辑整合。一次运行不只留下成稿，也留下“问题—来源—主张—争议—下一步”的路径，让用户知道内容怎样得来、还缺什么。ARIS 提醒我们，FrontPost 还可以为每个 Focus 保存未解决的问题、失败的线索和下一次任务的起点；在用户睡觉或离线时继续做检索、去重和初步审校，醒来后交付一份可检查的进展，而不是一条孤立的摘要。
 
 但多 Agent 不是越多越好。对 180 种配置的控制实验显示，协作适合可并行任务，在连续任务上反而可能降低表现。[^6] 另一项研究则发现，同一批科学综合结果，仅因引用验证器不同，测得的不受支持引用比例就可能从约 3% 变到 18%。[^7] 因此，信源发现可以并行，证据合并与编辑决策应保持清楚的顺序；自动核验要记录规则和版本，重要判断仍然交给人。
 
-所以我暂时不会把 FrontPost 称为 AI4Science。我们只是遇到了一部分相似问题，也许能借一点方法。先把基本工作做好，再看它会把我们带到哪里。
+所以我暂时不会把 FrontPost 称为 AI4Science。更准确地说，它可能是面向科学与技术信息流的一种前置工具：先帮助人找到线索、整理证据和形成下一步，再由人决定是否深入研究。ARIS 的具体能力来自一个开源社区项目和它的早期报告，值得借鉴，但还不应被写成已经验证的通用答案。我们先把基本工作做好，再看它会把我们带到哪里。
 
 ## 接下来还可以怎么做
 
@@ -73,6 +73,6 @@ FrontPost 后续最值得积累的不是一个神秘总分，而是一张不断�
 [^2]: Keller Jordan，[Muon: An optimizer for hidden layers in neural networks](https://kellerjordan.github.io/posts/muon/)；实现和后续资料见 [KellerJordan/Muon](https://github.com/KellerJordan/Muon)，公开训练竞速见 [KellerJordan/modded-nanogpt](https://github.com/KellerJordan/modded-nanogpt)。
 [^3]: 相关项目见 [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)、[OpenFold](https://openfold.io/)、LAION 的 [DataComp 发布说明](https://laion.ai/blog/datacomp/) 与 [Re-LAION-5B 清理说明](https://laion.ai/blog/relaion-5b/)。开放项目同样会犯错，这里关注的是公开复现和纠错机制。
 [^4]: Tony Harcup 与 Deirdre O’Neill 对新闻价值的研究列出了 surprise、magnitude、relevance 等常见因素，见 [What is News? News Values Revisited (Again)](https://www.tandfonline.com/doi/abs/10.1080/1461670X.2016.1150193)。
-[^5]: Google Research，[Accelerating scientific breakthroughs with an AI co-scientist](https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/)；Skarlinski 等，[Language agents achieve superhuman synthesis of scientific knowledge](https://arxiv.org/abs/2409.13740)。这里引用的是系统公开的方法和评测，不代表 FrontPost 已具备同类能力。
+[^5]: Google Research，[Accelerating scientific breakthroughs with an AI co-scientist](https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/)；Skarlinski 等，[Language agents achieve superhuman synthesis of scientific knowledge](https://arxiv.org/abs/2409.13740)；ARIS 项目仓库 [Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) 及其早期技术报告 [ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration](https://arxiv.org/abs/2605.03042)。前两者有公开论文或评测，ARIS 的具体工作流和能力边界仍应按开源项目与报告理解，不代表 FrontPost 已具备同类能力。
 [^6]: Google Research，[Towards a science of scaling agent systems: When and why agent systems work](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/)。该研究报告多 Agent 在可并行任务上收益明显，但在顺序任务上可能退化。
 [^7]: Buchmann 等，[Evaluating and Guarding Citation Faithfulness in Agentic Scientific Synthesis](https://arxiv.org/abs/2607.20527)。论文报告同一批输出在不同验证器下测得的不受支持引用比例约为 3%–18%，说明验证器本身也需要校准。
