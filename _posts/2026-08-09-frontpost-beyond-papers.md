@@ -1,5 +1,5 @@
 ---
-title: 'FrontPost 要找的，不只是论文'
+title: '我们需要怎样的前沿信息'
 date: 2026-08-09
 permalink: /posts/frontpost-beyond-papers
 tags:
