@@ -47,6 +47,20 @@ FrontPost 因此不能只做一台论文摘要机。它需要一套更完整的 
 
 这套流程不需要一个无所不能的 Agent。更实际的做法是让信源发现、证据整理、编辑判断和反向审校彼此分工，保存每一步的来源和理由。AI 负责扩大视野、压缩重复劳动，人保留最终的价值判断。
 
+## 和 AI4Science 相邻的一点思路
+
+整理这些想法时，我发现它和近年的 AI4Science Agent 有一点相邻。
+
+例如 Google 的 AI co-scientist 把生成、反思、排序、演化和 meta-review 分给不同 Agent，让候选假设在讨论和批评中逐步收敛；PaperQA2 则围绕检索、带引用的综合和文献矛盾发现组织流程。[^5] 它们做的是科学假设和知识综合，FrontPost 现在做的仍是更靠前、也更朴素的信息发现与采编，不能直接画等号。
+
+但其中有些工作方法值得试试。FrontPost 可以不急着生成一个圆满答案，而是先建立候选信息池，让不同角色分别寻找证据、反例和遗漏，再由编辑整合。一次运行也不只留下成稿，还留下“问题—来源—主张—争议—下一步”的路径。用户看到的不只是结论，也能知道它怎样得来、还缺什么。
+
+多 Agent 也不是越多越好。对 180 种 Agent 配置的控制实验显示，协作更适合可并行任务，在连续任务上反而可能降低表现。[^6] 因此，多语言和多社区的信源发现可以并行，最终证据合并与编辑决策则应该保持清楚的顺序，没必要为了看起来先进而堆一群 Agent。
+
+核验同样不能简化成“再让一个模型检查一次”。2026 年一项研究发现，同一批科学综合结果，仅因引用验证器的严格程度不同，测得的不受支持引用比例就可能相差很大。[^7] FrontPost 如果采用自动核验，需要同时记录验证器、规则和版本；重要或高风险判断仍应交给人，模型意见只能作为证据之一。
+
+所以我暂时不会把 FrontPost 称为 AI4Science。更准确地说，我们和它们遇到了一部分相似问题：怎样从大量材料中找到线索，怎样让不同意见互相检查，怎样把过程交还给使用者。先把这些基本工作做好，再看它会把我们带到哪里。
+
 ## 接下来还可以怎么做
 
 FrontPost 后续最值得积累的不是一个神秘总分，而是一张不断更新的信源图谱和主张记录。
@@ -63,3 +77,6 @@ FrontPost 后续最值得积累的不是一个神秘总分，而是一张不断�
 [^2]: Keller Jordan，[Muon: An optimizer for hidden layers in neural networks](https://kellerjordan.github.io/posts/muon/)；实现和后续资料见 [KellerJordan/Muon](https://github.com/KellerJordan/Muon)，公开训练竞速见 [KellerJordan/modded-nanogpt](https://github.com/KellerJordan/modded-nanogpt)。
 [^3]: 相关项目见 [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)、[OpenFold](https://openfold.io/)、LAION 的 [DataComp 发布说明](https://laion.ai/blog/datacomp/) 与 [Re-LAION-5B 清理说明](https://laion.ai/blog/relaion-5b/)。开放项目同样会犯错，这里关注的是公开复现和纠错机制。
 [^4]: Tony Harcup 与 Deirdre O’Neill 对新闻价值的研究列出了 surprise、magnitude、relevance 等常见因素，见 [What is News? News Values Revisited (Again)](https://www.tandfonline.com/doi/abs/10.1080/1461670X.2016.1150193)。
+[^5]: Google Research，[Accelerating scientific breakthroughs with an AI co-scientist](https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/)；Skarlinski 等，[Language agents achieve superhuman synthesis of scientific knowledge](https://arxiv.org/abs/2409.13740)。这里引用的是系统公开的方法和评测，不代表 FrontPost 已具备同类能力。
+[^6]: Google Research，[Towards a science of scaling agent systems: When and why agent systems work](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/)。该研究报告多 Agent 在可并行任务上收益明显，但在顺序任务上可能退化。
+[^7]: Buchmann 等，[Evaluating and Guarding Citation Faithfulness in Agentic Scientific Synthesis](https://arxiv.org/abs/2607.20527)。论文报告同一批输出在不同验证器下测得的不受支持引用比例约为 3%–18%，说明验证器本身也需要校准。
