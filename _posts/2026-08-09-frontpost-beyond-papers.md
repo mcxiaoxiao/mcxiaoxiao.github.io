@@ -37,7 +37,7 @@ FrontPost 也想少带一些现成的成见：精准触达和采编优质信息�
 
 AI4Science Agent、PaperQA2 和 ARIS 这类工作流，给 FrontPost 提供了一个值得研究的方向：围绕一个问题持续跟踪，补充新来源，记录反例，定期复查，再把阶段性进展交给人。这种做法和传统媒体的长期报道、编辑核查、保留上下文以及持续更新一脉相承。AI 的价值，是把这些工作做得更及时、更细，也让小团队有机会覆盖更广的领域。AI-native 更接近信息产品基本单位的变化：从旧报纸的“一期”转向一个问题或研究线索。新项目、反例和相关来源持续补进，用户可以追问、收藏或跳过。算力最终应转化成更多人找得到、看得懂、用得上的前沿信息；摘要和报告只是形式，线索、反例和值得继续追的问题才是交付结果，具体价值仍需通过产品验证。[^5][^6][^7]
 
-精准推荐也要留出少量空间，放进邻近领域、反常识和未上榜的工作。FrontPost 不想继续转发空洞的“重大突破”、名次崇拜和术语门槛，想找准确、有趣、有新意、值得继续追踪的信息，让有价值的来源更容易被找到。
+精准推荐也要留出少量空间，放进邻近领域、反常识和未上榜的工作。FrontPost 不能成为空洞“重大突破”的扩音器，不能把名次当成判断，也不能用术语制造门槛。它要让准确、有趣、有新意、值得继续追踪的信息更容易被找到。
 
 [^1]: Keller Jordan 的说明由 Varun Neal 在 [Muon in Modded NanoGPT](https://varunneal.github.io/essays/muon) 中引用。这里按其含义转述，不把个人观点当作普遍结论。
 [^2]: Keller Jordan，[Muon: An optimizer for hidden layers in neural networks](https://kellerjordan.github.io/posts/muon/)；实现和后续资料见 [KellerJordan/Muon](https://github.com/KellerJordan/Muon)，公开训练竞速见 [KellerJordan/modded-nanogpt](https://github.com/KellerJordan/modded-nanogpt)。
