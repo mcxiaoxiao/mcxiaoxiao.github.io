@@ -41,15 +41,7 @@ Agent 可以分别负责找线索、整理证据和挑刺，最后由人决定�
 
 AI4Science Agent、PaperQA2 和 ARIS 这类工作流提供了一个参考：持续跟踪一个问题，补充新来源，记录反例，定期复查，再把阶段性进展交给人。FrontPost 目前只借鉴其中的工作方法。AI-native 更接近信息产品基本单位的变化：从旧报纸的“一期”转向一个问题或研究线索。新项目、反例和相关来源持续补进，用户可以追问、收藏或跳过。算力最终应转化成更多人找得到、看得懂、用得上的前沿信息；摘要和报告只是形式，线索、反例和值得继续追的问题才是交付结果，具体价值仍需通过产品验证。[^5][^6][^7]
 
-如果继续做下去，我想留下的是一张信源图谱和一套主张记录。一个神秘总分解决不了来源判断的问题。
-
-根据用户的收藏、跳过、纠正和实际使用，FrontPost 可以逐步识别有效来源、可靠复现者和重复公关话术。同一个主张有新证据时，直接更新原记录，避免生成一篇孤立摘要。
-
-精准推荐也要留出少量空间，放进邻近领域、反常识和未上榜的工作。
-
-刚入门的人不该先花几年混圈子，才知道前沿在哪里。传统社交媒体需要和推荐系统磨合；FrontPost 可以从一句话开始，根据反馈调整来源。
-
-我不想继续转发空洞的“重大突破”、名次崇拜和术语门槛。我想找准确、有趣、有新意、值得继续追踪的信息。FrontPost 要做的是让有价值的来源更容易被找到。
+精准推荐也要留出少量空间，放进邻近领域、反常识和未上榜的工作。FrontPost 不想继续转发空洞的“重大突破”、名次崇拜和术语门槛，想找准确、有趣、有新意、值得继续追踪的信息，让有价值的来源更容易被找到。
 
 [^1]: Keller Jordan 的说明由 Varun Neal 在 [Muon in Modded NanoGPT](https://varunneal.github.io/essays/muon) 中引用。这里按其含义转述，不把个人观点当作普遍结论。
 [^2]: Keller Jordan，[Muon: An optimizer for hidden layers in neural networks](https://kellerjordan.github.io/posts/muon/)；实现和后续资料见 [KellerJordan/Muon](https://github.com/KellerJordan/Muon)，公开训练竞速见 [KellerJordan/modded-nanogpt](https://github.com/KellerJordan/modded-nanogpt)。
