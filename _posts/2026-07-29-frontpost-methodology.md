@@ -11,6 +11,9 @@ tags:
   - 软件工程
 ---
 
+> **说明**：本文采用 AcademicPages 模板的说明格式，记录的是撰写当时对 FrontPost 的总体构想与技术设想。文中涉及的工作流程、组件和架构图均为当时的一般性设计草案，**不代表 FrontPost 当前实际运行的架构或已上线能力**。
+{: .notice--info }
+
 FrontPost 持续完成来源发现、内容校验、质量评估、内容生成、个性化筛选和多渠道投递。搜索、AI 问答、论文阅读、公开邮报和个人推荐共用 Markdown 内容对象、Conversation、Run 与 Delivery 模型。
 
 ## 内容如何产生
@@ -134,5 +137,3 @@ Edition → Delivery
 Run 完成内容整理后直接写入 Edition manifest。重新整理会产生新的 Run 和 Edition ID。历史 Delivery 继续引用原 manifest。
 
 Delivery 使用 `edition_id + recipient_or_feed + channel` 作为幂等键。渠道只渲染 manifest 指向的 Markdown，不重新排序或生成内容。阅读、收藏、完成、跳过、不相关和退订用于下一次相关性排序与 Conversation memory，不修改已经发送的 ContentDocument。
-
-完整架构文档维护在 [FrontPost 仓库](https://github.com/Huxun-Inc/frontpost)。
